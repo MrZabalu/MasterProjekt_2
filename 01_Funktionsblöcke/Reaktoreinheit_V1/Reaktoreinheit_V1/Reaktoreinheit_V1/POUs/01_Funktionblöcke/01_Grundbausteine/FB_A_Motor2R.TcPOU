@@ -6,14 +6,16 @@ VAR_INPUT
 	I_bVerbunden		:BOOL;		// Angabe ob Pumpe angeschlossen ist
 	I_iModus			:INT;		// Zustand des Systems (z.B. 0 = AUS | 1 = MAN | 2 = AUTO)
 	I_bVerriegeln		:BOOL;		// Verriegelte Elemente sind nicht ansteuerbar
+	I_bReset			:BOOL;		// Zustand des Baustein wird zurückgesetzt 
 	I_iGeschw			:INT;		// Angabe über Soll-Geschwindigkeit
 END_VAR
 
 VAR_OUTPUT
+	
 	O_iDrz				:INT;		// Ausgabe der Drehzahl für den Motor
 	O_bRichtung			:BOOL;		// Ausgabe der Drehrichtung
 	O_bError			:BOOL;		// Befindet sich das Element in einem Error
-	O_iStoerungID			:INT;		// Anzeigen von Störung über eine INT-Variable
+	O_iStoerungID		:INT;		// Anzeigen von Störung über eine INT-Variable
 END_VAR
 
 VAR
@@ -115,7 +117,7 @@ END_VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[]]></ST>
+          <ST><![CDATA[V_DrzMax := ABS(P_MaxDrz);]]></ST>
         </Implementation>
       </Set>
     </Property>

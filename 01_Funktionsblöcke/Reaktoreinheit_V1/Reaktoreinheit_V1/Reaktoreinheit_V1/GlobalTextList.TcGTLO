@@ -56,6 +56,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"65"</v>
+              <v n="TextDefault">"FB_Motor2R"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"808"</v>
               <v n="TextDefault">"GET"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -118,6 +123,16 @@
             <o>
               <v n="TextID">"0"</v>
               <v n="TextDefault">"M_M_AUS"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"843"</v>
+              <v n="TextDefault">"M_M_BWD"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"38"</v>
+              <v n="TextDefault">"M_M_FWD"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>

@@ -34,9 +34,6 @@
     <Compile Include="PlcTask.TcTTO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\01_Funktionblöcke\FB_ErrorHandling.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\01_Funktionblöcke\FB_Modus.TcPOU">
       <SubType>Code</SubType>
     </Compile>
