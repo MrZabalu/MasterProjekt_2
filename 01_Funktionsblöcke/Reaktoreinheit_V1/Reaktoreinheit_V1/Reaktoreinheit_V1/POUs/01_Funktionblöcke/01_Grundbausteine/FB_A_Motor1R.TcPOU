@@ -123,6 +123,7 @@ END_VAR
       <Implementation>
         <ST><![CDATA[IF I_iModus = 1 THEN
 	O_bPower := FALSE;
+	O_iDrz := 0;
 END_IF
 
 M_M_AUS := NOT O_bPower;]]></ST>
@@ -140,15 +141,27 @@ IF NOT I_bVerriegeln THEN
 	// EBENE 2: Check der Drehzzahl
 	IF I_iGeschw <= V_DrzMax THEN
 		
-		// Ebene 3: MAN-Modus
+		// EBENE 3: MAN-Modus
 		IF I_iModus = 1 THEN
-			O_iDrz := I_iGeschw;
+			
+			// EBENE 4: System muss AN sein
+			IF O_bPower THEN
+				O_iDrz := I_iGeschw;
+				
+			ELSE 	// Error: System ist nicht eingeschalten
+				O_bError := 1;
+			O_iStoerungID := 11;
+			END_IF
 		END_IF
 		
 	ELSE	// Error: Geschwindigkeit überschreitet die MaxDrz
 		O_bError := 1;
 		O_iStoerungID := 12;
 	END_IF		
+END_IF
+
+IF O_iDrz = I_iGeschw THEN
+	M_M_START := TRUE;
 END_IF]]></ST>
       </Implementation>
     </Method>
@@ -158,7 +171,14 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[// EBENE 1: Verriegelung
+IF NOT I_bVerriegeln THEN
+	O_iDrz := 0;
+END_IF
+
+IF O_iDrz = 0 THEN
+	M_M_STOP := TRUE;
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Property Name="P_Laufzeit" Id="{18397b23-ad69-4f74-a52b-38ad0bf078f1}">
@@ -236,15 +256,29 @@ END_VAR
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_A_Motor1R.M_M_AUS">
-      <LineId Id="9" Count="3" />
+      <LineId Id="9" Count="1" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="11" Count="1" />
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_A_Motor1R.M_M_START">
-      <LineId Id="9" Count="14" />
+      <LineId Id="9" Count="7" />
+      <LineId Id="27" Count="3" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="32" Count="2" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="18" Count="5" />
       <LineId Id="5" Count="0" />
+      <LineId Id="37" Count="2" />
+      <LineId Id="36" Count="0" />
     </LineIds>
     <LineIds Name="FB_A_Motor1R.M_M_STOP">
+      <LineId Id="9" Count="1" />
+      <LineId Id="23" Count="0" />
       <LineId Id="5" Count="0" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="26" Count="1" />
     </LineIds>
     <LineIds Name="FB_A_Motor1R.P_Laufzeit.Get">
       <LineId Id="5" Count="0" />

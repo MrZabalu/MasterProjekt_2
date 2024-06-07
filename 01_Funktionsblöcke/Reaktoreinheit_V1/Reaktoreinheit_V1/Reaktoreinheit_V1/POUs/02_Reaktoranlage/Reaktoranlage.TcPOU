@@ -698,6 +698,29 @@ END_VAR
                     <v n="OwningPageId">-1L</v>
                     <v n="Id">107L</v>
                   </o>
+                  <o t="CFCInputElement">
+                    <o n="Output" t="CFCOutputPin">
+                      <v n="Bounds">"0, 0, 0, 0"</v>
+                      <n n="ElementGroupId" />
+                      <v n="Negated">false</v>
+                      <v n="SetReset" t="SetReset">None</v>
+                      <v n="SetResetRef" t="SetResetRef">None</v>
+                      <v n="PretendsToBeConnected">false</v>
+                      <v n="Id">120L</v>
+                    </o>
+                    <o n="Text" t="CFCText">
+                      <v n="Bounds">"0, 0, 0, 0"</v>
+                      <n n="ElementGroupId" />
+                      <v n="Text">"GVL.SysReset"</v>
+                      <v n="Modifiable">true</v>
+                      <v n="Id">121L</v>
+                    </o>
+                    <v n="PageArea">3</v>
+                    <v n="Bounds">"38, 15, 0, 0"</v>
+                    <n n="ElementGroupId" />
+                    <v n="OwningPageId">-1L</v>
+                    <v n="Id">119L</v>
+                  </o>
                   <o t="CFCOutputElement">
                     <o n="Input" t="CFCInputPinWithSetReset">
                       <v n="Bounds">"0, 0, 0, 0"</v>
@@ -764,6 +787,13 @@ END_VAR
                     <v n="SourcePinId">116L</v>
                     <v n="DestPinId">75L</v>
                     <v n="Id">118L</v>
+                  </o>
+                  <o t="CFCConnection">
+                    <v n="Bounds">"0, 0, 0, 0"</v>
+                    <n n="ElementGroupId" />
+                    <v n="SourcePinId">120L</v>
+                    <v n="DestPinId">79L</v>
+                    <v n="Id">122L</v>
                   </o>
                 </l2>
               </o>
@@ -955,6 +985,34 @@ END_VAR
                       <o>
                         <v n="X">48</v>
                         <v n="Y">13</v>
+                        <v n="IsJoint">false</v>
+                        <v n="Flags">97</v>
+                      </o>
+                    </l2>
+                  </o>
+                  <o>
+                    <v n="ConnectionId">122L</v>
+                    <o n="StartPoint" t="CFCPoint">
+                      <v n="X">45</v>
+                      <v n="Y">15</v>
+                      <v n="IsJoint">false</v>
+                      <v n="Flags">0</v>
+                    </o>
+                    <v n="Unroutable">false</v>
+                    <n n="CorrespondingPageId" />
+                    <v n="Locked">false</v>
+                  </o>
+                  <o>
+                    <l2 n="InnerList" cet="CFCPoint">
+                      <o>
+                        <v n="X">45</v>
+                        <v n="Y">15</v>
+                        <v n="IsJoint">false</v>
+                        <v n="Flags">68</v>
+                      </o>
+                      <o>
+                        <v n="X">48</v>
+                        <v n="Y">15</v>
                         <v n="IsJoint">false</v>
                         <v n="Flags">97</v>
                       </o>
