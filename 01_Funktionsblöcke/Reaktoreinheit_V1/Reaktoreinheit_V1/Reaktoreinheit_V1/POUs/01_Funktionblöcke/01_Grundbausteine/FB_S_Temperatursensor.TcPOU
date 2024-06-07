@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_S_Temperatursensor" Id="{fbd32386-a253-49ea-826a-bfbe4aab9dab}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_S_Temperatursensor
+VAR_INPUT
+	I_iSignal			:INT;		// Messsignal des Sensors
+END_VAR
+
+VAR_OUTPUT
+	O_iTemp				:INT;		// Ausgabe der momentanen Temperatur
+	O_bError			:BOOL;		// Befindet sich das Element in einem Error
+	O_iStoerungID		:INT;		// Anzeigen von Störung über eine INT-Variable
+END_VAR
+
+VAR
+	
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="M_START" Id="{8e007e89-9787-4ed2-8660-cb0e4ae03327}">
+      <Declaration><![CDATA[METHOD M_START : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_STOP" Id="{e299dcae-1d89-4175-be01-13e8d7971356}">
+      <Declaration><![CDATA[METHOD M_STOP : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_S_Temperatursensor">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_S_Temperatursensor.M_START">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_S_Temperatursensor.M_STOP">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

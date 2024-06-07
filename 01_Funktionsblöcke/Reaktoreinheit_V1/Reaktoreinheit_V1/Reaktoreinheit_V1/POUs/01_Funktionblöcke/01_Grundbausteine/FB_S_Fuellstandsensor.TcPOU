@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_S_Fuellstandsensor" Id="{67ce70cf-9cdd-4063-932f-0e6c679aeb25}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_S_Fuellstandsensor
+VAR_INPUT
+	I_iSignal			:INT;		// Messsignal des Sensors
+END_VAR
+
+VAR_OUTPUT
+	O_iFuellstand		:INT;		// Ausgabe des momentanen Füllstandes
+	O_bError			:BOOL;		// Befindet sich das Element in einem Error
+	O_iStoerungID		:INT;		// Anzeigen von Störung über eine INT-Variable
+END_VAR
+
+VAR
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="M_START" Id="{8b83a368-93d5-4f11-bf86-d5c46174f525}">
+      <Declaration><![CDATA[METHOD M_START : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_STOP" Id="{287bc590-7b29-4f70-a869-1ce37ec0dcb1}">
+      <Declaration><![CDATA[METHOD M_STOP : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_S_Fuellstandsensor">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_S_Fuellstandsensor.M_START">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_S_Fuellstandsensor.M_STOP">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

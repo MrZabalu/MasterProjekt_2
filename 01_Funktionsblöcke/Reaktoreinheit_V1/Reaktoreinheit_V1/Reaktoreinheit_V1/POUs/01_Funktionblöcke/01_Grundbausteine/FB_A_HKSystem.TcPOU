@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_A_HKSystem" Id="{9fa8220f-7562-4362-b973-7f9818c39521}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_A_HKSystem
+VAR_INPUT
+	I_iModus		:INT;		// Zustand des Systems (z.B. 0 = AUS | 1 = MAN | 2 = AUTO)
+	I_bVerriegeln	:BOOL;		// Verriegelte Elemente sind nicht ansteuerbar
+	I_iTemp			:INT;		// Angabe der aktuellen Temperatur
+END_VAR
+
+VAR_OUTPUT
+	O_bKuehlen		:BOOL;		// HK-System heizt das Medium auf
+	O_bHeizen		:BOOL;		// HK-System kühlt das Medium ab
+	O_bError		:BOOL;		// Befindet sich das Element in einem Error
+	O_iStoerungID	:INT;		// Anzeigen von Störung über eine INT-Variable
+	
+END_VAR
+	
+VAR
+	V_TempMax		:INT;		// Variable für internes handling der Eigenschaft 
+	V_TempMin		:INT;		// Variable für internes handling der Eigenschaft 
+	V_Zustand		:INT;		// Variable für internes handling der Eigenschaft 
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="M_A_HEIZEN" Id="{805f7cbf-a553-4d3b-9434-906e69543a3f}">
+      <Declaration><![CDATA[METHOD M_A_HEIZEN : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_A_KUEHLEN" Id="{553ba116-732f-49c2-828c-c4f64984a7f1}">
+      <Declaration><![CDATA[METHOD M_A_KUEHLEN : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_M_HEIZEN" Id="{9431c962-da2e-4e6c-85e5-1e6aa4bd1568}">
+      <Declaration><![CDATA[METHOD M_M_HEIZEN : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_M_KUEHLEN" Id="{edd300d5-3c05-4015-826d-b28d4c741cb4}">
+      <Declaration><![CDATA[METHOD M_M_KUEHLEN : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="P_MaxTemp" Id="{087eb6ba-a3ae-4a3e-a81a-2c88e8429d48}">
+      <Declaration><![CDATA[PROPERTY PUBLIC P_MaxTemp : INT]]></Declaration>
+      <Set Name="Set" Id="{57e4acaf-0195-44c0-aea7-370b573f2cfb}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Property Name="P_MinTemp" Id="{bfb56a72-03b9-4009-b5d0-39b88f56029f}">
+      <Declaration><![CDATA[PROPERTY PUBLIC P_MinTemp : INT]]></Declaration>
+      <Set Name="Set" Id="{810a7e51-bfb0-4f98-8bdb-2701d93499dd}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Property Name="P_Zustand" Id="{41e75813-f874-43a5-bfc6-f44385e63ae2}">
+      <Declaration><![CDATA[PROPERTY PUBLIC P_Zustand : INT]]></Declaration>
+      <Get Name="Get" Id="{49cb2351-eb2a-4219-9220-c46d74796b7d}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <LineIds Name="FB_A_HKSystem">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_A_HKSystem.M_A_HEIZEN">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_A_HKSystem.M_A_KUEHLEN">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_A_HKSystem.M_M_HEIZEN">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_A_HKSystem.M_M_KUEHLEN">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_A_HKSystem.P_MaxTemp.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_A_HKSystem.P_MinTemp.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_A_HKSystem.P_Zustand.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

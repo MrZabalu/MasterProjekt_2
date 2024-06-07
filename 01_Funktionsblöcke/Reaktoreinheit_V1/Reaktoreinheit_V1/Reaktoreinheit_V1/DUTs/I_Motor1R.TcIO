@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Itf Name="I_Motor1R" Id="{b2f9a347-f0d3-4207-b300-f309dfcbc50c}">
+    <Declaration><![CDATA[INTERFACE I_Motor1R
+]]></Declaration>
+    <Property Name="P_Laufzeit" Id="{07a4ec4a-20e2-448f-9eb9-349f5871142f}">
+      <Declaration><![CDATA[PROPERTY P_Laufzeit : INT]]></Declaration>
+      <Get Name="Get" Id="{7c640eb3-ade5-47ec-a7d0-ba29cc386d5c}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="P_MaxDrz" Id="{e89f8272-13df-449e-85fc-984eb699f2cd}">
+      <Declaration><![CDATA[PROPERTY P_MaxDrz : INT]]></Declaration>
+      <Set Name="Set" Id="{0dffa0f3-67f5-4858-9446-ac5a79509cf5}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Set>
+    </Property>
+  </Itf>
+</TcPlcObject>
