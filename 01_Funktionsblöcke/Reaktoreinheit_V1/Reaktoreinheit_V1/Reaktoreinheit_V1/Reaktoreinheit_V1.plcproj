@@ -61,9 +61,6 @@
     <Compile Include="POUs\02_Reaktoranlage\Reaktoranlage.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\02_Reaktoranlage\Reaktoranlage_.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
