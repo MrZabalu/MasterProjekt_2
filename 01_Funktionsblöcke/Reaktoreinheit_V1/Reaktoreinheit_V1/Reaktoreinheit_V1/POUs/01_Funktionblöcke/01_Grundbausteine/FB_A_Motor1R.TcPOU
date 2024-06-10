@@ -104,7 +104,7 @@ END_VAR
       <Implementation>
         <ST><![CDATA[// EBENE 1: Verriegelung
 IF NOT I_bVerriegeln THEN	
-	// EBEN 2: AUTO-Modus
+	// EBEN 2: MAN-Modus
 		IF I_iModus = 1 THEN
 			O_bPower := TRUE;
 		END_IF
@@ -183,7 +183,7 @@ END_IF]]></ST>
     </Method>
     <Property Name="P_Laufzeit" Id="{18397b23-ad69-4f74-a52b-38ad0bf078f1}">
       <Declaration><![CDATA[{attribute 'monitoring':='call'}
-PROPERTY PUBLIC P_Laufzeit : INT]]></Declaration>
+PROPERTY PUBLIC P_Laufzeit : TIME]]></Declaration>
       <Get Name="Get" Id="{3ce4aceb-895c-4c68-991b-18a3443d2eff}">
         <Declaration><![CDATA[VAR
 END_VAR
