@@ -46,6 +46,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"225"</v>
+              <v n="TextDefault">"FB_Füllstandsensor"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"606"</v>
               <v n="TextDefault">"FB_Magnetventil"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -78,6 +83,31 @@
             <o>
               <v n="TextID">"999"</v>
               <v n="TextDefault">"I_iGeschw"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"510"</v>
+              <v n="TextDefault">"I_iSignal"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"916"</v>
+              <v n="TextDefault">"I_rHigh"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"121"</v>
+              <v n="TextDefault">"I_rLow"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"362"</v>
+              <v n="TextDefault">"I_rMax"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"680"</v>
+              <v n="TextDefault">"I_rMin"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -196,6 +226,16 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"685"</v>
+              <v n="TextDefault">"P_GrenzeOben"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"502"</v>
+              <v n="TextDefault">"P_GrenzeUnten"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"794"</v>
               <v n="TextDefault">"P_Laufzeit"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -203,6 +243,11 @@
             <o>
               <v n="TextID">"293"</v>
               <v n="TextDefault">"P_MaxDrz"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"692"</v>
+              <v n="TextDefault">"P_Messwert"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>

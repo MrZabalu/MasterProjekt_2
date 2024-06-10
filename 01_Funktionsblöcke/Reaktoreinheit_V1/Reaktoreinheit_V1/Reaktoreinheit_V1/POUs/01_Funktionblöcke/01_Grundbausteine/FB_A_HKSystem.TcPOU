@@ -3,9 +3,11 @@
   <POU Name="FB_A_HKSystem" Id="{9fa8220f-7562-4362-b973-7f9818c39521}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_A_HKSystem
 VAR_INPUT
+	I_bVerbunden	:BOOL;		// Angabe ob HK-System angeschlossen ist
 	I_iModus		:INT;		// Zustand des Systems (z.B. 0 = AUS | 1 = MAN | 2 = AUTO)
 	I_bVerriegeln	:BOOL;		// Verriegelte Elemente sind nicht ansteuerbar
 	I_iTemp			:INT;		// Angabe der aktuellen Temperatur
+	I_bReset		:BOOL;		// Zustand des Baustein wird zurückgesetzt 
 END_VAR
 
 VAR_OUTPUT

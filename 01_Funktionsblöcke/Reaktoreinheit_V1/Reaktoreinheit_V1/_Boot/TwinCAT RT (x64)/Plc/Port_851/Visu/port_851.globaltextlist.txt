@@ -7,6 +7,7 @@ Id;Default
 961;Button
 792;d
 881;Eigenschaften
+225;FB_Füllstandsensor
 606;FB_Magnetventil
 583;FB_Motor1R
 65;FB_Motor2R
@@ -14,6 +15,11 @@ Id;Default
 947;Gruppenfeld
 745;Inputs
 999;I_iGeschw
+510;I_iSignal
+916;I_rHigh
+121;I_rLow
+362;I_rMax
+680;I_rMin
 331;Magnetventil
 348;MAN
 64;Methodenhandling
@@ -37,8 +43,11 @@ Id;Default
 418;O_iDrz
 518;O_iStoerungID
 932;POWER:
+685;P_GrenzeOben
+502;P_GrenzeUnten
 794;P_Laufzeit
 293;P_MaxDrz
+692;P_Messwert
 758;P_Zustand
 954;RESET:
 119;Schliessen
