@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="FB_S_Fuellstandsensor" Id="{67ce70cf-9cdd-4063-932f-0e6c679aeb25}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK FB_S_Fuellstandsensor
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_S_Fuellstandsensor IMPLEMENTS	I_Sensor	
 VAR_INPUT
 	I_iSignal			:INT;		// Messsignal des Sensors
 	I_rHigh				:REAL;		// Oberer Schwellenwert für Prozess

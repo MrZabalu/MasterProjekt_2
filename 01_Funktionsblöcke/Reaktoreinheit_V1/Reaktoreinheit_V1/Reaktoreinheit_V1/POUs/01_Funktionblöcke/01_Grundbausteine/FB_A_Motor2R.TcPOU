@@ -25,7 +25,12 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// Reset des Bausteins
+      <ST><![CDATA[// Setzen der internen Variablen
+P_MaxDrz := V_DrzMax;
+V_Zeit := P_Laufzeit;
+V_Zustand := P_Zustand;
+
+// Reset des Bausteins
 IF I_bReset THEN
 	O_bError := FALSE;
 	O_iStoerungID := 0;
@@ -183,7 +188,7 @@ END_VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[V_DrzMax := ABS(P_MaxDrz);]]></ST>
+          <ST><![CDATA[]]></ST>
         </Implementation>
       </Set>
     </Property>
@@ -199,6 +204,8 @@ END_VAR
       </Get>
     </Property>
     <LineIds Name="FB_A_Motor2R">
+      <LineId Id="60" Count="2" />
+      <LineId Id="58" Count="1" />
       <LineId Id="32" Count="3" />
       <LineId Id="9" Count="0" />
     </LineIds>

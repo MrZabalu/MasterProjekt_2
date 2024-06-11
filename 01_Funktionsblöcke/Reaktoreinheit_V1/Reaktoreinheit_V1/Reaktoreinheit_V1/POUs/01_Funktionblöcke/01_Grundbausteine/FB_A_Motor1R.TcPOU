@@ -20,10 +20,22 @@ VAR
 	V_DrzMax		:INT;		// Variable für internes handling der Eigenschaft 
 	V_Zeit			:TIME;		// Variable für internes handling der Eigenschaft 
 	V_Zustand		:INT;		// Variable für internes handling der Eigenschaft 
+	
+	V_Timer			:TON;		// Runtime des Bausteins ermitteln
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// Reset des Bausteins
+      <ST><![CDATA[// Setzen der internen Variablen
+P_MaxDrz := V_DrzMax;
+V_Zeit := P_Laufzeit;
+V_Zustand := P_Zustand;
+
+// Setzen der internen Variablen
+P_MaxDrz := V_DrzMax;
+V_Zeit := P_Laufzeit;
+V_Zustand := P_Zustand;
+
+// Reset des Bausteins
 IF I_bReset THEN
 	O_bError := FALSE;
 	O_iStoerungID := 0;
@@ -84,7 +96,14 @@ IF NOT I_bVerriegeln THEN
 		O_bError := 1;
 		O_iStoerungID := 12;
 	END_IF		
-END_IF]]></ST>
+END_IF
+
+IF O_iDrz = I_iGeschw THEN
+	M_A_START := TRUE;
+ELSE
+	M_A_START := FALSE;
+END_IF
+]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_A_STOP" Id="{8268dcff-d4e4-49fd-9c65-0ffd9462f360}">
@@ -93,7 +112,11 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[IF O_iDrz = 0 THEN
+	M_A_STOP := TRUE;
+ELSE
+	M_A_STOP := FALSE;
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_M_AN" Id="{e2506041-3be8-4d33-9be8-63478ae299d0}">
@@ -162,6 +185,8 @@ END_IF
 
 IF O_iDrz = I_iGeschw THEN
 	M_M_START := TRUE;
+ELSE
+	M_M_START := FALSE;
 END_IF]]></ST>
       </Implementation>
     </Method>
@@ -178,18 +203,31 @@ END_IF
 
 IF O_iDrz = 0 THEN
 	M_M_STOP := TRUE;
+ELSE
+	M_M_STOP := FALSE;
 END_IF]]></ST>
       </Implementation>
     </Method>
     <Property Name="P_Laufzeit" Id="{18397b23-ad69-4f74-a52b-38ad0bf078f1}">
-      <Declaration><![CDATA[{attribute 'monitoring':='call'}
-PROPERTY PUBLIC P_Laufzeit : TIME]]></Declaration>
+      <Declaration><![CDATA[PROPERTY PUBLIC P_Laufzeit : TIME]]></Declaration>
       <Get Name="Get" Id="{3ce4aceb-895c-4c68-991b-18a3443d2eff}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[P_Laufzeit := V_Zeit;]]></ST>
+          <ST><![CDATA[IF O_iDrz > 0 THEN
+	V_Timer(IN := TRUE, PT := T#100H);
+END_IF
+
+IF O_iDrz = 0 THEN
+	V_Timer(IN := FALSE);
+END_IF
+
+P_Laufzeit := V_Timer.ET;
+
+IF M_A_START THEN
+	V_Timer(IN := TRUE, PT := T#100H);
+END_IF]]></ST>
         </Implementation>
       </Get>
     </Property>
@@ -201,7 +239,7 @@ PROPERTY PUBLIC P_MaxDrz : INT]]></Declaration>
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[V_DrzMax := ABS(P_MaxDrz);]]></ST>
+          <ST><![CDATA[]]></ST>
         </Implementation>
       </Set>
     </Property>
@@ -217,6 +255,11 @@ END_VAR
       </Get>
     </Property>
     <LineIds Name="FB_A_Motor1R">
+      <LineId Id="91" Count="2" />
+      <LineId Id="89" Count="1" />
+      <LineId Id="84" Count="0" />
+      <LineId Id="86" Count="2" />
+      <LineId Id="85" Count="0" />
       <LineId Id="30" Count="0" />
       <LineId Id="9" Count="0" />
       <LineId Id="31" Count="0" />
@@ -248,8 +291,15 @@ END_VAR
       <LineId Id="26" Count="0" />
       <LineId Id="23" Count="2" />
       <LineId Id="17" Count="1" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="36" Count="1" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="38" Count="0" />
     </LineIds>
     <LineIds Name="FB_A_Motor1R.M_A_STOP">
+      <LineId Id="9" Count="3" />
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_A_Motor1R.M_M_AN">
@@ -272,7 +322,8 @@ END_VAR
       <LineId Id="31" Count="0" />
       <LineId Id="18" Count="5" />
       <LineId Id="5" Count="0" />
-      <LineId Id="41" Count="2" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="47" Count="3" />
       <LineId Id="36" Count="0" />
     </LineIds>
     <LineIds Name="FB_A_Motor1R.M_M_STOP">
@@ -281,10 +332,21 @@ END_VAR
       <LineId Id="5" Count="0" />
       <LineId Id="25" Count="0" />
       <LineId Id="24" Count="0" />
-      <LineId Id="26" Count="1" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="31" Count="1" />
+      <LineId Id="27" Count="0" />
     </LineIds>
     <LineIds Name="FB_A_Motor1R.P_Laufzeit.Get">
       <LineId Id="5" Count="0" />
+      <LineId Id="8" Count="1" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="13" Count="1" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="19" Count="1" />
     </LineIds>
     <LineIds Name="FB_A_Motor1R.P_MaxDrz.Set">
       <LineId Id="2" Count="0" />

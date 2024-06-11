@@ -11,6 +11,8 @@ Id;Default
 606;FB_Magnetventil
 583;FB_Motor1R
 65;FB_Motor2R
+234;FB_Temperatursensor
+111;FB_Tempoeratursensor
 808;GET
 947;Gruppenfeld
 745;Inputs
