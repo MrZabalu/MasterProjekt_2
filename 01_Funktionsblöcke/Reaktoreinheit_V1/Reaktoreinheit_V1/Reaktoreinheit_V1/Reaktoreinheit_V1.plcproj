@@ -18,10 +18,16 @@
     <LibraryReferences>{d0426404-6dbc-472c-ac9d-c5ada5d99d11}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DUTs\I_HKSystem.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\I_Magnetventil.TcIO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\I_Motor1R.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\I_Motor2R.TcIO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\I_Sensor.TcIO">
@@ -52,10 +58,7 @@
     <Compile Include="POUs\01_Funktionblöcke\01_Grundbausteine\FB_A_Motor2R.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\01_Funktionblöcke\01_Grundbausteine\FB_S_Fuellstandsensor.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\01_Funktionblöcke\01_Grundbausteine\FB_S_Temperatursensor.TcPOU">
+    <Compile Include="POUs\01_Funktionblöcke\01_Grundbausteine\FB_S_Sensor.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\02_Reaktoranlage\Reaktoranlage.TcPOU">

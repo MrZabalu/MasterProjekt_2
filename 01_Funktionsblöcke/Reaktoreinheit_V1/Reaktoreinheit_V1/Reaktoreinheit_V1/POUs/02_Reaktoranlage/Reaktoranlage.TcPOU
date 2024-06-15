@@ -11,8 +11,8 @@ VAR
 	PUMPE			:FB_A_Motor2R;
 	HKSYSTEM		:FB_A_HKSystem;
 	
-	FUELLSEN		:FB_S_Fuellstandsensor;
-	TEMPSEN			:FB_S_Temperatursensor; 
+	FUELLSEN		:FB_S_Sensor;
+	TEMPSEN			:FB_S_Sensor; 
 	
 
 	
@@ -420,7 +420,7 @@ END_VAR
                         <o>
                           <v n="Bounds">"0, 0, 0, 0"</v>
                           <n n="ElementGroupId" />
-                          <v n="Text">"FB_S_Fuellstandsensor"</v>
+                          <v n="Text">"FB_S_Sensor"</v>
                           <v n="Modifiable">true</v>
                           <v n="Id">226L</v>
                         </o>
@@ -815,7 +815,7 @@ END_VAR
                         <o>
                           <v n="Bounds">"0, 0, 0, 0"</v>
                           <n n="ElementGroupId" />
-                          <v n="Text">"FB_S_Temperatursensor"</v>
+                          <v n="Text">"FB_S_Sensor"</v>
                           <v n="Modifiable">true</v>
                           <v n="Id">267L</v>
                         </o>
@@ -1183,7 +1183,7 @@ END_VAR
                           <v n="SetReset" t="SetReset">None</v>
                           <v n="SetResetRef" t="SetResetRef">None</v>
                           <v n="PretendsToBeConnected">false</v>
-                          <v n="Id">192L</v>
+                          <v n="Id">343L</v>
                         </o>
                         <o>
                           <v n="Bounds">"0, 0, 0, 0"</v>
@@ -1195,7 +1195,7 @@ END_VAR
                           <v n="SetReset" t="SetReset">None</v>
                           <v n="SetResetRef" t="SetResetRef">None</v>
                           <v n="PretendsToBeConnected">false</v>
-                          <v n="Id">194L</v>
+                          <v n="Id">192L</v>
                         </o>
                         <o>
                           <v n="Bounds">"0, 0, 0, 0"</v>
@@ -1213,6 +1213,15 @@ END_VAR
                     </o>
                     <o n="Outputs" t="CFCItemList">
                       <l2 n="InnerList" cet="CFCOutputPin">
+                        <o>
+                          <v n="Bounds">"0, 0, 0, 0"</v>
+                          <n n="ElementGroupId" />
+                          <v n="Negated">false</v>
+                          <v n="SetReset" t="SetReset">None</v>
+                          <v n="SetResetRef" t="SetResetRef">None</v>
+                          <v n="PretendsToBeConnected">false</v>
+                          <v n="Id">321L</v>
+                        </o>
                         <o>
                           <v n="Bounds">"0, 0, 0, 0"</v>
                           <n n="ElementGroupId" />
@@ -1238,7 +1247,7 @@ END_VAR
                           <v n="SetReset" t="SetReset">None</v>
                           <v n="SetResetRef" t="SetResetRef">None</v>
                           <v n="PretendsToBeConnected">false</v>
-                          <v n="Id">200L</v>
+                          <v n="Id">323L</v>
                         </o>
                         <o>
                           <v n="Bounds">"0, 0, 0, 0"</v>
@@ -1270,6 +1279,13 @@ END_VAR
                         <o>
                           <v n="Bounds">"0, 0, 0, 0"</v>
                           <n n="ElementGroupId" />
+                          <v n="Text">"I_iTemp"</v>
+                          <v n="Modifiable">true</v>
+                          <v n="Id">344L</v>
+                        </o>
+                        <o>
+                          <v n="Bounds">"0, 0, 0, 0"</v>
+                          <n n="ElementGroupId" />
                           <v n="Text">"I_bVerriegeln"</v>
                           <v n="Modifiable">true</v>
                           <v n="Id">193L</v>
@@ -1277,16 +1293,16 @@ END_VAR
                         <o>
                           <v n="Bounds">"0, 0, 0, 0"</v>
                           <n n="ElementGroupId" />
-                          <v n="Text">"I_iTemp"</v>
+                          <v n="Text">"I_bReset"</v>
                           <v n="Modifiable">true</v>
-                          <v n="Id">195L</v>
+                          <v n="Id">205L</v>
                         </o>
                         <o>
                           <v n="Bounds">"0, 0, 0, 0"</v>
                           <n n="ElementGroupId" />
-                          <v n="Text">"I_bReset"</v>
+                          <v n="Text">"O_bPumpen"</v>
                           <v n="Modifiable">true</v>
-                          <v n="Id">205L</v>
+                          <v n="Id">322L</v>
                         </o>
                         <o>
                           <v n="Bounds">"0, 0, 0, 0"</v>
@@ -1305,9 +1321,9 @@ END_VAR
                         <o>
                           <v n="Bounds">"0, 0, 0, 0"</v>
                           <n n="ElementGroupId" />
-                          <v n="Text">"O_bError"</v>
+                          <v n="Text">"O_bStoerung"</v>
                           <v n="Modifiable">true</v>
-                          <v n="Id">201L</v>
+                          <v n="Id">324L</v>
                         </o>
                         <o>
                           <v n="Bounds">"0, 0, 0, 0"</v>
@@ -1597,7 +1613,7 @@ END_VAR
                         <v n="X">47</v>
                         <v n="Y">35</v>
                         <v n="IsJoint">false</v>
-                        <v n="Flags">68</v>
+                        <v n="Flags">100</v>
                       </o>
                       <o>
                         <v n="X">49</v>
@@ -1610,8 +1626,8 @@ END_VAR
                 </d2>
               </o>
               <v n="AutoSizeCanvas">true</v>
-              <v n="CanvasWidth">93</v>
-              <v n="CanvasHeight">38</v>
+              <v n="CanvasWidth">92</v>
+              <v n="CanvasHeight">37</v>
             </o>
           </Data>
           <TypeList>

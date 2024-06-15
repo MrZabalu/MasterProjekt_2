@@ -3,6 +3,18 @@
   <Itf Name="I_Magnetventil" Id="{a17bf922-bf26-4dd4-85a2-f2356bfb708a}">
     <Declaration><![CDATA[INTERFACE I_Magnetventil
 ]]></Declaration>
+    <Method Name="M_A_OEFFNEN" Id="{fa812cba-d9ae-4232-b0bd-0aacf356e7a0}">
+      <Declaration><![CDATA[METHOD M_A_OEFFNEN : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_A_SCHLIESSEN" Id="{96fa8735-fb03-460b-90ed-190789c8fb7c}">
+      <Declaration><![CDATA[METHOD M_A_SCHLIESSEN : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
     <Method Name="M_M_OEFFNEN" Id="{bc3072cc-c19f-4ad0-a0a3-0b54b2223672}">
       <Declaration><![CDATA[METHOD M_M_OEFFNEN : BOOL
 VAR_INPUT

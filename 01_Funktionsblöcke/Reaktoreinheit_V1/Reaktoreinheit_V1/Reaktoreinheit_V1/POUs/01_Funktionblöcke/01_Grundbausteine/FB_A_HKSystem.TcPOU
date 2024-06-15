@@ -1,71 +1,254 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="FB_A_HKSystem" Id="{9fa8220f-7562-4362-b973-7f9818c39521}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK FB_A_HKSystem
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_A_HKSystem IMPLEMENTS I_HKSystem
 VAR_INPUT
 	I_bVerbunden	:BOOL;		// Angabe ob HK-System angeschlossen ist
 	I_iModus		:INT;		// Zustand des Systems (z.B. 0 = AUS | 1 = MAN | 2 = AUTO)
+	I_iTemp			:INT;		// Aktuelle Temperatur um Heizmodus auszuwählen und zu stoppen
 	I_bVerriegeln	:BOOL;		// Verriegelte Elemente sind nicht ansteuerbar
-	I_iTemp			:INT;		// Angabe der aktuellen Temperatur
 	I_bReset		:BOOL;		// Zustand des Baustein wird zurückgesetzt 
 END_VAR
 
 VAR_OUTPUT
+	O_bPumpen		:BOOL;		// Pumpe des HK-Systems wird betrieben
 	O_bKuehlen		:BOOL;		// HK-System heizt das Medium auf
 	O_bHeizen		:BOOL;		// HK-System kühlt das Medium ab
-	O_bError		:BOOL;		// Befindet sich das Element in einem Error
+	O_bStoerung		:BOOL;		// Befindet sich das Element in einem Error
 	O_iStoerungID	:INT;		// Anzeigen von Störung über eine INT-Variable
 	
 END_VAR
 	
 VAR
-	V_TempMax		:INT;		// Variable für internes handling der Eigenschaft 
-	V_TempMin		:INT;		// Variable für internes handling der Eigenschaft 
+	V_DefTemp		:INT;		// Variable für internes handling der Eigenschaft 
+	V_Zeit			:TIME;		// Variable für internes handling der Eigenschaft 
 	V_Zustand		:INT;		// Variable für internes handling der Eigenschaft 
+	
+	V_Timer			:TON;		// Runtime des Bausteins ermitteln
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[// Setzen der internen Variablen
+V_Zeit := P_Laufzeit;
+V_Zustand := P_Zustand;
+
+// Fehler durch Verbindungsabbruch
+IF O_bPumpen OR O_bKuehlen OR O_bHeizen THEN
+	IF NOT I_bVerbunden THEN
+		O_bPumpen := FALSE;
+		O_bKuehlen := FALSE;
+		O_bHeizen := FALSE;
+		
+		O_bStoerung := TRUE;
+		O_iStoerungID := 04;
+	END_IF
+END_IF
+
+// Abbruch des Heiz-Kühlprozesses beim erreichen der Temp
+IF O_bHeizen OR O_bKuehlen THEN 
+	IF I_iTemp = V_DefTemp THEN
+		O_bKuehlen := FALSE;
+		O_bHeizen := FALSE;		
+	END_IF
+END_IF
+
+// Reset des Bausteins
+IF I_bReset THEN
+	O_bStoerung := FALSE;
+	O_iStoerungID := 0;
+END_IF]]></ST>
     </Implementation>
-    <Method Name="M_A_HEIZEN" Id="{805f7cbf-a553-4d3b-9434-906e69543a3f}">
-      <Declaration><![CDATA[METHOD M_A_HEIZEN : BOOL
+    <Method Name="M_A_HK_AN" Id="{805f7cbf-a553-4d3b-9434-906e69543a3f}">
+      <Declaration><![CDATA[METHOD M_A_HK_AN : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[// EBENE 1: Verriegelung
+IF NOT I_bVerriegeln THEN	
+	// EBENE 2: AUTO-Modus
+		IF I_iModus = 2 THEN
+			// EBENE 3: Ist Pumpe AN
+				IF O_bPumpen THEN
+				// EBENE 4: Heizen oder Kühlen
+					IF V_DefTemp > I_iTemp THEN
+						O_bKuehlen := FALSE;
+						O_bHeizen := TRUE;
+						
+						M_A_HK_AN := O_bHeizen;
+						
+					ELSIF I_iTemp > V_DefTemp THEN 	
+						O_bHeizen := FALSE;
+						O_bKuehlen := TRUE;
+						
+						M_A_HK_AN := O_bKuehlen;
+					END_IF
+				ELSE // Error: System ist nicht eingeschalten
+					O_bStoerung := 1;
+					O_iStoerungID := 11; 
+				END_IF
+			END_IF
+END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_A_KUEHLEN" Id="{553ba116-732f-49c2-828c-c4f64984a7f1}">
-      <Declaration><![CDATA[METHOD M_A_KUEHLEN : BOOL
+    <Method Name="M_A_HK_AUS" Id="{553ba116-732f-49c2-828c-c4f64984a7f1}">
+      <Declaration><![CDATA[METHOD M_A_HK_AUS : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[// EBENE 1: Verriegelung
+IF NOT I_bVerriegeln THEN
+		O_bKuehlen := FALSE;
+		O_bHeizen := FALSE;
+END_IF
+
+IF O_bKuehlen = FALSE THEN
+	M_A_HK_AUS := TRUE;
+END_IF]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_M_HEIZEN" Id="{9431c962-da2e-4e6c-85e5-1e6aa4bd1568}">
-      <Declaration><![CDATA[METHOD M_M_HEIZEN : BOOL
+    <Method Name="M_A_PUMPE_AN" Id="{27c2b7c0-1593-472c-8f45-d88c0777b443}">
+      <Declaration><![CDATA[METHOD M_A_PUMPE_AN : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[// EBENE 1: Verriegelung
+IF NOT I_bVerriegeln THEN	
+	// EBENE 2: AUTO-Modus
+		IF I_iModus = 2 THEN
+			// EBENE 3: System muss angeschlossen sein
+			IF I_bVerbunden THEN
+				O_bPumpen := TRUE;
+			ELSE 	// Error: System ist nicht angeschlossen
+				O_bStoerung := 1;
+				O_iStoerungID := 03;
+			END_IF
+		END_IF
+END_IF
+
+M_A_PUMPE_AN := O_bPumpen;]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_M_KUEHLEN" Id="{edd300d5-3c05-4015-826d-b28d4c741cb4}">
-      <Declaration><![CDATA[METHOD M_M_KUEHLEN : BOOL
+    <Method Name="M_A_PUMPE_AUS" Id="{cae08f7a-6da2-419a-ab47-006b561ed974}">
+      <Declaration><![CDATA[METHOD M_A_PUMPE_AUS : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[// EBENE 1: Verriegelung
+IF NOT I_bVerriegeln THEN
+	IF NOT O_bHeizen AND NOT O_bKuehlen THEN
+		O_bPumpen := FALSE;
+	ELSE
+		O_bStoerung := TRUE;
+		O_iStoerungID := 05;
+	END_IF
+END_IF
+
+IF O_bPumpen = FALSE THEN
+	M_A_PUMPE_AUS := TRUE;
+END_IF]]></ST>
       </Implementation>
     </Method>
-    <Property Name="P_MaxTemp" Id="{087eb6ba-a3ae-4a3e-a81a-2c88e8429d48}">
-      <Declaration><![CDATA[PROPERTY PUBLIC P_MaxTemp : INT]]></Declaration>
-      <Set Name="Set" Id="{57e4acaf-0195-44c0-aea7-370b573f2cfb}">
+    <Method Name="M_M_HK_AN" Id="{9431c962-da2e-4e6c-85e5-1e6aa4bd1568}">
+      <Declaration><![CDATA[METHOD M_M_HK_AN : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// EBENE 1: Verriegelung
+IF NOT I_bVerriegeln THEN	
+	// EBENE 2: MAN-Modus
+		IF I_iModus = 1 THEN
+			// EBENE 3: Ist Pumpe AN
+				IF O_bPumpen THEN
+				// EBENE 4: Heizen oder Kühlen
+					IF V_DefTemp > I_iTemp THEN
+						O_bKuehlen := FALSE;
+						O_bHeizen := TRUE;
+						
+						M_M_HK_AN := O_bHeizen;
+						
+					ELSIF I_iTemp > V_DefTemp THEN 	
+						O_bHeizen := FALSE;
+						O_bKuehlen := TRUE;
+						
+						M_M_HK_AN := O_bKuehlen;
+					END_IF
+				ELSE // Error: System ist nicht eingeschalten
+				O_bStoerung := 1;
+				O_iStoerungID := 11; 	
+				END_IF
+			END_IF
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_M_HK_AUS" Id="{edd300d5-3c05-4015-826d-b28d4c741cb4}">
+      <Declaration><![CDATA[METHOD M_M_HK_AUS : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// EBENE 1: Verriegelung
+IF NOT I_bVerriegeln THEN
+		O_bKuehlen := FALSE;
+		O_bHeizen := FALSE;
+END_IF
+
+IF O_bKuehlen = FALSE THEN
+	M_M_HK_AUS := TRUE;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_M_PUMPE_AN" Id="{14f6a021-156d-461b-8026-90385bcf155f}">
+      <Declaration><![CDATA[METHOD M_M_PUMPE_AN : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// EBENE 1: Verriegelung
+IF NOT I_bVerriegeln THEN	
+	// EBENE 2: MAN-Modus
+		IF I_iModus = 1 THEN
+			// EBENE 3: System muss angeschlossen sein
+			IF I_bVerbunden THEN
+				O_bPumpen := TRUE;
+			ELSE 	// Error: System ist nicht angeschlossen
+				O_bStoerung := 1;
+				O_iStoerungID := 03;
+			END_IF
+		END_IF
+END_IF
+
+M_M_PUMPE_AN := O_bPumpen;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_M_PUMPE_AUS" Id="{111d2f64-fb00-4b2e-9656-c68c9627ae1f}">
+      <Declaration><![CDATA[METHOD M_M_PUMPE_AUS : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// EBENE 1: Verriegelung
+IF NOT I_bVerriegeln THEN
+	IF NOT O_bHeizen AND NOT O_bKuehlen THEN
+		O_bPumpen := FALSE;
+	ELSE
+		O_bStoerung := TRUE;
+		O_iStoerungID := 05;
+	END_IF
+END_IF
+
+IF O_bPumpen = FALSE THEN
+	M_M_PUMPE_AUS := TRUE;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="P_DefTemp" Id="{4c1a8e38-f9e9-47c1-a6a6-c8c687a40fad}">
+      <Declaration><![CDATA[PROPERTY P_DefTemp : INT]]></Declaration>
+      <Set Name="Set" Id="{3f98f9e9-b363-4a29-bea1-61c9c87b9f25}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
@@ -74,16 +257,23 @@ END_VAR
         </Implementation>
       </Set>
     </Property>
-    <Property Name="P_MinTemp" Id="{bfb56a72-03b9-4009-b5d0-39b88f56029f}">
-      <Declaration><![CDATA[PROPERTY PUBLIC P_MinTemp : INT]]></Declaration>
-      <Set Name="Set" Id="{810a7e51-bfb0-4f98-8bdb-2701d93499dd}">
+    <Property Name="P_Laufzeit" Id="{7f8750e8-fa8e-4ea4-b141-f777f59121ca}">
+      <Declaration><![CDATA[PROPERTY P_Laufzeit : TIME]]></Declaration>
+      <Get Name="Get" Id="{df4e3d5d-a935-4467-acce-4cb8897d6878}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[]]></ST>
+          <ST><![CDATA[IF O_bKuehlen OR O_bHeizen THEN
+	V_Timer(IN := TRUE, PT := T#100H);
+ELSE
+	V_Timer(IN := FALSE);
+END_IF
+
+P_Laufzeit := V_Timer.ET;
+]]></ST>
         </Implementation>
-      </Set>
+      </Get>
     </Property>
     <Property Name="P_Zustand" Id="{41e75813-f874-43a5-bfc6-f44385e63ae2}">
       <Declaration><![CDATA[PROPERTY PUBLIC P_Zustand : INT]]></Declaration>
@@ -97,24 +287,86 @@ END_VAR
       </Get>
     </Property>
     <LineIds Name="FB_A_HKSystem">
+      <LineId Id="32" Count="0" />
+      <LineId Id="34" Count="0" />
       <LineId Id="9" Count="0" />
+      <LineId Id="64" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="68" Count="1" />
+      <LineId Id="71" Count="4" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="67" Count="0" />
+      <LineId Id="102" Count="0" />
+      <LineId Id="101" Count="0" />
+      <LineId Id="103" Count="1" />
+      <LineId Id="108" Count="1" />
+      <LineId Id="107" Count="0" />
+      <LineId Id="105" Count="0" />
+      <LineId Id="36" Count="4" />
+      <LineId Id="35" Count="0" />
     </LineIds>
-    <LineIds Name="FB_A_HKSystem.M_A_HEIZEN">
+    <LineIds Name="FB_A_HKSystem.M_A_HK_AN">
+      <LineId Id="9" Count="3" />
+      <LineId Id="30" Count="1" />
+      <LineId Id="43" Count="11" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="38" Count="1" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="19" Count="2" />
+    </LineIds>
+    <LineIds Name="FB_A_HKSystem.M_A_HK_AUS">
+      <LineId Id="12" Count="1" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="14" Count="4" />
       <LineId Id="5" Count="0" />
     </LineIds>
-    <LineIds Name="FB_A_HKSystem.M_A_KUEHLEN">
+    <LineIds Name="FB_A_HKSystem.M_A_PUMPE_AN">
+      <LineId Id="6" Count="13" />
       <LineId Id="5" Count="0" />
     </LineIds>
-    <LineIds Name="FB_A_HKSystem.M_M_HEIZEN">
+    <LineIds Name="FB_A_HKSystem.M_A_PUMPE_AUS">
+      <LineId Id="6" Count="1" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="30" Count="2" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="9" Count="3" />
       <LineId Id="5" Count="0" />
     </LineIds>
-    <LineIds Name="FB_A_HKSystem.M_M_KUEHLEN">
+    <LineIds Name="FB_A_HKSystem.M_M_HK_AN">
+      <LineId Id="29" Count="11" />
+      <LineId Id="60" Count="0" />
+      <LineId Id="41" Count="5" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="47" Count="1" />
       <LineId Id="5" Count="0" />
     </LineIds>
-    <LineIds Name="FB_A_HKSystem.P_MaxTemp.Set">
+    <LineIds Name="FB_A_HKSystem.M_M_HK_AUS">
+      <LineId Id="12" Count="7" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_A_HKSystem.M_M_PUMPE_AN">
+      <LineId Id="6" Count="13" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_A_HKSystem.M_M_PUMPE_AUS">
+      <LineId Id="6" Count="1" />
+      <LineId Id="18" Count="4" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="9" Count="3" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_A_HKSystem.P_DefTemp.Set">
       <LineId Id="2" Count="0" />
     </LineIds>
-    <LineIds Name="FB_A_HKSystem.P_MinTemp.Set">
+    <LineIds Name="FB_A_HKSystem.P_Laufzeit.Get">
+      <LineId Id="5" Count="1" />
+      <LineId Id="14" Count="1" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="11" Count="1" />
       <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="FB_A_HKSystem.P_Zustand.Get">

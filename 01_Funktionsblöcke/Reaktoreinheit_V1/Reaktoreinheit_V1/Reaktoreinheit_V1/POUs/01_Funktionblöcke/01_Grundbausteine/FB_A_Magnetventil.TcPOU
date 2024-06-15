@@ -9,7 +9,7 @@ END_VAR
 
 VAR_OUTPUT
 	O_bAktivieren		:BOOL;		// Ventil wird geöffnet / geschlossen
-	O_bError			:BOOL;		// Befindet sich das Element in einem Error
+	O_bStoerung			:BOOL;		// Befindet sich das Element in einem Error
 	O_iStoerungID		:INT;		// Anzeigen von Störung über eine INT-Variable
 END_VAR
 
@@ -17,10 +17,11 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[// Management der Verriegelung
+      <ST><![CDATA[// Verriegeln des Systems (Element geht in definierten Zustand) -> Ventil wird geschlossen
 IF I_bVerriegeln THEN
 	O_bAktivieren := FALSE;
 END_IF
+
 ]]></ST>
     </Implementation>
     <Method Name="M_A_OEFFNEN" Id="{2e1a37fd-2447-4a2a-88c2-4af5bfca4510}">
@@ -87,6 +88,7 @@ M_M_SCHLIESSEN := NOT O_bAktivieren;]]></ST>
       <LineId Id="9" Count="0" />
       <LineId Id="53" Count="0" />
       <LineId Id="55" Count="1" />
+      <LineId Id="79" Count="0" />
       <LineId Id="64" Count="0" />
     </LineIds>
     <LineIds Name="FB_A_Magnetventil.M_A_OEFFNEN">

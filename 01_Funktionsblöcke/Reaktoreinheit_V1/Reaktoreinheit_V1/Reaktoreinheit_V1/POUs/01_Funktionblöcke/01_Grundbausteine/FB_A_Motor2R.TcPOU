@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="FB_A_Motor2R" Id="{5076893d-594f-4381-86a0-654bc798b2f2}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK FB_A_Motor2R
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_A_Motor2R IMPLEMENTS I_Motor2R
 VAR_INPUT
 	I_bVerbunden		:BOOL;		// Angabe ob Pumpe angeschlossen ist
 	I_iModus			:INT;		// Zustand des Systems (z.B. 0 = AUS | 1 = MAN | 2 = AUTO)
@@ -14,14 +14,16 @@ VAR_OUTPUT
 	
 	O_iDrz				:INT;		// Ausgabe der Drehzahl für den Motor
 	O_bRichtung			:BOOL;		// Ausgabe der Drehrichtung
-	O_bError			:BOOL;		// Befindet sich das Element in einem Error
+	O_bStoerung			:BOOL;		// Befindet sich das Element in einem Error
 	O_iStoerungID		:INT;		// Anzeigen von Störung über eine INT-Variable
 END_VAR
 
 VAR
 	V_DrzMax		:INT;		// Variable für internes handling der Eigenschaft 
 	V_Zeit			:TIME;		// Variable für internes handling der Eigenschaft 
-	V_Zustand		:INT;		// Variable für internes handling der Eigenschaft 
+	V_Zustand		:INT;		// Variable für internes handling der Eigenschaft
+
+	V_Timer			:TON;		// Runtime des Bausteins ermitteln 
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -32,8 +34,14 @@ V_Zustand := P_Zustand;
 
 // Reset des Bausteins
 IF I_bReset THEN
-	O_bError := FALSE;
+	O_bStoerung := FALSE;
 	O_iStoerungID := 0;
+END_IF
+
+// Verriegeln des Systems (Element geht in definierten Zustand) -> Motor wird hält an 
+IF I_bVerriegeln THEN
+	O_iDrz := 0;
+	O_bRichtung := FALSE;
 END_IF]]></ST>
     </Implementation>
     <Method Name="M_A_BWD" Id="{7eb97d6b-0443-49e4-9d93-f117effe8611}">
@@ -42,7 +50,21 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[// EBENE 1: Verriegelung
+IF NOT I_bVerriegeln THEN	
+	// EBENE 2: AUTO-Modus
+		IF I_iModus = 2 THEN
+			// EBENE 3: System muss angeschlossen sein
+			IF I_bVerbunden THEN
+				O_bRichtung := TRUE;
+			ELSE 	// Error: System ist nicht angeschlossen
+				O_bStoerung := 1;
+				O_iStoerungID := 03;
+			END_IF
+		END_IF
+END_IF
+
+M_A_BWD := O_bRichtung;]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_A_FWD" Id="{65a59778-7d93-4cc0-8870-3b2b0c923419}">
@@ -51,7 +73,21 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[// EBENE 1: Verriegelung
+IF NOT I_bVerriegeln THEN	
+	// EBENE 2: AUTO-Modus
+		IF I_iModus = 2 THEN
+			// EBENE 3: System muss angeschlossen sein
+			IF I_bVerbunden THEN
+				O_bRichtung := FALSE;
+			ELSE 	// Error: System ist nicht angeschlossen
+				O_bStoerung := 1;
+				O_iStoerungID := 03;
+			END_IF
+		END_IF
+END_IF
+
+M_A_FWD := NOT O_bRichtung;]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_A_START" Id="{f70e96c1-d26e-461e-a450-3360d3c5ed50}">
@@ -60,7 +96,34 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[// EBENE 1: Verriegelung
+IF NOT I_bVerriegeln THEN
+
+	// EBENE 2: Check der Drehzzahl
+	IF I_iGeschw <= V_DrzMax THEN
+		
+		// EBENE 3: AUTO-Modus
+		IF I_iModus = 2 THEN
+			
+			// EBENE 4: System muss angeschlossen sein
+			IF I_bVerbunden THEN
+				O_iDrz := I_iGeschw;
+				
+			ELSE 	// Error: System ist nicht angeschlossen
+				O_bStoerung := 1;
+				O_iStoerungID := 03;
+			END_IF
+		END_IF
+		
+	ELSE	// Error: Geschwindigkeit überschreitet die MaxDrz
+		O_bStoerung := 1;
+		O_iStoerungID := 01;
+	END_IF		
+END_IF
+
+IF O_iDrz = I_iGeschw THEN
+	M_A_START := TRUE;
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_A_STOP" Id="{3af2164b-fa8d-4b48-8177-11325e76ad79}">
@@ -69,7 +132,14 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[]]></ST>
+        <ST><![CDATA[// EBENE 1: Verriegelung
+IF NOT I_bVerriegeln THEN
+	O_iDrz := 0;
+END_IF
+
+IF O_iDrz = 0 THEN
+	M_A_STOP := TRUE;
+END_IF]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_M_BWD" Id="{5ee053ce-722d-4176-a7aa-268a76beeb0f}">
@@ -86,7 +156,7 @@ IF NOT I_bVerriegeln THEN
 			IF I_bVerbunden THEN
 				O_bRichtung := TRUE;
 			ELSE 	// Error: System ist nicht angeschlossen
-				O_bError := 1;
+				O_bStoerung := 1;
 				O_iStoerungID := 03;
 			END_IF
 		END_IF
@@ -109,7 +179,7 @@ IF NOT I_bVerriegeln THEN
 			IF I_bVerbunden THEN
 				O_bRichtung := FALSE;
 			ELSE 	// Error: System ist nicht angeschlossen
-				O_bError := 1;
+				O_bStoerung := 1;
 				O_iStoerungID := 03;
 			END_IF
 		END_IF
@@ -138,13 +208,13 @@ IF NOT I_bVerriegeln THEN
 				O_iDrz := I_iGeschw;
 				
 			ELSE 	// Error: System ist nicht angeschlossen
-				O_bError := 1;
+				O_bStoerung := 1;
 				O_iStoerungID := 03;
 			END_IF
 		END_IF
 		
 	ELSE	// Error: Geschwindigkeit überschreitet die MaxDrz
-		O_bError := 1;
+		O_bStoerung := 1;
 		O_iStoerungID := 01;
 	END_IF		
 END_IF
@@ -177,7 +247,15 @@ END_IF]]></ST>
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[]]></ST>
+          <ST><![CDATA[IF O_iDrz > 0 THEN
+	V_Timer(IN := TRUE, PT := T#100H);
+END_IF
+
+IF O_iDrz = 0 THEN
+	V_Timer(IN := FALSE);
+END_IF 
+P_Laufzeit := V_Timer.ET;
+]]></ST>
         </Implementation>
       </Get>
     </Property>
@@ -208,17 +286,25 @@ END_VAR
       <LineId Id="58" Count="1" />
       <LineId Id="32" Count="3" />
       <LineId Id="9" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="68" Count="2" />
+      <LineId Id="67" Count="0" />
     </LineIds>
     <LineIds Name="FB_A_Motor2R.M_A_BWD">
+      <LineId Id="9" Count="13" />
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_A_Motor2R.M_A_FWD">
+      <LineId Id="9" Count="13" />
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_A_Motor2R.M_A_START">
+      <LineId Id="9" Count="26" />
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_A_Motor2R.M_A_STOP">
+      <LineId Id="9" Count="6" />
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_A_Motor2R.M_M_BWD">
@@ -243,6 +329,7 @@ END_VAR
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_A_Motor2R.P_Laufzeit.Get">
+      <LineId Id="5" Count="7" />
       <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="FB_A_Motor2R.P_MaxDrz.Set">

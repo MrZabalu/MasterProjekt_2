@@ -51,6 +51,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"379"</v>
+              <v n="TextDefault">"FB_HKSystem"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"606"</v>
               <v n="TextDefault">"FB_Magnetventil"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -96,8 +101,23 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"589"</v>
+              <v n="TextDefault">"I_iHeizMode"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"584"</v>
+              <v n="TextDefault">"I_iHeizModus"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"510"</v>
               <v n="TextDefault">"I_iSignal"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"254"</v>
+              <v n="TextDefault">"I_iTemp"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -176,8 +196,28 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"739"</v>
+              <v n="TextDefault">"M_M_HK_AN"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"330"</v>
+              <v n="TextDefault">"M_M_HK_AUS"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"478"</v>
               <v n="TextDefault">"M_M_OEFFNEN"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"994"</v>
+              <v n="TextDefault">"M_M_PUMPE_AN"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"78"</v>
+              <v n="TextDefault">"M_M_PUMPE_AUS"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -211,8 +251,23 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"2"</v>
+              <v n="TextDefault">"O_bHeizen"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"342"</v>
+              <v n="TextDefault">"O_bKuehlen"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"866"</v>
               <v n="TextDefault">"O_bPower"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"746"</v>
+              <v n="TextDefault">"O_bPumpen"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
