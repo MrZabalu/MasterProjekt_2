@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Itf Name="I_Motor1R" Id="{b2f9a347-f0d3-4207-b300-f309dfcbc50c}">
+    <Declaration><![CDATA[INTERFACE I_Motor1R
+]]></Declaration>
+    <Method Name="M_A_AN" Id="{1a48cc2e-4642-4530-b914-050ae0d1b45f}">
+      <Declaration><![CDATA[METHOD M_A_AN : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_A_AUS" Id="{900c9917-b96f-4a7e-bca4-6e8308a97f1c}">
+      <Declaration><![CDATA[METHOD M_A_AUS : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_A_START" Id="{36d8419b-9669-46da-99b2-8f549d1e1237}">
+      <Declaration><![CDATA[METHOD M_A_START : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_A_STOP" Id="{7a6f01ee-4267-46e4-bf3b-219dac4c8306}">
+      <Declaration><![CDATA[METHOD M_A_STOP : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_M_AN" Id="{f9e68194-59fc-4f6e-bb11-0ee04bacc5f5}">
+      <Declaration><![CDATA[METHOD M_M_AN : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_M_AUS" Id="{f3a6c56c-1343-47fc-8bca-bea265e89e62}">
+      <Declaration><![CDATA[METHOD M_M_AUS : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_M_START" Id="{2ae67302-5842-4e8b-8a36-dd9ebe039242}">
+      <Declaration><![CDATA[METHOD M_M_START : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_M_STOP" Id="{71351203-4cc6-45e0-b6b7-415ca48bbe7e}">
+      <Declaration><![CDATA[METHOD M_M_STOP : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Property Name="P_Laufzeit" Id="{07a4ec4a-20e2-448f-9eb9-349f5871142f}">
+      <Declaration><![CDATA[PROPERTY P_Laufzeit : TIME]]></Declaration>
+      <Get Name="Get" Id="{7c640eb3-ade5-47ec-a7d0-ba29cc386d5c}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="P_MaxDrz" Id="{e89f8272-13df-449e-85fc-984eb699f2cd}">
+      <Declaration><![CDATA[PROPERTY P_MaxDrz : INT]]></Declaration>
+      <Set Name="Set" Id="{0dffa0f3-67f5-4858-9446-ac5a79509cf5}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Set>
+    </Property>
+    <Property Name="P_Zustand" Id="{b8d5e1a1-12cf-4f01-8e11-34a53e50ef3d}">
+      <Declaration><![CDATA[PROPERTY P_Zustand : INT]]></Declaration>
+      <Get Name="Get" Id="{4d39ff84-4134-4700-b806-c0c2361371f2}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+  </Itf>
+</TcPlcObject>
