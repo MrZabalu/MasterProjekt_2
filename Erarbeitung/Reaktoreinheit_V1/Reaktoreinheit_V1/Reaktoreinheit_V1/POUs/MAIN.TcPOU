@@ -3,14 +3,32 @@
   <POU Name="MAIN" Id="{26b9df25-7643-42fb-8a0d-7af5b34d4ed3}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+	
+	// Definieren der Prozessparameter
+	Param_Menge_Entleeren			:REAL := 10;
+	Param_Wartedauer				:TIME := T#10S;
+	Param_Haltedauer				:TIME := T#10S;
+	Param_Ruehradauer				:TIME := T#10S;
+	Param_Ruehrgeschw				:REAL := 10;
+
+	// Instanzierung der Grundfunktionen
+	Entleeren		:GF_Entleeren;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[Reaktoranlage();
+Zuweisung();
+
+Entleeren.M_START();
+
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="2" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="16" Count="0" />
       <LineId Id="11" Count="0" />
     </LineIds>
   </POU>

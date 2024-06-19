@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Basisfunktionalitaeten" Id="{fffd0907-c1c1-493c-ac2c-314e9089ee0d}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Basisfunktionalitaeten
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	V_Start			:BOOL;		// Variable für internes handling der Eigenschaft 
+	V_Stop			:BOOL;		// Variable für internes handling der Eigenschaft 
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="M_START" Id="{814a3d4c-bdf1-4ff2-b4ec-cf40aba645ba}">
+      <Declaration><![CDATA[METHOD M_START : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[V_Start := 1;
+V_Stop := 0;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_STOP" Id="{645c63c8-13f0-478f-ae7b-32e8477e4722}">
+      <Declaration><![CDATA[METHOD M_STOP : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[V_Start := 0;
+V_Stop := 1;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="P_Ready" Id="{ffbbd73b-900a-4aee-bc8d-5f319a8cfba9}">
+      <Declaration><![CDATA[PROPERTY P_Ready : BOOL]]></Declaration>
+      <Get Name="Get" Id="{7a5f06a2-1350-4bac-a53f-e294f574a899}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[P_Ready := V_Stop;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <LineIds Name="FB_Basisfunktionalitaeten">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Basisfunktionalitaeten.M_START">
+      <LineId Id="5" Count="0" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Basisfunktionalitaeten.M_STOP">
+      <LineId Id="9" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Basisfunktionalitaeten.P_Ready.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

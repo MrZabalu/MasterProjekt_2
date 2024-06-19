@@ -84,6 +84,21 @@ END_IF
 M_M_SCHLIESSEN := NOT O_bAktivieren;]]></ST>
       </Implementation>
     </Method>
+    <Property Name="P_Status" Id="{e3c7b6b4-46cf-4afc-aa3d-2c467bea2077}">
+      <Declaration><![CDATA[PROPERTY P_Status : INT]]></Declaration>
+      <Get Name="Get" Id="{7a240f48-917c-49d2-a9f2-c5d67c2c06f7}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IF O_bAktivieren THEN
+	P_Status := 1;
+ELSE
+	P_Status := 0;
+END_IF]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
     <LineIds Name="FB_A_Magnetventil">
       <LineId Id="9" Count="0" />
       <LineId Id="53" Count="0" />
@@ -112,6 +127,12 @@ M_M_SCHLIESSEN := NOT O_bAktivieren;]]></ST>
       <LineId Id="5" Count="0" />
       <LineId Id="12" Count="0" />
       <LineId Id="11" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_A_Magnetventil.P_Status.Get">
+      <LineId Id="2" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="7" Count="1" />
+      <LineId Id="6" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

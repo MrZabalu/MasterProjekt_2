@@ -64,6 +64,27 @@
     <Compile Include="POUs\02_Reaktoranlage\Reaktoranlage.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\03_Grundfunktionen\01_Hilsbausteine\FB_Basisfunktionalitaeten.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\03_Grundfunktionen\02_Grundfunktionen\GF_Entleeren.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\03_Grundfunktionen\02_Grundfunktionen\GF_Halten.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\03_Grundfunktionen\02_Grundfunktionen\GF_Pumpen.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\03_Grundfunktionen\02_Grundfunktionen\GF_Ruehren.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\03_Grundfunktionen\02_Grundfunktionen\GF_Warten.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\03_Grundfunktionen\Zuweisung.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -84,6 +105,9 @@
     <Folder Include="POUs\01_Funktionblöcke" />
     <Folder Include="POUs\01_Funktionblöcke\01_Grundbausteine" />
     <Folder Include="POUs\02_Reaktoranlage" />
+    <Folder Include="POUs\03_Grundfunktionen" />
+    <Folder Include="POUs\03_Grundfunktionen\01_Hilsbausteine" />
+    <Folder Include="POUs\03_Grundfunktionen\02_Grundfunktionen" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>

@@ -19,7 +19,7 @@ END_VAR
 VAR
 	V_DrzMax		:INT;		// Variable für internes handling der Eigenschaft 
 	V_Zeit			:TIME;		// Variable für internes handling der Eigenschaft 
-	V_Zustand		:INT;		// Variable für internes handling der Eigenschaft 
+	V_Status		:INT;		// Variable für internes handling der Eigenschaft 
 	
 	V_Timer			:TON;		// Runtime des Bausteins ermitteln
 	
@@ -29,7 +29,7 @@ END_VAR
       <ST><![CDATA[// Setzen der internen Variablen
 P_MaxDrz := V_DrzMax;
 V_Zeit := P_Laufzeit;
-V_Zustand := P_Zustand;
+V_Status := P_Status;
 
 // Reset des Bausteins
 IF I_bReset THEN
@@ -253,13 +253,23 @@ END_VAR
       </Set>
     </Property>
     <Property Name="P_Zustand" Id="{4808de55-3ea3-4091-86d0-ecc11bc4a83b}">
-      <Declaration><![CDATA[PROPERTY PUBLIC P_Zustand : INT]]></Declaration>
+      <Declaration><![CDATA[PROPERTY PUBLIC P_Status : INT]]></Declaration>
       <Get Name="Get" Id="{cf1c6d07-f50d-408a-870d-7ab9c2dfa186}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[]]></ST>
+          <ST><![CDATA[IF O_bPower THEN
+	P_Status := 1;
+ELSE
+	P_Status := 0;
+END_IF
+
+IF O_iDrz > 0 AND O_bPower THEN
+	P_Status := 2;
+ELSE
+	P_Status := 1;
+END_IF]]></ST>
         </Implementation>
       </Get>
     </Property>
@@ -367,7 +377,14 @@ END_VAR
       <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="FB_A_Motor1R.P_Zustand.Get">
+      <LineId Id="5" Count="3" />
       <LineId Id="2" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="12" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
