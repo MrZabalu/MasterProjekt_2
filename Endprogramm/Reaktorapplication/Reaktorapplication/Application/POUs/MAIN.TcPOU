@@ -1,13 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1">
-  <POU Name="MAIN" Id="{de090dfa-1e55-4b06-8517-c95a5f22bef4}">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{de090dfa-1e55-4b06-8517-c95a5f22bef4}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+	// Bedienparameter
+	
+	// Rezeptparamter
+	Param_Entleeren_Niveau		:REAL;
+	Param_Ruehren_Drz			:REAL;
+	Param_Ruehren_Dauer			:TIME;
+	Param_Warten_Dauer			:TIME;
+	
+	// Grundfunktionen
+	Entleeren		:GF_Entleeren;
+	Halten			:GF_Halten;
+	Pumpen			:GF_Pumpen;
+	Ruehren 		:GF_Ruehren;
+	Warten			:GF_Warten;	
+	Befuellen		:GF_Befuellen;
+	
+	// Sonstiges
+	Leitung			:FB_Leitungswahl;
+	Sek_Aktiv		:BOOL;
+	
+	// Test-Variablen
+	Test_Leitung	:INT := 1;
 END_VAR
-]]>
-    </Declaration>
+]]></Declaration>
     <Implementation>
       <ST><![CDATA[]]></ST>
     </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="2" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>

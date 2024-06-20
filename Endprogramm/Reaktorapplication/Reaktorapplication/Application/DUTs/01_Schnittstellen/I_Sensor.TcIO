@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Itf Name="I_Sensor" Id="{49332c8e-5f62-4736-ac99-5c9fc61b4f27}">
+    <Declaration><![CDATA[INTERFACE I_Sensor
+]]></Declaration>
+    <Property Name="P_GrenzeOben" Id="{97977903-f551-4dd4-9df7-30ec95d59616}">
+      <Declaration><![CDATA[PROPERTY P_GrenzeOben : BOOL]]></Declaration>
+      <Get Name="Get" Id="{9f935a65-b522-4213-83fc-a61a795f663f}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="P_GrenzeUnten" Id="{739dc258-d10e-4a0c-b20c-fdc9e0879a61}">
+      <Declaration><![CDATA[PROPERTY P_GrenzeUnten : BOOL]]></Declaration>
+      <Get Name="Get" Id="{0aad27d6-aa80-4a34-aec8-c668c6816fab}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="P_Messwert" Id="{bb9c0d20-8e2b-4ced-a12c-b1108f9597dd}">
+      <Declaration><![CDATA[PROPERTY P_Messwert : REAL]]></Declaration>
+      <Get Name="Get" Id="{8b9b9784-b252-438c-b8eb-5e104b924e0e}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+  </Itf>
+</TcPlcObject>

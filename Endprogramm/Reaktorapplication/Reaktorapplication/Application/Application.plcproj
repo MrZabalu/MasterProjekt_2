@@ -18,7 +18,71 @@
     <LibraryReferences>{3eae1fdf-1394-4c9e-9ba2-a3a560e19aee}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DUTs\01_Schnittstellen\I_HKSystem.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\01_Schnittstellen\I_Magnetventil.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\01_Schnittstellen\I_Motor1R.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\01_Schnittstellen\I_Motor2R.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\01_Schnittstellen\I_Sensor.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\GVL.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
     <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\01_Objektklassen\FB_A_HKSystem.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\01_Objektklassen\FB_A_Magnetventil.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\01_Objektklassen\FB_A_Motor1R.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\01_Objektklassen\FB_A_Motor2R.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\01_Objektklassen\FB_S_Sensor.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\02_Anlage\Reaktoreinheit.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\03_Grundfuntkionen\01_Vererbung\FB_Basis.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\03_Grundfuntkionen\GF_Befuellen.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\03_Grundfuntkionen\GF_Entleeren.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\03_Grundfuntkionen\GF_Halten.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\03_Grundfuntkionen\GF_Pumpen.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\03_Grundfuntkionen\GF_Ruehren.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\03_Grundfuntkionen\GF_Warten.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\04_Auswertung\01_Hilfsfunktionsblock\FB_Leitungswahl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\04_Auswertung\Auswertung.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
@@ -27,7 +91,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DUTs" />
+    <Folder Include="DUTs\01_Schnittstellen" />
     <Folder Include="GVLs" />
+    <Folder Include="POUs\01_Objektklassen" />
+    <Folder Include="POUs\02_Anlage" />
+    <Folder Include="POUs\03_Grundfuntkionen" />
+    <Folder Include="POUs\03_Grundfuntkionen\01_Vererbung" />
+    <Folder Include="POUs\04_Auswertung" />
+    <Folder Include="POUs\04_Auswertung\01_Hilfsfunktionsblock" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>
@@ -45,11 +116,16 @@
       <Namespace>Tc3_Module</Namespace>
     </PlaceholderReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Application.tmc">
+      <SubType>Content</SubType>
+    </None>
+  </ItemGroup>
   <ProjectExtensions>
     <PlcProjectOptions>
       <XmlArchive>
-  <Data>
-    <o xml:space="preserve" t="OptionKey">
+        <Data>
+          <o xml:space="preserve" t="OptionKey">
       <v n="Name">"&lt;ProjectRoot&gt;"</v>
       <d n="SubKeys" t="Hashtable" ckt="String" cvt="OptionKey">
         <v>{40450F57-0AA3-4216-96F3-5444ECB29763}</v>
@@ -70,13 +146,13 @@
       </d>
       <d n="Values" t="Hashtable" />
     </o>
-  </Data>
-  <TypeList>
-    <Type n="Hashtable">System.Collections.Hashtable</Type>
-    <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
-    <Type n="String">System.String</Type>
-  </TypeList>
-</XmlArchive>
+        </Data>
+        <TypeList>
+          <Type n="Hashtable">System.Collections.Hashtable</Type>
+          <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+          <Type n="String">System.String</Type>
+        </TypeList>
+      </XmlArchive>
     </PlcProjectOptions>
   </ProjectExtensions>
 </Project>

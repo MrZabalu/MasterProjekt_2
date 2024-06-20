@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_A_Magnetventil" Id="{09d7eebc-a3d6-472d-9daa-768caf665633}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_A_Magnetventil IMPLEMENTS I_Magnetventil
+VAR_INPUT
+	I_iModus			:INT;		// Zustand des Systems (z.B. 0 = AUS | 1 = MAN | 2 = AUTO)
+	I_bVerriegeln		:BOOL;		// Verriegelte Elemente sind nicht ansteuerbar
+END_VAR
+
+VAR_OUTPUT
+	O_bAktivieren		:BOOL;		// Ventil wird geöffnet / geschlossen
+	O_bStoerung			:BOOL;		// Befindet sich das Element in einem Error
+	O_iStoerungID		:INT;		// Anzeigen von Störung über eine INT-Variable
+END_VAR
+
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Verriegeln des Systems (Element geht in definierten Zustand) -> Ventil wird geschlossen
+IF I_bVerriegeln THEN
+	O_bAktivieren := FALSE;
+END_IF
+
+]]></ST>
+    </Implementation>
+    <Method Name="M_A_OEFFNEN" Id="{2e1a37fd-2447-4a2a-88c2-4af5bfca4510}">
+      <Declaration><![CDATA[METHOD M_A_OEFFNEN : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// EBENE 1: Verriegelung
+IF NOT I_bVerriegeln THEN	
+	// EBEN 2: AUTO-Modus
+		IF I_iModus = 2 THEN
+			O_bAktivieren := TRUE;
+		END_IF
+END_IF
+
+M_A_OEFFNEN := O_bAktivieren;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_A_SCHLIESSEN" Id="{635c5620-4889-48ab-b592-2ac4b242d83c}">
+      <Declaration><![CDATA[METHOD M_A_SCHLIESSEN : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF I_iModus = 2 THEN
+	O_bAktivieren := FALSE;
+END_IF
+
+M_A_SCHLIESSEN := NOT O_bAktivieren;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_M_OEFFNEN" Id="{81ef93b3-6f19-40d1-92ae-bcbddac32bb5}">
+      <Declaration><![CDATA[METHOD M_M_OEFFNEN : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[// EBENE 1: Verriegelung
+IF NOT I_bVerriegeln THEN	
+	// EBEN 2: MAN-Modus
+		IF I_iModus = 1 THEN
+			O_bAktivieren := TRUE;
+		END_IF
+END_IF
+
+M_M_OEFFNEN := O_bAktivieren;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_M_SCHLIESSEN" Id="{703bd2e7-cfb9-48e5-8885-a164ebac1fc0}">
+      <Declaration><![CDATA[METHOD M_M_SCHLIESSEN : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF I_iModus = 1 THEN
+	O_bAktivieren := FALSE;
+END_IF
+
+M_M_SCHLIESSEN := NOT O_bAktivieren;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="P_Status" Id="{e3c7b6b4-46cf-4afc-aa3d-2c467bea2077}">
+      <Declaration><![CDATA[PROPERTY P_Status : INT]]></Declaration>
+      <Get Name="Get" Id="{7a240f48-917c-49d2-a9f2-c5d67c2c06f7}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IF O_bAktivieren THEN
+	P_Status := 1;
+ELSE
+	P_Status := 0;
+END_IF]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <LineIds Name="FB_A_Magnetventil">
+      <LineId Id="9" Count="0" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="55" Count="1" />
+      <LineId Id="79" Count="0" />
+      <LineId Id="64" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_A_Magnetventil.M_A_OEFFNEN">
+      <LineId Id="6" Count="5" />
+      <LineId Id="14" Count="1" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_A_Magnetventil.M_A_SCHLIESSEN">
+      <LineId Id="5" Count="2" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="11" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_A_Magnetventil.M_M_OEFFNEN">
+      <LineId Id="6" Count="1" />
+      <LineId Id="12" Count="3" />
+      <LineId Id="18" Count="1" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_A_Magnetventil.M_M_SCHLIESSEN">
+      <LineId Id="6" Count="1" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="11" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_A_Magnetventil.P_Status.Get">
+      <LineId Id="2" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="7" Count="1" />
+      <LineId Id="6" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

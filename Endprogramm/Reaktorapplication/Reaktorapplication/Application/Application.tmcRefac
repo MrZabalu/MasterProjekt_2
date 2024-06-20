@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Refactors>
+  <Renames>
+    <RenamedType>
+      <Type guid="cd9b3003-448b-4d1c-90df-494b3fb1e47a">REAKTORANLAGE</Type>
+      <From>Reaktoranlage</From>
+      <To>Reaktoreinheit</To>
+    </RenamedType>
+    <RenamedType>
+      <Type guid="a328e0e1-c3d6-4f17-a6f9-781f0fbe9cd7">POU</Type>
+      <From>POU</From>
+      <To>FB_Leitungswahl</To>
+    </RenamedType>
+    <RenamedType>
+      <Type guid="91f5d125-7c4a-4179-9f11-a0c12186efc5">ACT_GF_HALTEN</Type>
+      <From>ACT_GF_Halten</From>
+      <To>ACT_GF_Halten_WIP</To>
+    </RenamedType>
+  </Renames>
+</Refactors>
