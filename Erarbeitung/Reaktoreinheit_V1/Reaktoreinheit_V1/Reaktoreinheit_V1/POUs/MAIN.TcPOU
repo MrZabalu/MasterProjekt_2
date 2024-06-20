@@ -18,6 +18,7 @@ END_VAR
     <Implementation>
       <ST><![CDATA[Reaktoranlage();
 Zuweisung();
+Test();
 
 Entleeren.M_START();
 
@@ -26,6 +27,7 @@ Entleeren.M_START();
     <LineIds Name="MAIN">
       <LineId Id="2" Count="0" />
       <LineId Id="15" Count="0" />
+      <LineId Id="33" Count="0" />
       <LineId Id="19" Count="0" />
       <LineId Id="18" Count="0" />
       <LineId Id="16" Count="0" />

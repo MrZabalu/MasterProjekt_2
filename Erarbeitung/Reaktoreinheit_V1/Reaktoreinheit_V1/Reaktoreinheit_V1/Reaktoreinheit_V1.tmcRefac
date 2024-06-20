@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Refactors>
+  <Renames>
+    <RenamedType>
+      <Type guid="b6a48476-98a7-4aca-953b-bf0fedc6c393">TEST</Type>
+      <From>Test</From>
+      <To>Act_Test</To>
+    </RenamedType>
+  </Renames>
+</Refactors>
