@@ -82,6 +82,9 @@
     <Compile Include="POUs\03_Grundfunktionen\02_Grundfunktionen\GF_Warten.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\03_Grundfunktionen\Test.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\03_Grundfunktionen\Zuweisung.TcPOU">
       <SubType>Code</SubType>
     </Compile>
