@@ -2,29 +2,9 @@
 <Refactors>
   <Renames>
     <RenamedType>
-      <Type guid="cd9b3003-448b-4d1c-90df-494b3fb1e47a">REAKTORANLAGE</Type>
-      <From>Reaktoranlage</From>
-      <To>Reaktoreinheit</To>
-    </RenamedType>
-    <RenamedType>
-      <Type guid="a328e0e1-c3d6-4f17-a6f9-781f0fbe9cd7">POU</Type>
-      <From>POU</From>
-      <To>FB_Leitungswahl</To>
-    </RenamedType>
-    <RenamedType>
-      <Type guid="91f5d125-7c4a-4179-9f11-a0c12186efc5">ACT_GF_HALTEN</Type>
-      <From>ACT_GF_Halten</From>
-      <To>ACT_GF_Halten_WIP</To>
-    </RenamedType>
-    <RenamedType>
-      <Type guid="a3450a1b-12e1-4c04-8ad2-9bb2cd306dac">GF_PUMPEN_1</Type>
-      <From>GF_Pumpen_1</From>
-      <To>GF_Zirkulieren</To>
-    </RenamedType>
-    <RenamedType>
-      <Type guid="a763afa8-a95e-4955-8282-6e3850ee7e64">ACT_GF_PUMPEN_1</Type>
-      <From>ACT_GF_Pumpen_1</From>
-      <To>ACT_GF_Zirkulieren</To>
+      <Type guid="000f909d-068f-4416-91e8-93f170d3c0eb">AUSWERTUNG</Type>
+      <From>Auswertung</From>
+      <To>Auswertung_Alt</To>
     </RenamedType>
   </Renames>
 </Refactors>

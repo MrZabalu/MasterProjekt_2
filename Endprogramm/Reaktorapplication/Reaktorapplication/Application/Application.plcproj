@@ -33,6 +33,12 @@
     <Compile Include="DUTs\01_Schnittstellen\I_Sensor.TcIO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DUTs\02_Strukturen\RezeptControlWord.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\02_Strukturen\RezeptStatusWord.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GVLs\GVL.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
@@ -55,6 +61,9 @@
     <Compile Include="POUs\01_Objektklassen\FB_S_Sensor.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\02_Anlage\01_Hilfsbausteine\FB_Modus.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\02_Anlage\Reaktoreinheit.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -67,10 +76,10 @@
     <Compile Include="POUs\03_Grundfuntkionen\GF_Entleeren.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\03_Grundfuntkionen\GF_Halten.TcPOU">
+    <Compile Include="POUs\03_Grundfuntkionen\GF_Pumpen.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\03_Grundfuntkionen\GF_Pumpen.TcPOU">
+    <Compile Include="POUs\03_Grundfuntkionen\GF_Zirkulieren.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\03_Grundfuntkionen\GF_Ruehren.TcPOU">
@@ -85,6 +94,9 @@
     <Compile Include="POUs\04_Auswertung\Auswertung.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\04_Auswertung\Auswertung_Alt.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -92,15 +104,19 @@
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="DUTs\01_Schnittstellen" />
+    <Folder Include="DUTs\02_Strukturen" />
     <Folder Include="GVLs" />
     <Folder Include="POUs\01_Objektklassen" />
     <Folder Include="POUs\02_Anlage" />
+    <Folder Include="POUs\02_Anlage\01_Hilfsbausteine" />
     <Folder Include="POUs\03_Grundfuntkionen" />
     <Folder Include="POUs\03_Grundfuntkionen\01_Vererbung" />
     <Folder Include="POUs\04_Auswertung" />
     <Folder Include="POUs\04_Auswertung\01_Hilfsfunktionsblock" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
+    <Folder Include="VISUs\01_Debug_Visu" />
+    <Folder Include="VISUs\01_Debug_Visu\01_Dialogs" />
   </ItemGroup>
   <ItemGroup>
     <PlaceholderReference Include="Tc2_Standard">

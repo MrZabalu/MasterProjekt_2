@@ -9,29 +9,41 @@ VAR
 	
 	// Grundfunktionen
 	Entleeren		:GF_Entleeren;
-	Halten			:GF_Halten;
+	//Halten			:GF_Halten;
 	Pumpen			:GF_Pumpen;
 	Zirkulieren		:GF_Zirkulieren;
 	Ruehren 		:GF_Ruehren;
 	Warten			:GF_Warten;	
 	Befuellen		:GF_Befuellen;
 	
-	// Control- / Statusword
+	// Controlword
 	CW		:RezeptControlWord;
+	
+	// Sonstiges
+	
+	// Testvariablen
+	Check		:BOOL;
+
+END_VAR
+
+VAR_INPUT
+	// Statusword
 	SW		:RezeptStatusWord;
 	
 	// Sonstiges
 	Leitung			:FB_Leitungswahl;
-	
-	// Test-Variablen
-	Test_Leitung	:INT := 1;
 END_VAR
+
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[Reaktoreinheit();
+Auswertung_Alt();
+]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
+      <LineId Id="40" Count="0" />
       <LineId Id="2" Count="0" />
+      <LineId Id="39" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

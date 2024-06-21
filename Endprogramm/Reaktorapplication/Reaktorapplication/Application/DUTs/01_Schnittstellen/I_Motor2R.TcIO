@@ -63,8 +63,8 @@ END_VAR
         <Declaration><![CDATA[]]></Declaration>
       </Set>
     </Property>
-    <Property Name="P_Zustand" Id="{464e12b1-ecb2-492c-8ded-5ac8d20a02eb}">
-      <Declaration><![CDATA[PROPERTY P_Zustand : INT]]></Declaration>
+    <Property Name="P_Status" Id="{464e12b1-ecb2-492c-8ded-5ac8d20a02eb}">
+      <Declaration><![CDATA[PROPERTY P_Status : INT]]></Declaration>
       <Get Name="Get" Id="{4f5e66f6-b3ec-4ad4-bde7-403927bce811}">
         <Declaration><![CDATA[]]></Declaration>
       </Get>

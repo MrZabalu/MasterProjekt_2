@@ -748,7 +748,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"SetActiv"</v>
+                                  <v n="Value">"ResetActiv"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">198L</v>
@@ -786,7 +786,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{e174fc0d-80b0-4a9e-a530-ca239c249a50}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"R"</v>
+                                  <v n="Value">"N"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">202L</v>
@@ -1222,7 +1222,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"SetReady"</v>
+                                  <v n="Value">"ResetReady"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">204L</v>
@@ -1260,7 +1260,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{e174fc0d-80b0-4a9e-a530-ca239c249a50}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"R"</v>
+                                  <v n="Value">"N"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">208L</v>
@@ -1877,9 +1877,23 @@ IF MAIN.CW.Pumpmenge > 0 THEN
 		Fuellstandcheck := FALSE;
 	END_IF
 END_IF
+
+IF MAIN.Check THEN
+	Fuellstandcheck := TRUE;
+END_IF
 	]]></ST>
       </Implementation>
     </Transition>
+    <Action Name="ResetActiv" Id="{26b6df95-fd29-4c3a-9a68-95c3f69bf336}" FolderPath="01_Aktionen\">
+      <Implementation>
+        <ST><![CDATA[MAIN.SW.SekActiv := FALSE;]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ResetReady" Id="{23662753-2ca6-4c22-a1c0-77f706883224}" FolderPath="01_Aktionen\">
+      <Implementation>
+        <ST><![CDATA[MAIN.SW.SekReady := FALSE;]]></ST>
+      </Implementation>
+    </Action>
     <Action Name="SetActiv" Id="{07070a43-bcc7-45f3-9381-b8da515e0b5c}" FolderPath="01_Aktionen\">
       <Implementation>
         <ST><![CDATA[MAIN.SW.SekActiv := TRUE;]]></ST>
@@ -1997,7 +2011,16 @@ END_IF
       <LineId Id="36" Count="0" />
       <LineId Id="26" Count="4" />
       <LineId Id="24" Count="1" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="39" Count="1" />
       <LineId Id="8" Count="0" />
+    </LineIds>
+    <LineIds Name="GF_Befuellen.ResetActiv">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="GF_Befuellen.ResetReady">
+      <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Befuellen.SetActiv">
       <LineId Id="1" Count="0" />

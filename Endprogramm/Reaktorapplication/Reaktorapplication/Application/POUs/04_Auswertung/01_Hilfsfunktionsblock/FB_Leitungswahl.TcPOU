@@ -10,24 +10,26 @@ VAR_OUTPUT
 	O_Ventil		:FB_A_Magnetventil;
 END_VAR
 VAR
+	V_Leitung		:INT;		// Variable für internes handling der Eigenschaft 
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[IF P_Leitung = 1 THEN
+      <ST><![CDATA[IF V_Leitung = 1 THEN
 	O_Ventil := I_Ventil_1;
-ELSIF P_LEitung = 2 THEN
+ELSIF V_Leitung = 2 THEN
 	O_Ventil := I_Ventil_2;
 END_IF
 ]]></ST>
     </Implementation>
     <Property Name="P_Leitung" Id="{4ec915d3-da03-4ec6-86d9-808616c9712f}">
-      <Declaration><![CDATA[PROPERTY P_Leitung : INT]]></Declaration>
+      <Declaration><![CDATA[{attribute 'monitoring' := 'call'}
+PROPERTY PUBLIC P_Leitung : INT]]></Declaration>
       <Set Name="Set" Id="{662614df-37de-4f73-8568-012e967d1118}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[]]></ST>
+          <ST><![CDATA[V_Leitung := P_Leitung;]]></ST>
         </Implementation>
       </Set>
     </Property>

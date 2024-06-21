@@ -1253,7 +1253,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"SetActiv"</v>
+                                  <v n="Value">"ResetActiv"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">241L</v>
@@ -1291,7 +1291,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{e174fc0d-80b0-4a9e-a530-ca239c249a50}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"R"</v>
+                                  <v n="Value">"N"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">245L</v>
@@ -1490,7 +1490,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"SetReady"</v>
+                                  <v n="Value">"ResetReady"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">247L</v>
@@ -1528,7 +1528,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{e174fc0d-80b0-4a9e-a530-ca239c249a50}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"R"</v>
+                                  <v n="Value">"N"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">251L</v>
@@ -2121,6 +2121,16 @@ END_VAR
       </SFC>
     </Implementation>
     <Folder Name="01_Aktionen" Id="{6dd232fd-6ffa-44e2-a3a0-37b9dcd0166e}" />
+    <Action Name="ResetActiv" Id="{c3fbeb30-5f5e-4a38-b89a-e5470edfd818}" FolderPath="01_Aktionen\">
+      <Implementation>
+        <ST><![CDATA[MAIN.SW.PrimActiv := FALSE;]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="ResetReady" Id="{19e5b31a-746d-4074-9b95-d00e50531829}" FolderPath="01_Aktionen\">
+      <Implementation>
+        <ST><![CDATA[MAIN.SW.PrimReady := FALSE;]]></ST>
+      </Implementation>
+    </Action>
     <Action Name="SetActiv" Id="{78df1253-aaa8-4459-8da8-af86452c84a0}" FolderPath="01_Aktionen\">
       <Implementation>
         <ST><![CDATA[MAIN.SW.PrimActiv := TRUE;]]></ST>
@@ -2226,6 +2236,12 @@ END_VAR
         </TypeList>
       </XmlArchive>
     </ObjectProperties>
+    <LineIds Name="GF_Pumpen.ResetActiv">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="GF_Pumpen.ResetReady">
+      <LineId Id="1" Count="0" />
+    </LineIds>
     <LineIds Name="GF_Pumpen.SetActiv">
       <LineId Id="1" Count="0" />
     </LineIds>
