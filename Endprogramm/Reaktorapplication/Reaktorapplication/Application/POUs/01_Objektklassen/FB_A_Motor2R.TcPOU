@@ -30,7 +30,7 @@ END_VAR
       <ST><![CDATA[// Setzen der internen Variablen
 P_MaxDrz := V_DrzMax;
 V_Zeit := P_Laufzeit;
-V_Zustand := P_Zustand;
+V_Zustand := P_Status;
 
 // Reset des Bausteins
 IF I_bReset THEN
@@ -270,14 +270,24 @@ END_VAR
         </Implementation>
       </Set>
     </Property>
-    <Property Name="P_Zustand" Id="{919363eb-e00d-4066-beee-9b4a998a411a}">
-      <Declaration><![CDATA[PROPERTY PUBLIC P_Zustand : INT]]></Declaration>
+    <Property Name="P_Status" Id="{919363eb-e00d-4066-beee-9b4a998a411a}">
+      <Declaration><![CDATA[PROPERTY PUBLIC P_Status : INT]]></Declaration>
       <Get Name="Get" Id="{169252a2-8a28-455a-bc82-6124a6898ca4}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[]]></ST>
+          <ST><![CDATA[IF I_bVerbunden THEN
+	P_Status := 1;
+END_IF
+
+IF I_bVerriegeln THEN
+	P_Status := 10;
+END_IF
+
+IF O_iDrz > 0	THEN
+	P_Status := 2;
+END_IF]]></ST>
         </Implementation>
       </Get>
     </Property>
@@ -335,8 +345,14 @@ END_VAR
     <LineIds Name="FB_A_Motor2R.P_MaxDrz.Set">
       <LineId Id="2" Count="0" />
     </LineIds>
-    <LineIds Name="FB_A_Motor2R.P_Zustand.Get">
+    <LineIds Name="FB_A_Motor2R.P_Status.Get">
       <LineId Id="2" Count="0" />
+      <LineId Id="5" Count="1" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="11" Count="3" />
+      <LineId Id="10" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

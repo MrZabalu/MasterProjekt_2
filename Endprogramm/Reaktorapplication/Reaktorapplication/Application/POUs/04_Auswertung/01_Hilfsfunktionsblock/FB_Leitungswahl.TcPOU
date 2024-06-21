@@ -27,7 +27,7 @@ END_IF
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[IF ]]></ST>
+          <ST><![CDATA[]]></ST>
         </Implementation>
       </Set>
     </Property>

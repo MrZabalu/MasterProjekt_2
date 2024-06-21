@@ -252,7 +252,7 @@ END_VAR
         </Implementation>
       </Set>
     </Property>
-    <Property Name="P_Zustand" Id="{4808de55-3ea3-4091-86d0-ecc11bc4a83b}">
+    <Property Name="P_Status" Id="{4808de55-3ea3-4091-86d0-ecc11bc4a83b}">
       <Declaration><![CDATA[PROPERTY PUBLIC P_Status : INT]]></Declaration>
       <Get Name="Get" Id="{cf1c6d07-f50d-408a-870d-7ab9c2dfa186}">
         <Declaration><![CDATA[VAR
@@ -376,7 +376,7 @@ END_IF]]></ST>
     <LineIds Name="FB_A_Motor1R.P_MaxDrz.Set">
       <LineId Id="2" Count="0" />
     </LineIds>
-    <LineIds Name="FB_A_Motor1R.P_Zustand.Get">
+    <LineIds Name="FB_A_Motor1R.P_Status.Get">
       <LineId Id="5" Count="3" />
       <LineId Id="2" Count="0" />
       <LineId Id="10" Count="0" />

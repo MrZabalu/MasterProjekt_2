@@ -16,5 +16,15 @@
       <From>ACT_GF_Halten</From>
       <To>ACT_GF_Halten_WIP</To>
     </RenamedType>
+    <RenamedType>
+      <Type guid="a3450a1b-12e1-4c04-8ad2-9bb2cd306dac">GF_PUMPEN_1</Type>
+      <From>GF_Pumpen_1</From>
+      <To>GF_Zirkulieren</To>
+    </RenamedType>
+    <RenamedType>
+      <Type guid="a763afa8-a95e-4955-8282-6e3850ee7e64">ACT_GF_PUMPEN_1</Type>
+      <From>ACT_GF_Pumpen_1</From>
+      <To>ACT_GF_Zirkulieren</To>
+    </RenamedType>
   </Renames>
 </Refactors>

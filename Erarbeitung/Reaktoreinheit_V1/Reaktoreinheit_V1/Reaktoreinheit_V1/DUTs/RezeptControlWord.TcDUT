@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="RezeptControlWord" Id="{4a51ba76-ccc1-4914-ae6a-21a61635929a}">
+    <Declaration><![CDATA[TYPE RezeptControlWord :
+STRUCT
+	CW0 	:INT;
+	CW1 	:REAL;
+	CW2 	:TIME;
+	CW3 	:REAL;
+	CW4 	:REAL;
+	CW5 	:TIME;
+	CW6 	:TIME;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

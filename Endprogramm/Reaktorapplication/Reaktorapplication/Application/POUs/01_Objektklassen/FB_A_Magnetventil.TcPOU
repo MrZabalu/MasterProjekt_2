@@ -95,6 +95,10 @@ END_VAR
 	P_Status := 1;
 ELSE
 	P_Status := 0;
+END_IF
+
+IF I_bVerriegeln THEN
+	P_Status := 10;
 END_IF]]></ST>
         </Implementation>
       </Get>
@@ -133,6 +137,9 @@ END_IF]]></ST>
       <LineId Id="5" Count="0" />
       <LineId Id="7" Count="1" />
       <LineId Id="6" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="13" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>

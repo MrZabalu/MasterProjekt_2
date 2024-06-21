@@ -252,7 +252,7 @@ END_VAR
         </Implementation>
       </Set>
     </Property>
-    <Property Name="P_Zustand" Id="{4808de55-3ea3-4091-86d0-ecc11bc4a83b}">
+    <Property Name="P_Status" Id="{4808de55-3ea3-4091-86d0-ecc11bc4a83b}">
       <Declaration><![CDATA[PROPERTY PUBLIC P_Status : INT]]></Declaration>
       <Get Name="Get" Id="{cf1c6d07-f50d-408a-870d-7ab9c2dfa186}">
         <Declaration><![CDATA[VAR
@@ -269,6 +269,10 @@ IF O_iDrz > 0 AND O_bPower THEN
 	P_Status := 2;
 ELSE
 	P_Status := 1;
+END_IF
+
+IF I_bVerriegeln THEN
+	P_Status := 10;
 END_IF]]></ST>
         </Implementation>
       </Get>
@@ -376,7 +380,7 @@ END_IF]]></ST>
     <LineIds Name="FB_A_Motor1R.P_MaxDrz.Set">
       <LineId Id="2" Count="0" />
     </LineIds>
-    <LineIds Name="FB_A_Motor1R.P_Zustand.Get">
+    <LineIds Name="FB_A_Motor1R.P_Status.Get">
       <LineId Id="5" Count="3" />
       <LineId Id="2" Count="0" />
       <LineId Id="10" Count="0" />
@@ -385,6 +389,9 @@ END_IF]]></ST>
       <LineId Id="14" Count="0" />
       <LineId Id="13" Count="0" />
       <LineId Id="12" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="19" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>

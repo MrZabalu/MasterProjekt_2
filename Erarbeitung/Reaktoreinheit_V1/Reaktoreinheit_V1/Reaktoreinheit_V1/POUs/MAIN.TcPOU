@@ -13,6 +13,10 @@ VAR
 
 	// Instanzierung der Grundfunktionen
 	Entleeren		:GF_Entleeren;
+	
+	CW	:RezeptControlWord;
+	
+	
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -22,7 +26,7 @@ Test();
 
 Entleeren.M_START();
 
-]]></ST>
+CW.CW0 := 4;]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="2" Count="0" />
@@ -30,7 +34,7 @@ Entleeren.M_START();
       <LineId Id="33" Count="0" />
       <LineId Id="19" Count="0" />
       <LineId Id="18" Count="0" />
-      <LineId Id="16" Count="0" />
+      <LineId Id="51" Count="0" />
       <LineId Id="11" Count="0" />
     </LineIds>
   </POU>

@@ -6,22 +6,22 @@ VAR
 	// Bedienparameter
 	
 	// Rezeptparamter
-	Param_Entleeren_Niveau		:REAL;
-	Param_Ruehren_Drz			:REAL;
-	Param_Ruehren_Dauer			:TIME;
-	Param_Warten_Dauer			:TIME;
 	
 	// Grundfunktionen
 	Entleeren		:GF_Entleeren;
 	Halten			:GF_Halten;
 	Pumpen			:GF_Pumpen;
+	Zirkulieren		:GF_Zirkulieren;
 	Ruehren 		:GF_Ruehren;
 	Warten			:GF_Warten;	
 	Befuellen		:GF_Befuellen;
 	
+	// Control- / Statusword
+	CW		:RezeptControlWord;
+	SW		:RezeptStatusWord;
+	
 	// Sonstiges
 	Leitung			:FB_Leitungswahl;
-	Sek_Aktiv		:BOOL;
 	
 	// Test-Variablen
 	Test_Leitung	:INT := 1;

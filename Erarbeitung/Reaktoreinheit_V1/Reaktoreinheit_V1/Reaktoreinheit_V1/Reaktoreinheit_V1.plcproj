@@ -33,6 +33,9 @@
     <Compile Include="DUTs\I_Sensor.TcIO">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DUTs\RezeptControlWord.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
