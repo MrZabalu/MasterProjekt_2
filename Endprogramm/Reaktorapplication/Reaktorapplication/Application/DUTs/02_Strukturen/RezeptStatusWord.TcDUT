@@ -5,8 +5,8 @@
 STRUCT
 	PrimReady		:BOOL;		// Primärreaktor ist bereit für den Prozess
 	PrimActiv		:BOOL;		// Primärreaktor führt Prozess aus
-	SekReady		:BOOL;		// Seknudärreaktor ist bereit für den Prozess
-	SekActiv		:BOOL;		// Seknudärreaktor führt Prozess aus
+	SekReady		:BOOL;		// Sekundärreaktor ist bereit für den Prozess
+	SekActiv		:BOOL;		// Sekundärreaktor führt Prozess aus
 	GF1Activ		:BOOL;		// Heiz- / Kühlprozess läuft
 	GF2Activ		:BOOL;		// Entleerprozess läuft
 	GF3Activ		:BOOL;		// Pumpprozess läuft

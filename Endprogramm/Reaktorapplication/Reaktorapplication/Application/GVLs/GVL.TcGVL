@@ -4,6 +4,9 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	
+	// Systemzustand
+	SysState			:INT;		// 0 = Grundfunktion nicht aktive | 1 = Grundfunktion aktive
+
 	// Bedienparameter
 	Bedien_Power		:BOOL := TRUE;
 	Bedien_Reset		:BOOL;

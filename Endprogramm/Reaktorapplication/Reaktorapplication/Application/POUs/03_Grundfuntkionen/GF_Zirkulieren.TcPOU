@@ -224,6 +224,59 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
+                                  <v n="Value">"SetSysActiv"</v>
+                                  <v n="DefaultValue">""</v>
+                                </o>
+                                <v n="Id">276L</v>
+                                <v n="IdParent">275L</v>
+                              </o>
+                              <o>
+                                <v n="AttributeId">{7d894980-aeea-405c-a0f6-e2b26429c58f}</v>
+                                <o n="Value" t="StringValue">
+                                  <v n="Value">""</v>
+                                  <v n="DefaultValue">""</v>
+                                </o>
+                                <v n="Id">277L</v>
+                                <v n="IdParent">275L</v>
+                              </o>
+                              <o>
+                                <v n="AttributeId">{01580b27-6378-448b-8ecb-0e4b795b58d6}</v>
+                                <o n="Value" t="BoolValue">
+                                  <v n="Value">"FALSE"</v>
+                                  <v n="DefaultValue">"FALSE"</v>
+                                </o>
+                                <v n="Id">278L</v>
+                                <v n="IdParent">275L</v>
+                              </o>
+                              <o>
+                                <v n="AttributeId">{bc882c11-1e91-4dd8-a6b8-2075724ed18b}</v>
+                                <o n="Value" t="EnumValue">
+                                  <v n="TemplateGuid">{79a4fdd5-c859-4de4-aa8d-c03372c880c2}</v>
+                                  <n n="BaseType" />
+                                  <v n="Value">"0"</v>
+                                  <v n="DefaultValue">"0"</v>
+                                </o>
+                                <v n="Id">279L</v>
+                                <v n="IdParent">275L</v>
+                              </o>
+                              <o>
+                                <v n="AttributeId">{e174fc0d-80b0-4a9e-a530-ca239c249a50}</v>
+                                <o n="Value" t="StringValue">
+                                  <v n="Value">"N"</v>
+                                  <v n="DefaultValue">""</v>
+                                </o>
+                                <v n="Id">280L</v>
+                                <v n="IdParent">275L</v>
+                              </o>
+                            </l2>
+                            <v n="Id">275L</v>
+                            <v n="IdParent">39L</v>
+                          </o>
+                          <o>
+                            <l2 n="Attributes" cet="SFCAttribute">
+                              <o>
+                                <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
+                                <o n="Value" t="StringValue">
                                   <v n="Value">"Pumpe.M_A_FWD"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
@@ -1591,6 +1644,59 @@ END_VAR
                             <v n="Id">252L</v>
                             <v n="IdParent">96L</v>
                           </o>
+                          <o>
+                            <l2 n="Attributes" cet="SFCAttribute">
+                              <o>
+                                <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
+                                <o n="Value" t="StringValue">
+                                  <v n="Value">"ResetSysActiv"</v>
+                                  <v n="DefaultValue">""</v>
+                                </o>
+                                <v n="Id">282L</v>
+                                <v n="IdParent">281L</v>
+                              </o>
+                              <o>
+                                <v n="AttributeId">{7d894980-aeea-405c-a0f6-e2b26429c58f}</v>
+                                <o n="Value" t="StringValue">
+                                  <v n="Value">""</v>
+                                  <v n="DefaultValue">""</v>
+                                </o>
+                                <v n="Id">283L</v>
+                                <v n="IdParent">281L</v>
+                              </o>
+                              <o>
+                                <v n="AttributeId">{01580b27-6378-448b-8ecb-0e4b795b58d6}</v>
+                                <o n="Value" t="BoolValue">
+                                  <v n="Value">"FALSE"</v>
+                                  <v n="DefaultValue">"FALSE"</v>
+                                </o>
+                                <v n="Id">284L</v>
+                                <v n="IdParent">281L</v>
+                              </o>
+                              <o>
+                                <v n="AttributeId">{bc882c11-1e91-4dd8-a6b8-2075724ed18b}</v>
+                                <o n="Value" t="EnumValue">
+                                  <v n="TemplateGuid">{79a4fdd5-c859-4de4-aa8d-c03372c880c2}</v>
+                                  <n n="BaseType" />
+                                  <v n="Value">"0"</v>
+                                  <v n="DefaultValue">"0"</v>
+                                </o>
+                                <v n="Id">285L</v>
+                                <v n="IdParent">281L</v>
+                              </o>
+                              <o>
+                                <v n="AttributeId">{e174fc0d-80b0-4a9e-a530-ca239c249a50}</v>
+                                <o n="Value" t="StringValue">
+                                  <v n="Value">"N"</v>
+                                  <v n="DefaultValue">""</v>
+                                </o>
+                                <v n="Id">286L</v>
+                                <v n="IdParent">281L</v>
+                              </o>
+                            </l2>
+                            <v n="Id">281L</v>
+                            <v n="IdParent">96L</v>
+                          </o>
                         </l2>
                       </o>
                       <l2 n="Attributes" cet="SFCAttribute">
@@ -2131,6 +2237,11 @@ END_VAR
         <ST><![CDATA[MAIN.SW.PrimReady := FALSE;]]></ST>
       </Implementation>
     </Action>
+    <Action Name="ResetSysActiv" Id="{c7159bb1-29cf-47d5-9477-7e420fcccb6f}" FolderPath="01_Aktionen\">
+      <Implementation>
+        <ST><![CDATA[GVL.SysState := 0;]]></ST>
+      </Implementation>
+    </Action>
     <Action Name="SetActiv" Id="{5f4ab24d-23e3-476d-9ced-7224ca24c7fc}" FolderPath="01_Aktionen\">
       <Implementation>
         <ST><![CDATA[MAIN.SW.PrimActiv := TRUE;]]></ST>
@@ -2139,6 +2250,11 @@ END_VAR
     <Action Name="SetReady" Id="{9b1208bb-c542-492d-887a-784a4b6b989d}" FolderPath="01_Aktionen\">
       <Implementation>
         <ST><![CDATA[MAIN.SW.PrimReady := TRUE;]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="SetSysActiv" Id="{5f869143-b821-4b2b-90b9-b009b249152b}" FolderPath="01_Aktionen\">
+      <Implementation>
+        <ST><![CDATA[GVL.SysState := 1;]]></ST>
       </Implementation>
     </Action>
     <ObjectProperties>
@@ -2242,10 +2358,16 @@ END_VAR
     <LineIds Name="GF_Zirkulieren.ResetReady">
       <LineId Id="1" Count="0" />
     </LineIds>
+    <LineIds Name="GF_Zirkulieren.ResetSysActiv">
+      <LineId Id="1" Count="0" />
+    </LineIds>
     <LineIds Name="GF_Zirkulieren.SetActiv">
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Zirkulieren.SetReady">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="GF_Zirkulieren.SetSysActiv">
       <LineId Id="1" Count="0" />
     </LineIds>
   </POU>
