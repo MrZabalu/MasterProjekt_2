@@ -6,6 +6,16 @@
         <o xml:space="preserve" t="GlobalTextListObject">
           <l n="TextList" t="ArrayList" cet="TextListRow">
             <o>
+              <v n="TextID">"737"</v>
+              <v n="TextDefault">"%f"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"656"</v>
+              <v n="TextDefault">"%i"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"82"</v>
               <v n="TextDefault">"%s"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -51,6 +61,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"587"</v>
+              <v n="TextDefault">"Eigenschaften &amp; Inputs"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"668"</v>
               <v n="TextDefault">"Enleermenge"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -58,6 +73,36 @@
             <o>
               <v n="TextID">"20"</v>
               <v n="TextDefault">"Entleerprozess läuft"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"350"</v>
+              <v n="TextDefault">"ERROR"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"1156"</v>
+              <v n="TextDefault">"Error"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"1154"</v>
+              <v n="TextDefault">"ERROR-ID"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"844"</v>
+              <v n="TextDefault">"ERROR-ID:"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"102"</v>
+              <v n="TextDefault">"ERROR:"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"771"</v>
+              <v n="TextDefault">"ERROR_ID"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -93,6 +138,11 @@
             <o>
               <v n="TextID">"426"</v>
               <v n="TextDefault">"Feldgerät-Steuerung"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"496"</v>
+              <v n="TextDefault">"Füllstandsensor"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -151,6 +201,21 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"42"</v>
+              <v n="TextDefault">"HK-System"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"333"</v>
+              <v n="TextDefault">"Input-Signal"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"828"</v>
+              <v n="TextDefault">"Input-Signal:"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"745"</v>
               <v n="TextDefault">"Inputs"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -198,6 +263,16 @@
             <o>
               <v n="TextID">"348"</v>
               <v n="TextDefault">"MAN"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"975"</v>
+              <v n="TextDefault">"Messwert"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"1134"</v>
+              <v n="TextDefault">"Messwert:"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -351,6 +426,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"331"</v>
+              <v n="TextDefault">"Pumpe"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"722"</v>
               <v n="TextDefault">"Pumpmenge"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -358,6 +438,11 @@
             <o>
               <v n="TextID">"152"</v>
               <v n="TextDefault">"Pumpprozess läuft"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"1029"</v>
+              <v n="TextDefault">"P_DefTemp:"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -381,6 +466,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"323"</v>
+              <v n="TextDefault">"P_MaxDrz:"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"692"</v>
               <v n="TextDefault">"P_Messwert"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -391,6 +481,16 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"545"</v>
+              <v n="TextDefault">"Remperatursensor"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"503"</v>
+              <v n="TextDefault">"Reset"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"954"</v>
               <v n="TextDefault">"RESET:"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -398,6 +498,11 @@
             <o>
               <v n="TextID">"946"</v>
               <v n="TextDefault">"Ruehrdauer"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"933"</v>
+              <v n="TextDefault">"Rührer"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -431,6 +536,16 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"860"</v>
+              <v n="TextDefault">"Start"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"857"</v>
+              <v n="TextDefault">"Start sekundär Reaktor"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"979"</v>
               <v n="TextDefault">"Status-Word"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -441,8 +556,18 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"27"</v>
+              <v n="TextDefault">"Temperatursensor"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"993"</v>
               <v n="TextDefault">"Verbunden"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"217"</v>
+              <v n="TextDefault">"VERBUNDEN"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>

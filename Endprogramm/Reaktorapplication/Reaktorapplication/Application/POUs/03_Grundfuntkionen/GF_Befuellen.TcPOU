@@ -1982,17 +1982,13 @@ IF MAIN.CW.Pumpmenge > 0 THEN
 	ELSE 
 		Fuellstandcheck := FALSE;
 	END_IF
-END_IF
-
-IF MAIN.Check THEN
-	Fuellstandcheck := TRUE;
-END_IF
-	]]></ST>
+END_IF]]></ST>
       </Implementation>
     </Transition>
     <Action Name="ResetActiv" Id="{26b6df95-fd29-4c3a-9a68-95c3f69bf336}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.SekActiv := FALSE;]]></ST>
+        <ST><![CDATA[MAIN.SW.SekActiv := FALSE;
+MAIN.SW.GF7Activ := FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ResetReady" Id="{23662753-2ca6-4c22-a1c0-77f706883224}" FolderPath="01_Aktionen\">
@@ -2002,12 +1998,15 @@ END_IF
     </Action>
     <Action Name="ResetSysActiv" Id="{67fdda91-07d5-47da-a0da-171955fb3e5f}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[GVL.SysState := 0;]]></ST>
+        <ST><![CDATA[GVL.SysState := 0;
+// Für Debug
+GVL.Debug_SekStart := 0;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SetActiv" Id="{07070a43-bcc7-45f3-9381-b8da515e0b5c}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.SekActiv := TRUE;]]></ST>
+        <ST><![CDATA[MAIN.SW.SekActiv := TRUE;
+MAIN.SW.GF7Activ := TRUE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SetReady" Id="{89c38aa9-37eb-4727-b8e7-0908130829dd}" FolderPath="01_Aktionen\">
@@ -2116,20 +2115,21 @@ END_IF
       </XmlArchive>
     </ObjectProperties>
     <LineIds Name="GF_Befuellen.Fuellstandcheck">
-      <LineId Id="2" Count="24" />
-      <LineId Id="1" Count="0" />
+      <LineId Id="2" Count="20" />
     </LineIds>
     <LineIds Name="GF_Befuellen.ResetActiv">
-      <LineId Id="1" Count="0" />
+      <LineId Id="1" Count="1" />
     </LineIds>
     <LineIds Name="GF_Befuellen.ResetReady">
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Befuellen.ResetSysActiv">
       <LineId Id="1" Count="0" />
+      <LineId Id="4" Count="0" />
+      <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="GF_Befuellen.SetActiv">
-      <LineId Id="1" Count="0" />
+      <LineId Id="1" Count="1" />
     </LineIds>
     <LineIds Name="GF_Befuellen.SetReady">
       <LineId Id="1" Count="0" />

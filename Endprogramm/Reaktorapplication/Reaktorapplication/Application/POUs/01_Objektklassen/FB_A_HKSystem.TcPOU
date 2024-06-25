@@ -5,7 +5,7 @@
 VAR_INPUT
 	I_bVerbunden	:BOOL;		// Angabe ob HK-System angeschlossen ist
 	I_iModus		:INT;		// Zustand des Systems (z.B. 0 = AUS | 1 = MAN | 2 = AUTO)
-	I_iTemp			:INT;		// Aktuelle Temperatur um Heizmodus auszuwählen und zu stoppen
+	I_iTemp			:REAL;		// Aktuelle Temperatur um Heizmodus auszuwählen und zu stoppen
 	I_bVerriegeln	:BOOL;		// Verriegelte Elemente sind nicht ansteuerbar
 	I_bReset		:BOOL;		// Zustand des Baustein wird zurückgesetzt 
 END_VAR

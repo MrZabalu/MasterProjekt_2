@@ -16,7 +16,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{A56672BC-4A0C-4332-997B-E4C3DE95B696}" Name="Reaktoreinheit_V1" PrjFilePath="Reaktoreinheit_V1\Reaktoreinheit_V1.plcproj" TmcFilePath="Reaktoreinheit_V1\Reaktoreinheit_V1.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Reaktoreinheit_V1\Reaktoreinheit_V1.tmc" TmcHash="{156D15B0-7B0A-249F-98D9-C6A17E80C6D0}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Reaktoreinheit_V1\Reaktoreinheit_V1.tmc" TmcHash="{CC1D5CED-89A9-1B8A-E070-6094A9F0F7C5}">
 					<Name>Reaktoreinheit_V1 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>

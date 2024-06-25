@@ -1,4 +1,6 @@
 Id;Default
+737;%f
+656;%i
 82;%s
 520;Auffüllprozess läuft
 663;AUTO
@@ -8,8 +10,15 @@ Id;Default
 578;Definierte Temperatur für Heiz- / Kühlprozess
 47;Definierter sekundär-Reaktor
 881;Eigenschaften
+587;Eigenschaften & Inputs
 668;Enleermenge
 20;Entleerprozess läuft
+350;ERROR
+1156;Error
+1154;ERROR-ID
+844;ERROR-ID:
+102;ERROR:
+771;ERROR_ID
 225;FB_Füllstandsensor
 379;FB_HKSystem
 89;FB_Magnetventil
@@ -17,6 +26,7 @@ Id;Default
 65;FB_Motor2R
 234;FB_Temperatursensor
 426;Feldgerät-Steuerung
+496;Füllstandsensor
 372;GF1Activ
 913;GF2Activ
 524;GF3Activ
@@ -28,6 +38,9 @@ Id;Default
 534;Haltedauer
 600;Halteprozess läuft
 705;Heiz- / Kühlprozess läuft
+42;HK-System
+333;Input-Signal
+828;Input-Signal:
 745;Inputs
 999;I_iGeschw
 510;I_iSignal
@@ -38,6 +51,8 @@ Id;Default
 680;I_rMin
 942;Leitung
 348;MAN
+975;Messwert
+1134;Messwert:
 64;Methodenhandling
 581;MODI:
 242;Modus
@@ -68,25 +83,35 @@ Id;Default
 282;PrimReady
 351;Primärreaktor führt Prozess aus
 770;Primärreaktor ist bereit für den Prozess
+331;Pumpe
 722;Pumpmenge
 152;Pumpprozess läuft
+1029;P_DefTemp:
 685;P_GrenzeOben
 502;P_GrenzeUnten
 794;P_Laufzeit
 293;P_MaxDrz
+323;P_MaxDrz:
 692;P_Messwert
 758;P_Zustand
+545;Remperatursensor
+503;Reset
 954;RESET:
 946;Ruehrdauer
+933;Rührer
 40;Rührprozess läuft
 616;SekActiv
 650;SekReady
 373;SekReakt
 560;Sekundärreaktor führt Prozess aus
 923;Sekundärreaktor ist bereit für den Prozess
+860;Start
+857;Start sekundär Reaktor
 979;Status-Word
 973;Temp
+27;Temperatursensor
 993;Verbunden
+217;VERBUNDEN
 834;VERBUNDEN:
 90;VERRIEGELN:
 889;Wartedauer

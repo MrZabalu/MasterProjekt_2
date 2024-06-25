@@ -2229,7 +2229,8 @@ END_VAR
     <Folder Name="01_Aktionen" Id="{6dd232fd-6ffa-44e2-a3a0-37b9dcd0166e}" />
     <Action Name="ResetActiv" Id="{c3fbeb30-5f5e-4a38-b89a-e5470edfd818}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.PrimActiv := FALSE;]]></ST>
+        <ST><![CDATA[MAIN.SW.PrimActiv := FALSE;
+MAIN.SW.GF3Activ := FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ResetReady" Id="{19e5b31a-746d-4074-9b95-d00e50531829}" FolderPath="01_Aktionen\">
@@ -2244,7 +2245,8 @@ END_VAR
     </Action>
     <Action Name="SetActiv" Id="{78df1253-aaa8-4459-8da8-af86452c84a0}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.PrimActiv := TRUE;]]></ST>
+        <ST><![CDATA[MAIN.SW.PrimActiv := TRUE;
+MAIN.SW.GF3Activ := TRUE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SetReady" Id="{aebbd464-42ad-42e3-bb8f-c2e8c80694d7}" FolderPath="01_Aktionen\">
@@ -2353,7 +2355,7 @@ END_VAR
       </XmlArchive>
     </ObjectProperties>
     <LineIds Name="GF_Pumpen.ResetActiv">
-      <LineId Id="1" Count="0" />
+      <LineId Id="1" Count="1" />
     </LineIds>
     <LineIds Name="GF_Pumpen.ResetReady">
       <LineId Id="1" Count="0" />
@@ -2362,7 +2364,7 @@ END_VAR
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Pumpen.SetActiv">
-      <LineId Id="1" Count="0" />
+      <LineId Id="1" Count="1" />
     </LineIds>
     <LineIds Name="GF_Pumpen.SetReady">
       <LineId Id="1" Count="0" />

@@ -2229,7 +2229,8 @@ END_VAR
     <Folder Name="01_Aktionen" Id="{b286a800-5ca6-40dc-994e-348370a92f4c}" />
     <Action Name="ResetActiv" Id="{b6be454c-8fc4-4f05-89e0-add6a3aa6f6a}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.PrimActiv := FALSE;]]></ST>
+        <ST><![CDATA[MAIN.SW.PrimActiv := FALSE;
+MAIN.SW.GF8Activ := FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ResetReady" Id="{88d86819-d352-4c00-8bf7-b519139799f4}" FolderPath="01_Aktionen\">
@@ -2244,7 +2245,8 @@ END_VAR
     </Action>
     <Action Name="SetActiv" Id="{5f4ab24d-23e3-476d-9ced-7224ca24c7fc}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.PrimActiv := TRUE;]]></ST>
+        <ST><![CDATA[MAIN.SW.PrimActiv := TRUE;
+MAIN.SW.GF8Activ := TRUE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SetReady" Id="{9b1208bb-c542-492d-887a-784a4b6b989d}" FolderPath="01_Aktionen\">
@@ -2353,7 +2355,7 @@ END_VAR
       </XmlArchive>
     </ObjectProperties>
     <LineIds Name="GF_Zirkulieren.ResetActiv">
-      <LineId Id="1" Count="0" />
+      <LineId Id="1" Count="1" />
     </LineIds>
     <LineIds Name="GF_Zirkulieren.ResetReady">
       <LineId Id="1" Count="0" />
@@ -2362,7 +2364,7 @@ END_VAR
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Zirkulieren.SetActiv">
-      <LineId Id="1" Count="0" />
+      <LineId Id="1" Count="1" />
     </LineIds>
     <LineIds Name="GF_Zirkulieren.SetReady">
       <LineId Id="1" Count="0" />

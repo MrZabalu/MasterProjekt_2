@@ -267,8 +267,6 @@ END_IF
 
 IF O_iDrz > 0 AND O_bPower THEN
 	P_Status := 2;
-ELSE
-	P_Status := 1;
 END_IF
 
 IF I_bVerriegeln THEN
@@ -385,10 +383,7 @@ END_IF]]></ST>
       <LineId Id="2" Count="0" />
       <LineId Id="10" Count="0" />
       <LineId Id="9" Count="0" />
-      <LineId Id="11" Count="0" />
-      <LineId Id="14" Count="0" />
-      <LineId Id="13" Count="0" />
-      <LineId Id="12" Count="0" />
+      <LineId Id="11" Count="1" />
       <LineId Id="18" Count="0" />
       <LineId Id="17" Count="0" />
       <LineId Id="19" Count="1" />

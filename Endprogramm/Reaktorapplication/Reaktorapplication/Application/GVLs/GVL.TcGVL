@@ -8,8 +8,13 @@ VAR_GLOBAL
 	SysState			:INT;		// 0 = Grundfunktion nicht aktive | 1 = Grundfunktion aktive
 
 	// Bedienparameter
-	Bedien_Power		:BOOL := TRUE;
+	Bedien_Power		:BOOL;
 	Bedien_Reset		:BOOL;
+	
+	// Debug-Variablen: 
+	Debug_Verbunden		:BOOL;
+	Debug_Start			:BOOL;
+	Debug_SekStart		:BOOL;
 
 END_VAR]]></Declaration>
   </GVL>
