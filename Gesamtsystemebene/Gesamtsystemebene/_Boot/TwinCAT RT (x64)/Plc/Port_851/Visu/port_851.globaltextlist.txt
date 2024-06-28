@@ -1,0 +1,75 @@
+Id;Default
+656;%i
+82;%s
+105;Act
+5;Activate
+520;Auffüllprozess läuft
+988;Controll-Word
+461;Debug-HMI
+776;Definiert welche Leitung verwendet wird
+578;Definierte Temperatur für Heiz- / Kühlprozess
+47;Definierter sekundär-Reaktor
+587;Eigenschaften & Inputs
+668;Enleermenge
+20;Entleerprozess läuft
+426;Feldgerät-Steuerung
+496;Füllstandsensor
+372;GF1Activ
+913;GF2Activ
+524;GF3Activ
+479;GF4Activ
+606;GF5Activ
+300;GF6Activ
+505;GF7Activ
+571;GF8Activ
+534;Haltedauer
+600;Halteprozess läuft
+705;Heiz- / Kühlprozess läuft
+42;HK-System
+828;Input-Signal:
+942;Leitung
+1134;Messwert:
+242;Modus
+932;POWER:
+450;PrimeActiv
+282;PrimReady
+351;Primärreaktor führt Prozess aus
+770;Primärreaktor ist bereit für den Prozess
+331;Pumpe
+722;Pumpmenge
+152;Pumpprozess läuft
+1029;P_DefTemp:
+323;P_MaxDrz:
+297;Reaktor 1
+76;Reaktor 2
+509;Reaktor 3
+653;Reaktor 4
+173;Reaktor 5
+70;Reaktor 6
+444;Reaktor 7
+914;Reaktor_1
+946;Ruehrdauer
+933;Rührer
+40;Rührprozess läuft
+616;SekActiv
+650;SekReady
+373;SekReakt
+560;Sekundärreaktor führt Prozess aus
+923;Sekundärreaktor ist bereit für den Prozess
+860;Start
+857;Start sekundär Reaktor
+291;Start: Rezept
+979;Status-Word
+973;Temp
+27;Temperatursensor
+834;VERBUNDEN:
+889;Wartedauer
+362;Warteprozess läuft
+438;Wie lange soll gerührt werden
+301;Wie lange soll gerührt werden 
+394;Wie lange soll Temperatur gehalten werden
+666;Wie lange soll zirkuliert werden
+768;Zierkulierdauer
+926;Zirkulierprozess läuft
+26;Zu entleerende Menge
+164;Zu pumpende Menge

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Itf Name="I_Reaktor" Id="{5049a58c-6904-4424-92d4-76423567d951}">
+    <Declaration><![CDATA[INTERFACE I_Reaktor
+]]></Declaration>
+    <Method Name="M_A_START" Id="{b92a3359-a2bf-49b6-b051-89c2380c3e14}">
+      <Declaration><![CDATA[METHOD M_A_START : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_A_STOP" Id="{ade5e6c4-391e-4805-bb12-5233b5bb225b}">
+      <Declaration><![CDATA[METHOD M_A_STOP : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_M_START" Id="{ec5c1263-e21d-4ec3-873c-653ff943e612}">
+      <Declaration><![CDATA[METHOD M_M_START : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_M_STOP" Id="{7ba803bf-e87c-425a-98a5-2b79c0c9b256}">
+      <Declaration><![CDATA[METHOD M_M_STOP : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Property Name="P_Status" Id="{c28d1a19-8de6-4c19-a6ae-a3d92949f6a7}">
+      <Declaration><![CDATA[PROPERTY P_Status : INT]]></Declaration>
+      <Get Name="Get" Id="{8da618f5-1355-4d43-bd99-8a697cb97398}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+  </Itf>
+</TcPlcObject>

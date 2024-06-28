@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Reaktoreinheit" Id="{e70a7bfb-3a77-4ac5-848e-915860a164c8}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Reaktoreinheit IMPLEMENTS I_Reaktor
+VAR_INPUT
+	I_IP			:STRING;					// IP für Verbindung mit Reaktoreinheit
+	
+	I_SW			:RezeptStatusWord;			// Reaktorrückmeldung von OPC UA Schnittstelle
+	I_Parameter		:RezeptControlWord; 		// Prozessparameter 
+END_VAR
+	
+VAR_OUTPUT
+	O_CW			:RezeptControlWord; 		// Prozessparameter für OPC UA Schnittstelle
+END_VAR
+
+VAR
+	V_Status		:INT;						// Variable für internes handling der Eigenschaft
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Setzen der internen Variablen
+V_Status := P_Status;
+
+]]></ST>
+    </Implementation>
+    <Method Name="M_A_START" Id="{465c5990-02eb-4d01-a0be-c08f377138c6}">
+      <Declaration><![CDATA[METHOD M_A_START : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[O_CW := I_Parameter; ]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_A_STOP" Id="{d8444895-e01a-478c-8eaf-23650e449549}">
+      <Declaration><![CDATA[METHOD M_A_STOP : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[O_CW.SekReakt := 0;
+O_CW.Leitung := 0;
+O_CW.Temp := 0;
+O_CW.Enlteermenge := 0;
+O_CW.Pumpmenge := 0;
+O_CW.Haltedauer := T#0S;
+O_CW.Ruehrdauer := T#0S;
+O_CW.Wartedauer := T#0S;
+O_CW.Zirkulierdauer := T#0S;
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_M_START" Id="{712c9664-1124-4804-9d76-723ce000bf52}">
+      <Declaration><![CDATA[METHOD M_M_START : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[O_CW := I_Parameter; ]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_M_STOP" Id="{45bf1e14-c8df-4553-b479-f9eed412350d}">
+      <Declaration><![CDATA[METHOD M_M_STOP : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[O_CW.SekReakt := 0;
+O_CW.Leitung := 0;
+O_CW.Temp := 0;
+O_CW.Enlteermenge := 0;
+O_CW.Pumpmenge := 0;
+O_CW.Haltedauer := T#0S;
+O_CW.Ruehrdauer := T#0S;
+O_CW.Wartedauer := T#0S;
+O_CW.Zirkulierdauer := T#0S;
+]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="P_Status" Id="{23579e58-21f7-4d5c-8cdd-0dc574eac682}">
+      <Declaration><![CDATA[PROPERTY P_Status : INT]]></Declaration>
+      <Get Name="Get" Id="{36f9b8e6-75d2-4ae3-a343-599d77dd5e02}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <LineIds Name="FB_Reaktoreinheit">
+      <LineId Id="9" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="27" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Reaktoreinheit.M_A_START">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Reaktoreinheit.M_A_STOP">
+      <LineId Id="5" Count="0" />
+      <LineId Id="9" Count="4" />
+      <LineId Id="15" Count="2" />
+      <LineId Id="14" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Reaktoreinheit.M_M_START">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Reaktoreinheit.M_M_STOP">
+      <LineId Id="9" Count="8" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Reaktoreinheit.P_Status.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
