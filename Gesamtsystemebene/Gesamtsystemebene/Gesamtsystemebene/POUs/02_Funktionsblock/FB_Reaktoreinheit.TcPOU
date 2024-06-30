@@ -84,7 +84,13 @@ O_CW.Zirkulierdauer := T#0S;
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[]]></ST>
+          <ST><![CDATA[IF I_SW.PrimReady THEN
+	P_Status := 1;
+END_IF
+
+IF I_SW.PrimActiv THEN
+	P_Status := 2;
+END_IF]]></ST>
         </Implementation>
       </Get>
     </Property>
@@ -112,6 +118,10 @@ END_VAR
     </LineIds>
     <LineIds Name="FB_Reaktoreinheit.P_Status.Get">
       <LineId Id="2" Count="0" />
+      <LineId Id="5" Count="1" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="9" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>

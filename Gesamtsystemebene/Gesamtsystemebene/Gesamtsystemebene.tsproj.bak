@@ -16,7 +16,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{39145378-BBC7-4534-88BA-6A645974B9B3}" Name="Gesamtsystemebene" PrjFilePath="Gesamtsystemebene\Gesamtsystemebene.plcproj" TmcFilePath="Gesamtsystemebene\Gesamtsystemebene.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Gesamtsystemebene\Gesamtsystemebene.tmc" TmcHash="{B336398B-C0AA-180C-9C1B-DE80EC621AAB}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Gesamtsystemebene\Gesamtsystemebene.tmc" TmcHash="{9C052D05-0730-7D0A-8D96-AADEA6CE70E6}">
 					<Name>Gesamtsystemebene Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>
