@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL_OPC_UA" Id="{13cb8d73-1df7-470b-8c80-ab1505072c03}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	// Rezept-Control-Words
+	RZCW_R1				AT%Q*	:RezeptControlWord;				// Schnittstelle zur OPC UA Schnittstelle - Reaktor 1
+	RZCW_R2				AT%Q*	:RezeptControlWord;				// Schnittstelle zur OPC UA Schnittstelle - Reaktor 2
+	
+	// Rezept-Status-Words
+	RZSW_R1				AT%I*	:RezeptStatusWord;				// Schnittstelle von OPC UA Schnittstelle - Reaktor 1
+	RZSW_R2				AT%I*	:RezeptStatusWord;				// Schnittstelle von OPC UA Schnittstelle - Reaktor 2
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

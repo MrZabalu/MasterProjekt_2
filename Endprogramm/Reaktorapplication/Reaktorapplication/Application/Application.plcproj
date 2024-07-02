@@ -42,11 +42,11 @@
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GVLs\GVL.TcGVL">
+    <Compile Include="GVLs\01_OPC_UA\GVL_OPC_UA.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
-    <Compile Include="GVLs\GVL_OPC_UA.TcGVL">
+    <Compile Include="GVLs\GVL.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
@@ -120,6 +120,7 @@
     <Folder Include="DUTs\01_Schnittstellen" />
     <Folder Include="DUTs\02_Strukturen" />
     <Folder Include="GVLs" />
+    <Folder Include="GVLs\01_OPC_UA" />
     <Folder Include="POUs\01_Objektklassen" />
     <Folder Include="POUs\02_Anlage" />
     <Folder Include="POUs\02_Anlage\01_Hilfsbausteine" />

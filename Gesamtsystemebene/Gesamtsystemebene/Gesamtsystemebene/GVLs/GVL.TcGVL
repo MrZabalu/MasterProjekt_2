@@ -6,24 +6,6 @@ VAR_GLOBAL
 		
 	// Rezeptparameter
 	Param_CW		:RezeptControlWord;				// Lokale definierung der Parameter
-
-	// Rezept-Control-Words
-	RZCW_R1			:RezeptControlWord;				// Schnittstelle zur OPC UA Schnittstelle - Reaktor 1
-	RZCW_R2			:RezeptControlWord;				// Schnittstelle zur OPC UA Schnittstelle - Reaktor 2
-	RZCW_R3			:RezeptControlWord;				// Schnittstelle zur OPC UA Schnittstelle - Reaktor 3
-	RZCW_R4			:RezeptControlWord;				// Schnittstelle zur OPC UA Schnittstelle - Reaktor 4
-	RZCW_R5			:RezeptControlWord;				// Schnittstelle zur OPC UA Schnittstelle - Reaktor 5
-	RZCW_R6			:RezeptControlWord;				// Schnittstelle zur OPC UA Schnittstelle - Reaktor 6
-	RZCW_R7			:RezeptControlWord;				// Schnittstelle zur OPC UA Schnittstelle - Reaktor 7
-	
-	// Rezept-Status-Words
-	RZSW_R1			:RezeptStatusWord;				// Schnittstelle von OPC UA Schnittstelle - Reaktor 1
-	RZSW_R2			:RezeptStatusWord;				// Schnittstelle von OPC UA Schnittstelle - Reaktor 2
-	RZSW_R3			:RezeptStatusWord;				// Schnittstelle von OPC UA Schnittstelle - Reaktor 3
-	RZSW_R4			:RezeptStatusWord;				// Schnittstelle von OPC UA Schnittstelle - Reaktor 4
-	RZSW_R5			:RezeptStatusWord;				// Schnittstelle von OPC UA Schnittstelle - Reaktor 5
-	RZSW_R6			:RezeptStatusWord;				// Schnittstelle von OPC UA Schnittstelle - Reaktor 6
-	RZSW_R7			:RezeptStatusWord;				// Schnittstelle von OPC UA Schnittstelle - Reaktor 7
 	
 	// Leitungs-Control-Word
 	
