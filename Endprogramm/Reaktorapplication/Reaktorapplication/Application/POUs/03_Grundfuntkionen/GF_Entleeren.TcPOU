@@ -492,7 +492,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"Ventil.P_Status = 1 AND MAIN.SW.SekReady"</v>
+                            <v n="Value">"Ventil.P_Status = 1 AND GVL_OPC_UA.SW.SekReady"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">65L</v>
@@ -729,7 +729,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"NOT MAIN.SW.SekActiv"</v>
+                            <v n="Value">"NOT GVL_OPC_UA.SW.SekActiv"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">84L</v>
@@ -1778,13 +1778,13 @@ END_VAR
     <Folder Name="01_Aktionen" Id="{f5821c1c-9dc8-40f3-a0d4-9b6f5127f676}" />
     <Action Name="ResetActiv" Id="{42c1f1d2-5940-49d5-a493-4a56b3ea7031}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.PrimActiv := FALSE;
-MAIN.SW.GF2Activ := FALSE;]]></ST>
+        <ST><![CDATA[GVL_OPC_UA.SW.PrimActiv := FALSE;
+GVL_OPC_UA.SW.GF2Activ := FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ResetReady" Id="{992be6a1-03cc-4957-a86e-9e68d4f49100}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.PrimReady := FALSE;]]></ST>
+        <ST><![CDATA[GVL_OPC_UA.SW.PrimReady := FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ResetSysActiv" Id="{32f4ec17-ac4b-4eb9-92bb-7a0d41909dbb}" FolderPath="01_Aktionen\">
@@ -1794,13 +1794,13 @@ MAIN.SW.GF2Activ := FALSE;]]></ST>
     </Action>
     <Action Name="SetActiv" Id="{7eaec211-ab56-45a6-a5cc-30266950cb43}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.PrimActiv := TRUE;
-MAIN.SW.GF2Activ := TRUE;]]></ST>
+        <ST><![CDATA[GVL_OPC_UA.SW.PrimActiv := TRUE;
+GVL_OPC_UA.SW.GF2Activ := TRUE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SetReady" Id="{361f3e35-a7a4-4bc9-ba7a-1853d422559d}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.PrimReady := TRUE;]]></ST>
+        <ST><![CDATA[GVL_OPC_UA.SW.PrimReady := TRUE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SetSysActiv" Id="{8b821075-6656-4260-9cda-75120b7a64c9}" FolderPath="01_Aktionen\">
@@ -1904,7 +1904,8 @@ MAIN.SW.GF2Activ := TRUE;]]></ST>
       </XmlArchive>
     </ObjectProperties>
     <LineIds Name="GF_Entleeren.ResetActiv">
-      <LineId Id="1" Count="1" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Entleeren.ResetReady">
       <LineId Id="1" Count="0" />
@@ -1913,7 +1914,8 @@ MAIN.SW.GF2Activ := TRUE;]]></ST>
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Entleeren.SetActiv">
-      <LineId Id="1" Count="1" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Entleeren.SetReady">
       <LineId Id="1" Count="0" />

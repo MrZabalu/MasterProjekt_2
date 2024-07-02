@@ -17,7 +17,6 @@ VAR
 	Befuellen		:GF_Befuellen;
 	
 	// Controlword
-	CW		:RezeptControlWord;
 	
 	// Sonstiges
 
@@ -25,7 +24,6 @@ END_VAR
 
 VAR_INPUT
 	// Statusword
-	SW		:RezeptStatusWord;
 	
 	// Sonstiges
 	Leitung			:FB_Leitungswahl;

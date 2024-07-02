@@ -1761,7 +1761,7 @@
                         </o>
                         <o>
                           <v n="Id">2477733581L</v>
-                          <v n="Value">"MAIN.CW.SekReakt"</v>
+                          <v n="Value">"GVL_OPC_UA.CW.SekReakt"</v>
                         </o>
                         <o>
                           <v n="Id">823443203L</v>
@@ -1779,7 +1779,7 @@
                       <v>OnMouseClick</v>
                       <a cet="InputBoxInputAction">
                         <o>
-                          <v n="InputBoxVariable">"MAIN.CW.SekReakt"</v>
+                          <v n="InputBoxVariable">"GVL_OPC_UA.CW.SekReakt"</v>
                           <v n="InputType">"Edit"</v>
                           <v n="InputBoxMin">""</v>
                           <v n="InputBoxMax">""</v>
@@ -1941,7 +1941,7 @@
                         </o>
                         <o>
                           <v n="Id">2477733581L</v>
-                          <v n="Value">"MAIN.CW.Leitung"</v>
+                          <v n="Value">"GVL_OPC_UA.CW.Leitung"</v>
                         </o>
                         <o>
                           <v n="Id">823443203L</v>
@@ -1959,7 +1959,7 @@
                       <v>OnMouseClick</v>
                       <a cet="InputBoxInputAction">
                         <o>
-                          <v n="InputBoxVariable">"MAIN.CW.Leitung"</v>
+                          <v n="InputBoxVariable">"GVL_OPC_UA.CW.Leitung"</v>
                           <v n="InputType">"Edit"</v>
                           <v n="InputBoxMin">""</v>
                           <v n="InputBoxMax">""</v>
@@ -2121,7 +2121,7 @@
                         </o>
                         <o>
                           <v n="Id">2477733581L</v>
-                          <v n="Value">"MAIN.CW.Temp"</v>
+                          <v n="Value">"GVL_OPC_UA.CW.Temp"</v>
                         </o>
                         <o>
                           <v n="Id">823443203L</v>
@@ -2139,7 +2139,7 @@
                       <v>OnMouseClick</v>
                       <a cet="InputBoxInputAction">
                         <o>
-                          <v n="InputBoxVariable">"MAIN.CW.Temp"</v>
+                          <v n="InputBoxVariable">"GVL_OPC_UA.CW.Temp"</v>
                           <v n="InputType">"Edit"</v>
                           <v n="InputBoxMin">""</v>
                           <v n="InputBoxMax">""</v>
@@ -2301,7 +2301,7 @@
                         </o>
                         <o>
                           <v n="Id">2477733581L</v>
-                          <v n="Value">"MAIN.CW.Enlteermenge"</v>
+                          <v n="Value">"GVL_OPC_UA.CW.Enlteermenge"</v>
                         </o>
                         <o>
                           <v n="Id">823443203L</v>
@@ -2319,7 +2319,7 @@
                       <v>OnMouseClick</v>
                       <a cet="InputBoxInputAction">
                         <o>
-                          <v n="InputBoxVariable">"MAIN.CW.Enlteermenge"</v>
+                          <v n="InputBoxVariable">"GVL_OPC_UA.CW.Enlteermenge"</v>
                           <v n="InputType">"Edit"</v>
                           <v n="InputBoxMin">""</v>
                           <v n="InputBoxMax">""</v>
@@ -2481,7 +2481,7 @@
                         </o>
                         <o>
                           <v n="Id">2477733581L</v>
-                          <v n="Value">"MAIN.CW.Pumpmenge"</v>
+                          <v n="Value">"GVL_OPC_UA.CW.Pumpmenge"</v>
                         </o>
                         <o>
                           <v n="Id">823443203L</v>
@@ -2499,7 +2499,7 @@
                       <v>OnMouseClick</v>
                       <a cet="InputBoxInputAction">
                         <o>
-                          <v n="InputBoxVariable">"MAIN.CW.Pumpmenge"</v>
+                          <v n="InputBoxVariable">"GVL_OPC_UA.CW.Pumpmenge"</v>
                           <v n="InputType">"Edit"</v>
                           <v n="InputBoxMin">""</v>
                           <v n="InputBoxMax">""</v>
@@ -2661,7 +2661,7 @@
                         </o>
                         <o>
                           <v n="Id">2477733581L</v>
-                          <v n="Value">"MAIN.CW.Haltedauer"</v>
+                          <v n="Value">"GVL_OPC_UA.CW.Haltedauer"</v>
                         </o>
                         <o>
                           <v n="Id">823443203L</v>
@@ -2679,7 +2679,7 @@
                       <v>OnMouseClick</v>
                       <a cet="InputBoxInputAction">
                         <o>
-                          <v n="InputBoxVariable">"MAIN.CW.Haltedauer"</v>
+                          <v n="InputBoxVariable">"GVL_OPC_UA.CW.Haltedauer"</v>
                           <v n="InputType">"Edit"</v>
                           <v n="InputBoxMin">""</v>
                           <v n="InputBoxMax">""</v>
@@ -2841,7 +2841,7 @@
                         </o>
                         <o>
                           <v n="Id">2477733581L</v>
-                          <v n="Value">"MAIN.CW.Ruehrdauer"</v>
+                          <v n="Value">"GVL_OPC_UA.CW.Ruehrdauer"</v>
                         </o>
                         <o>
                           <v n="Id">823443203L</v>
@@ -2859,7 +2859,7 @@
                       <v>OnMouseClick</v>
                       <a cet="InputBoxInputAction">
                         <o>
-                          <v n="InputBoxVariable">"MAIN.CW.Ruehrdauer"</v>
+                          <v n="InputBoxVariable">"GVL_OPC_UA.CW.Ruehrdauer"</v>
                           <v n="InputType">"Edit"</v>
                           <v n="InputBoxMin">""</v>
                           <v n="InputBoxMax">""</v>
@@ -3021,7 +3021,7 @@
                         </o>
                         <o>
                           <v n="Id">2477733581L</v>
-                          <v n="Value">"MAIN.CW.Wartedauer"</v>
+                          <v n="Value">"GVL_OPC_UA.CW.Wartedauer"</v>
                         </o>
                         <o>
                           <v n="Id">823443203L</v>
@@ -3039,7 +3039,7 @@
                       <v>OnMouseClick</v>
                       <a cet="InputBoxInputAction">
                         <o>
-                          <v n="InputBoxVariable">"MAIN.CW.Wartedauer"</v>
+                          <v n="InputBoxVariable">"GVL_OPC_UA.CW.Wartedauer"</v>
                           <v n="InputType">"Edit"</v>
                           <v n="InputBoxMin">""</v>
                           <v n="InputBoxMax">""</v>
@@ -3201,7 +3201,7 @@
                         </o>
                         <o>
                           <v n="Id">2477733581L</v>
-                          <v n="Value">"MAIN.CW.Zirkulierdauer"</v>
+                          <v n="Value">"GVL_OPC_UA.CW.Zirkulierdauer"</v>
                         </o>
                         <o>
                           <v n="Id">823443203L</v>
@@ -3219,7 +3219,7 @@
                       <v>OnMouseClick</v>
                       <a cet="InputBoxInputAction">
                         <o>
-                          <v n="InputBoxVariable">"MAIN.CW.Zirkulierdauer"</v>
+                          <v n="InputBoxVariable">"GVL_OPC_UA.CW.Zirkulierdauer"</v>
                           <v n="InputType">"Edit"</v>
                           <v n="InputBoxMin">""</v>
                           <v n="InputBoxMax">""</v>
@@ -7714,7 +7714,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.SW.PrimReady"</v>
+                          <v n="Value">"GVL_OPC_UA.SW.PrimReady"</v>
                         </o>
                       </l>
                     </o>
@@ -7808,7 +7808,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.SW.PrimActiv"</v>
+                          <v n="Value">"GVL_OPC_UA.SW.PrimActiv"</v>
                         </o>
                       </l>
                     </o>
@@ -7902,7 +7902,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.SW.SekReady"</v>
+                          <v n="Value">"GVL_OPC_UA.SW.SekReady"</v>
                         </o>
                       </l>
                     </o>
@@ -7996,7 +7996,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.SW.SekActiv"</v>
+                          <v n="Value">"GVL_OPC_UA.SW.SekActiv"</v>
                         </o>
                       </l>
                     </o>
@@ -8090,7 +8090,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.SW.GF1Activ"</v>
+                          <v n="Value">"GVL_OPC_UA.SW.GF1Activ"</v>
                         </o>
                       </l>
                     </o>
@@ -8184,7 +8184,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.SW.GF2Activ"</v>
+                          <v n="Value">"GVL_OPC_UA.SW.GF2Activ"</v>
                         </o>
                       </l>
                     </o>
@@ -8278,7 +8278,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.SW.GF3Activ"</v>
+                          <v n="Value">"GVL_OPC_UA.SW.GF3Activ"</v>
                         </o>
                       </l>
                     </o>
@@ -8372,7 +8372,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.SW.GF4Activ"</v>
+                          <v n="Value">"GVL_OPC_UA.SW.GF4Activ"</v>
                         </o>
                       </l>
                     </o>
@@ -8466,7 +8466,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.SW.GF5Activ"</v>
+                          <v n="Value">"GVL_OPC_UA.SW.GF5Activ"</v>
                         </o>
                       </l>
                     </o>
@@ -8560,7 +8560,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.SW.GF6Activ"</v>
+                          <v n="Value">"GVL_OPC_UA.SW.GF6Activ"</v>
                         </o>
                       </l>
                     </o>
@@ -8654,7 +8654,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.SW.GF7Activ"</v>
+                          <v n="Value">"GVL_OPC_UA.SW.GF7Activ"</v>
                         </o>
                       </l>
                     </o>
@@ -8748,7 +8748,7 @@
                         </o>
                         <o>
                           <v n="Id">743958181L</v>
-                          <v n="Value">"MAIN.SW.GF8Activ"</v>
+                          <v n="Value">"GVL_OPC_UA.SW.GF8Activ"</v>
                         </o>
                       </l>
                     </o>
@@ -11708,7 +11708,7 @@
                             <v n="VisualElementIdentifier">"GenElemInst_216"</v>
                             <n n="VisualElementOfflinePaintCommands" />
                             <n n="VisualElementFrameInformation" />
-                            <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="IInputAction[]">
+                            <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="InputBoxInputAction[]">
                               <v>OnMouseClick</v>
                               <a cet="InputBoxInputAction">
                                 <o>
@@ -12197,7 +12197,7 @@
                             <v n="VisualElementIdentifier">"GenElemInst_219"</v>
                             <n n="VisualElementOfflinePaintCommands" />
                             <n n="VisualElementFrameInformation" />
-                            <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="IInputAction[]">
+                            <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="InputBoxInputAction[]">
                               <v>OnMouseClick</v>
                               <a cet="InputBoxInputAction">
                                 <o>
@@ -12208,7 +12208,7 @@
                                   <v n="InputBoxDialogTitle">""</v>
                                   <v n="Password">false</v>
                                   <v n="UseTextOutputVariable">false</v>
-                                  <v n="TextOutputVariableInitialized">false</v>
+                                  <v n="TextOutputVariableInitialized">true</v>
                                   <v n="OtherVarConversion">""</v>
                                   <v n="Format">""</v>
                                   <v n="DialogPosition" t="DialogPositionSetting">UseGlobalSetting</v>
@@ -12672,7 +12672,7 @@
                                 </o>
                                 <o>
                                   <v n="Id">2477733581L</v>
-                                  <v n="Value">"MAIN.CW.Zirkulierdauer"</v>
+                                  <v n="Value">"Reaktoreinheit.F1.I_iSignal"</v>
                                 </o>
                                 <o>
                                   <v n="Id">823443203L</v>
@@ -12686,7 +12686,7 @@
                             <v n="VisualElementIdentifier">"GenElemInst_227"</v>
                             <n n="VisualElementOfflinePaintCommands" />
                             <n n="VisualElementFrameInformation" />
-                            <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="IInputAction[]">
+                            <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="InputBoxInputAction[]">
                               <v>OnMouseClick</v>
                               <a cet="InputBoxInputAction">
                                 <o>
@@ -13003,7 +13003,7 @@
                               <v>OnMouseClick</v>
                               <a cet="InputBoxInputAction">
                                 <o>
-                                  <v n="InputBoxVariable">"MAIN.CW.Zirkulierdauer"</v>
+                                  <v n="InputBoxVariable">"Reaktoreinheit.F1.Messwert"</v>
                                   <v n="InputType">"Edit"</v>
                                   <v n="InputBoxMin">""</v>
                                   <v n="InputBoxMax">""</v>
@@ -13474,7 +13474,7 @@
                                 </o>
                                 <o>
                                   <v n="Id">2477733581L</v>
-                                  <v n="Value">"MAIN.CW.Zirkulierdauer"</v>
+                                  <v n="Value">"Reaktoreinheit.T1.I_iSignal"</v>
                                 </o>
                                 <o>
                                   <v n="Id">823443203L</v>
@@ -13492,7 +13492,7 @@
                               <v>OnMouseClick</v>
                               <a cet="InputBoxInputAction">
                                 <o>
-                                  <v n="InputBoxVariable">"MAIN.CW.Zirkulierdauer"</v>
+                                  <v n="InputBoxVariable">"Reaktoreinheit.T1.I_iSignal"</v>
                                   <v n="InputType">"Edit"</v>
                                   <v n="InputBoxMin">""</v>
                                   <v n="InputBoxMax">""</v>
@@ -14283,7 +14283,7 @@
                         <v n="VisualElementIdentifier">"GenElemInst_223"</v>
                         <n n="VisualElementOfflinePaintCommands" />
                         <n n="VisualElementFrameInformation" />
-                        <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="IInputAction[]">
+                        <d n="VisualElementInputActions" t="Hashtable" ckt="String" cvt="InputBoxInputAction[]">
                           <v>OnMouseClick</v>
                           <a cet="InputBoxInputAction">
                             <o>
@@ -15021,7 +15021,7 @@
                   <v>OnMouseClick</v>
                   <a cet="InputBoxInputAction">
                     <o>
-                      <v n="InputBoxVariable">"MAIN.CW.Zirkulierdauer"</v>
+                      <v n="InputBoxVariable">"Reaktoreinheit.T1.Messwert"</v>
                       <v n="InputType">"Edit"</v>
                       <v n="InputBoxMin">""</v>
                       <v n="InputBoxMax">""</v>
@@ -15261,7 +15261,6 @@
         <Type n="Guid">System.Guid</Type>
         <Type n="Hashtable">System.Collections.Hashtable</Type>
         <Type n="HotkeyConfiguration">{6b108d46-58af-4e41-a3f4-174d8f160cc4}</Type>
-        <Type n="IInputAction[]">_3S.CoDeSys.VisualElem.IInputAction[], VisualElem, Version=3.5.13.0, Culture=neutral, PublicKeyToken=null</Type>
         <Type n="InputBoxInputAction">{e8e7e747-f76f-4dee-ab1c-b9637e41ac26}</Type>
         <Type n="InputBoxInputAction[]">_3S.CoDeSys.VisualElem.InputBoxInputAction[], VisualElem.plugin, Version=3.5.13.32, Culture=neutral, PublicKeyToken=null</Type>
         <Type n="Int16">System.Int16</Type>

@@ -491,7 +491,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"Ventil.P_Status = 1 AND MAIN.SW.PrimReady"</v>
+                            <v n="Value">"Ventil.P_Status = 1 AND GVL_OPC_UA.SW.PrimReady"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">61L</v>
@@ -965,7 +965,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"NOT MAIN.SW.PrimActiv"</v>
+                            <v n="Value">"NOT GVL_OPC_UA.SW.PrimActiv"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">80L</v>
@@ -1963,9 +1963,9 @@ END_VAR
     <Transition Name="Fuellstandcheck" Id="{34ac417c-4efe-466c-a9ee-bde5e34579b7}" FolderPath="02_Transitions\">
       <Implementation>
         <ST><![CDATA[// Prüfen welche Grundfunktion verwendet wird
-IF MAIN.CW.Enlteermenge > 0 THEN
+IF GVL_OPC_UA.CW.Enlteermenge > 0 THEN
 	// Bedingung
-	IF  MAIN.CW.Enlteermenge < Level.P_Messwert THEN
+	IF  GVL_OPC_UA.CW.Enlteermenge < Level.P_Messwert THEN
 		Fuellstandcheck := TRUE;
 		
 	ELSE 
@@ -1974,9 +1974,9 @@ IF MAIN.CW.Enlteermenge > 0 THEN
 END_IF
 
 // Prüfen welche Grundfunktion verwendet wird
-IF MAIN.CW.Pumpmenge > 0 THEN
+IF GVL_OPC_UA.CW.Pumpmenge > 0 THEN
 	// Bedingung
-	IF  MAIN.CW.Pumpmenge < Level.P_Messwert THEN
+	IF  GVL_OPC_UA.CW.Pumpmenge < Level.P_Messwert THEN
 		Fuellstandcheck := TRUE;
 		
 	ELSE 
@@ -1987,13 +1987,13 @@ END_IF]]></ST>
     </Transition>
     <Action Name="ResetActiv" Id="{26b6df95-fd29-4c3a-9a68-95c3f69bf336}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.SekActiv := FALSE;
-MAIN.SW.GF7Activ := FALSE;]]></ST>
+        <ST><![CDATA[GVL_OPC_UA.SW.SekActiv := FALSE;
+GVL_OPC_UA.SW.GF7Activ := FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ResetReady" Id="{23662753-2ca6-4c22-a1c0-77f706883224}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.SekReady := FALSE;]]></ST>
+        <ST><![CDATA[GVL_OPC_UA.SW.SekReady := FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ResetSysActiv" Id="{67fdda91-07d5-47da-a0da-171955fb3e5f}" FolderPath="01_Aktionen\">
@@ -2005,13 +2005,13 @@ GVL.Debug_SekStart := 0;]]></ST>
     </Action>
     <Action Name="SetActiv" Id="{07070a43-bcc7-45f3-9381-b8da515e0b5c}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.SekActiv := TRUE;
-MAIN.SW.GF7Activ := TRUE;]]></ST>
+        <ST><![CDATA[GVL_OPC_UA.SW.SekActiv := TRUE;
+GVL_OPC_UA.SW.GF7Activ := TRUE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SetReady" Id="{89c38aa9-37eb-4727-b8e7-0908130829dd}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.SekReady := TRUE;]]></ST>
+        <ST><![CDATA[GVL_OPC_UA.SW.SekReady := TRUE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SetSysActiv" Id="{13869d2e-1a10-48e8-8d39-cb3815ca389a}" FolderPath="01_Aktionen\">
@@ -2115,21 +2115,23 @@ MAIN.SW.GF7Activ := TRUE;]]></ST>
       </XmlArchive>
     </ObjectProperties>
     <LineIds Name="GF_Befuellen.Fuellstandcheck">
-      <LineId Id="2" Count="20" />
+      <LineId Id="2" Count="19" />
+      <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Befuellen.ResetActiv">
-      <LineId Id="1" Count="1" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Befuellen.ResetReady">
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Befuellen.ResetSysActiv">
+      <LineId Id="2" Count="1" />
       <LineId Id="1" Count="0" />
-      <LineId Id="4" Count="0" />
-      <LineId Id="2" Count="0" />
     </LineIds>
     <LineIds Name="GF_Befuellen.SetActiv">
-      <LineId Id="1" Count="1" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Befuellen.SetReady">
       <LineId Id="1" Count="0" />

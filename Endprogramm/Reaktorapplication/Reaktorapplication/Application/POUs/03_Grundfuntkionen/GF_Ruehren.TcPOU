@@ -781,7 +781,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"Ruehren.t &gt; MAIN.CW.Ruehrdauer"</v>
+                            <v n="Value">"Ruehren.t &gt; GVL_OPC_UA.CW.Ruehrdauer"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">97L</v>
@@ -2067,13 +2067,13 @@ END_VAR
     <Folder Name="01_Aktionen" Id="{cba953e3-74a7-41c0-b82f-a4f3046cdcef}" />
     <Action Name="ResetActiv" Id="{d9f6660c-dbad-471b-b9ba-0052e6575729}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.PrimActiv := FALSE;
-MAIN.SW.GF5Activ := FALSE;]]></ST>
+        <ST><![CDATA[GVL_OPC_UA.SW.PrimActiv := FALSE;
+GVL_OPC_UA.SW.GF5Activ := FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ResetReady" Id="{131cdfe6-4df2-4bf1-9c25-d5cfb052103d}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.PrimReady := FALSE;]]></ST>
+        <ST><![CDATA[GVL_OPC_UA.SW.PrimReady := FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ResetSysActiv" Id="{b24d2044-49b6-40dd-b3d9-a5655f516cc2}" FolderPath="01_Aktionen\">
@@ -2083,13 +2083,13 @@ MAIN.SW.GF5Activ := FALSE;]]></ST>
     </Action>
     <Action Name="SetActiv" Id="{f891e4ac-89de-4f99-acc4-b9b8774b7345}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.PrimActiv := TRUE;
-MAIN.SW.GF5Activ := TRUE;]]></ST>
+        <ST><![CDATA[GVL_OPC_UA.SW.PrimActiv := TRUE;
+GVL_OPC_UA.SW.GF5Activ := TRUE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SetReady" Id="{eb593942-8af3-4940-8f8a-46094f827e62}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.PrimReady := TRUE;]]></ST>
+        <ST><![CDATA[GVL_OPC_UA.SW.PrimReady := TRUE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SetSysActiv" Id="{c96d44b9-9a8d-4b53-8d2a-65042664aad6}" FolderPath="01_Aktionen\">
@@ -2193,7 +2193,8 @@ MAIN.SW.GF5Activ := TRUE;]]></ST>
       </XmlArchive>
     </ObjectProperties>
     <LineIds Name="GF_Ruehren.ResetActiv">
-      <LineId Id="1" Count="1" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Ruehren.ResetReady">
       <LineId Id="1" Count="0" />
@@ -2202,7 +2203,8 @@ MAIN.SW.GF5Activ := TRUE;]]></ST>
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Ruehren.SetActiv">
-      <LineId Id="1" Count="1" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Ruehren.SetReady">
       <LineId Id="1" Count="0" />

@@ -890,7 +890,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"Pumpe.P_Status = 2 AND Pumpen.t &gt;  Main.CW.Zirkulierdauer"</v>
+                            <v n="Value">"Pumpe.P_Status = 2 AND Pumpen.t &gt;  GVL_OPC_UA.CW.Zirkulierdauer"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">71L</v>
@@ -2229,13 +2229,13 @@ END_VAR
     <Folder Name="01_Aktionen" Id="{b286a800-5ca6-40dc-994e-348370a92f4c}" />
     <Action Name="ResetActiv" Id="{b6be454c-8fc4-4f05-89e0-add6a3aa6f6a}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.PrimActiv := FALSE;
-MAIN.SW.GF8Activ := FALSE;]]></ST>
+        <ST><![CDATA[GVL_OPC_UA.SW.PrimActiv := FALSE;
+GVL_OPC_UA.SW.GF8Activ := FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ResetReady" Id="{88d86819-d352-4c00-8bf7-b519139799f4}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.PrimReady := FALSE;]]></ST>
+        <ST><![CDATA[GVL_OPC_UA.SW.PrimReady := FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ResetSysActiv" Id="{c7159bb1-29cf-47d5-9477-7e420fcccb6f}" FolderPath="01_Aktionen\">
@@ -2245,13 +2245,13 @@ MAIN.SW.GF8Activ := FALSE;]]></ST>
     </Action>
     <Action Name="SetActiv" Id="{5f4ab24d-23e3-476d-9ced-7224ca24c7fc}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.PrimActiv := TRUE;
-MAIN.SW.GF8Activ := TRUE;]]></ST>
+        <ST><![CDATA[GVL_OPC_UA.SW.PrimActiv := TRUE;
+GVL_OPC_UA.SW.GF8Activ := TRUE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SetReady" Id="{9b1208bb-c542-492d-887a-784a4b6b989d}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.PrimReady := TRUE;]]></ST>
+        <ST><![CDATA[GVL_OPC_UA.SW.PrimReady := TRUE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SetSysActiv" Id="{5f869143-b821-4b2b-90b9-b009b249152b}" FolderPath="01_Aktionen\">
@@ -2355,7 +2355,8 @@ MAIN.SW.GF8Activ := TRUE;]]></ST>
       </XmlArchive>
     </ObjectProperties>
     <LineIds Name="GF_Zirkulieren.ResetActiv">
-      <LineId Id="1" Count="1" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Zirkulieren.ResetReady">
       <LineId Id="1" Count="0" />
@@ -2364,7 +2365,8 @@ MAIN.SW.GF8Activ := TRUE;]]></ST>
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Zirkulieren.SetActiv">
-      <LineId Id="1" Count="1" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Zirkulieren.SetReady">
       <LineId Id="1" Count="0" />

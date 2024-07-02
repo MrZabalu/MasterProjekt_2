@@ -491,7 +491,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"Warten.t &gt; MAIN.CW.Wartedauer"</v>
+                            <v n="Value">"Warten.t &gt; GVL_OPC_UA.CW.Wartedauer"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">52L</v>
@@ -1303,13 +1303,13 @@ END_VAR
     <Folder Name="01_Aktionen" Id="{417316f4-e81e-4868-ab0e-1943c0f6e5f0}" />
     <Action Name="ResetActiv" Id="{3a036e89-4a97-4811-a471-7ba5ce49d3f5}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.PrimActiv := FALSE;
-MAIN.SW.GF6Activ := FALSE;]]></ST>
+        <ST><![CDATA[GVL_OPC_UA.SW.PrimActiv := FALSE;
+GVL_OPC_UA.SW.GF6Activ := FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ResetReady" Id="{82445eb6-d964-4267-86d5-88c575156404}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.PrimReady := FALSE;]]></ST>
+        <ST><![CDATA[GVL_OPC_UA.SW.PrimReady := FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ResetSysActiv" Id="{57f0a85d-fcf8-46de-9cad-7bb4a2344657}" FolderPath="01_Aktionen\">
@@ -1319,13 +1319,13 @@ MAIN.SW.GF6Activ := FALSE;]]></ST>
     </Action>
     <Action Name="SetActiv" Id="{d2a79626-248d-419a-99da-310ddfecfb8b}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.PrimActiv := TRUE;
-MAIN.SW.GF6Activ := TRUE;]]></ST>
+        <ST><![CDATA[GVL_OPC_UA.SW.PrimActiv := TRUE;
+GVL_OPC_UA.SW.GF6Activ := TRUE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SetReady" Id="{a1db8e4b-671f-4004-8bbe-5b8b589b3e36}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[MAIN.SW.PrimReady := TRUE;]]></ST>
+        <ST><![CDATA[GVL_OPC_UA.SW.PrimReady := TRUE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SetSysActiv" Id="{cf17d31c-f363-4873-9078-f296f7dd58da}" FolderPath="01_Aktionen\">
@@ -1429,7 +1429,8 @@ MAIN.SW.GF6Activ := TRUE;]]></ST>
       </XmlArchive>
     </ObjectProperties>
     <LineIds Name="GF_Warten.ResetActiv">
-      <LineId Id="1" Count="1" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Warten.ResetReady">
       <LineId Id="1" Count="0" />
@@ -1438,7 +1439,8 @@ MAIN.SW.GF6Activ := TRUE;]]></ST>
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Warten.SetActiv">
-      <LineId Id="1" Count="1" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Warten.SetReady">
       <LineId Id="1" Count="0" />
