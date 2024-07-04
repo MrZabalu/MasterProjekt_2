@@ -1,15 +1,22 @@
 Id;Default
+594;$"KeepAlive$" der Kommunikation
 656;%i
 82;%s
 105;Act
 5;Activate
 520;Auffüllprozess läuft
+842;Auschalten
+551;Ausführen von Kommunikation
+820;Ausführen von Kommunikationsbefehl
+154;Client resetten
+41;Client zurücksetzen
 988;Controll-Word
 461;Debug-HMI
 776;Definiert welche Leitung verwendet wird
 578;Definierte Temperatur für Heiz- / Kühlprozess
 47;Definierter sekundär-Reaktor
 587;Eigenschaften & Inputs
+856;Einschalten
 668;Enleermenge
 20;Entleerprozess läuft
 426;Feldgerät-Steuerung
@@ -30,6 +37,7 @@ Id;Default
 942;Leitung
 1134;Messwert:
 242;Modus
+136;OPC UA
 932;POWER:
 450;PrimeActiv
 282;PrimReady
@@ -51,6 +59,7 @@ Id;Default
 946;Ruehrdauer
 933;Rührer
 40;Rührprozess läuft
+638;Schreiben von Variablen zulassen
 616;SekActiv
 650;SekReady
 373;SekReakt
@@ -60,8 +69,14 @@ Id;Default
 857;Start sekundär Reaktor
 291;Start: Rezept
 979;Status-Word
+421;Status-Word-R1
+535;SysReady
 973;Temp
 27;Temperatursensor
+976;Test-HMI
+234;Variablen werden gelese / beschrieben
+320;Verbinden mit Client
+643;Verbindung zum Server wurde erstellt
 834;VERBUNDEN:
 889;Wartedauer
 362;Warteprozess läuft

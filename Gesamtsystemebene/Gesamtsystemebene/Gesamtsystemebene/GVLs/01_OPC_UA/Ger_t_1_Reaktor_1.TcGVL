@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="Ger_t_1_Reaktor_1" Id="{1ea9e56e-b120-41b7-bcd5-abfc8abc19ae}">
+    <Declaration><![CDATA[VAR_GLOBAL
+	{attribute 'TcLinkTo' := 'TIID^Device 1 (OPC UA Virtual)^Client #1^Inputs^Status^Connected'}
+	bConnected 		AT%I* 		:BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 1 (OPC UA Virtual)^Client #1^Inputs^Status^ReadBusy'}
+	bReadBusy 		AT%I* 		:BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 1 (OPC UA Virtual)^Client #1^Inputs^Status^KeepAlives'}
+	bKeepAlives 	AT%I* 		:BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 1 (OPC UA Virtual)^Client #1^Inputs^Status^StmState'}
+	nStmState 		AT%I* 		:BYTE;
+	{attribute 'TcLinkTo' := 'TIID^Device 1 (OPC UA Virtual)^Client #1^Outputs^Control^ResetStm'}
+	bResetStm 		AT%Q* 		:BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 1 (OPC UA Virtual)^Client #1^Outputs^Control^Execute'}
+	bExecute 		AT%Q* 		:BOOL;
+	{attribute 'TcLinkTo' := 'TIID^Device 1 (OPC UA Virtual)^Client #1^Outputs^Control^Write Enable'}
+	bWrite_Enable 	AT%Q* 		:BOOL;
+
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

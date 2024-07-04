@@ -24,16 +24,16 @@
     <Compile Include="DUTs\02_Strukturen\LeitungControlWord.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\02_Strukturen\RezeptControlWord.TcDUT">
+    <Compile Include="DUTs\02_Strukturen\SystemControlWord.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\02_Strukturen\RezeptStatusWord.TcDUT">
+    <Compile Include="DUTs\02_Strukturen\SystemStatusWord.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GVLs\01_OPC_UA\Ger_t_1_Client_1_1.TcGVL">
+    <Compile Include="GVLs\01_OPC_UA\Ger_t_1_Reaktor_1.TcGVL">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GVLs\01_OPC_UA\GVL_OPC_UA.TcGVL">
@@ -68,7 +68,7 @@
     <Compile Include="Visualisierungsmanager.TcVMO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="VISUs\01_Debug_Visu\Debug_Visu.TcVIS">
+    <Compile Include="VISUs\Test_Visu.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
     </Compile>
@@ -89,7 +89,6 @@
     <Folder Include="POUs\04_Abläufe" />
     <Folder Include="POUs\04_Abläufe\01_Vererbung" />
     <Folder Include="VISUs" />
-    <Folder Include="VISUs\01_Debug_Visu" />
   </ItemGroup>
   <ItemGroup>
     <PlaceholderReference Include="System_VisuElemMeter">
@@ -145,6 +144,9 @@
     <PlaceholderReference Include="Tc3_Module">
       <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc3_Module</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc3_PLCopen_OpcUa">
+      <DefaultResolution>Tc3_PLCopen_OpcUa, * (Beckhoff Automation GmbH)</DefaultResolution>
     </PlaceholderReference>
   </ItemGroup>
   <ItemGroup>

@@ -2,158 +2,172 @@
 <TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.53">
 	<DataTypes>
 		<DataType>
-			<Name GUID="{74A6D867-8BC8-2A1E-1763-0055AE6CCA37}" AutoDeleteType="true">RezeptStatusWord</Name>
-			<BitSize>96</BitSize>
+			<Name GUID="{8B816AF4-6F08-D359-D965-58E2CE108C88}" AutoDeleteType="true">SystemStatusWord</Name>
+			<BitSize>104</BitSize>
+			<SubItem>
+				<Name>SysReady</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ System ist eingeschalten und bereit]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
 			<SubItem>
 				<Name>PrimReady</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
 				<Comment><![CDATA[ Primärreaktor ist bereit für den Prozess]]></Comment>
 				<BitSize>8</BitSize>
-				<BitOffs>0</BitOffs>
+				<BitOffs>8</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>PrimActiv</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
 				<Comment><![CDATA[ Primärreaktor führt Prozess aus]]></Comment>
 				<BitSize>8</BitSize>
-				<BitOffs>8</BitOffs>
+				<BitOffs>16</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>SekReady</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
 				<Comment><![CDATA[ Sekundärreaktor ist bereit für den Prozess]]></Comment>
 				<BitSize>8</BitSize>
-				<BitOffs>16</BitOffs>
+				<BitOffs>24</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>SekActiv</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
 				<Comment><![CDATA[ Sekundärreaktor führt Prozess aus]]></Comment>
 				<BitSize>8</BitSize>
-				<BitOffs>24</BitOffs>
+				<BitOffs>32</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>GF1Activ</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
 				<Comment><![CDATA[ Heiz- / Kühlprozess läuft]]></Comment>
 				<BitSize>8</BitSize>
-				<BitOffs>32</BitOffs>
+				<BitOffs>40</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>GF2Activ</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
 				<Comment><![CDATA[ Entleerprozess läuft]]></Comment>
 				<BitSize>8</BitSize>
-				<BitOffs>40</BitOffs>
+				<BitOffs>48</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>GF3Activ</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
 				<Comment><![CDATA[ Pumpprozess läuft]]></Comment>
 				<BitSize>8</BitSize>
-				<BitOffs>48</BitOffs>
+				<BitOffs>56</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>GF4Activ</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
 				<Comment><![CDATA[ Halteprozess läuft]]></Comment>
 				<BitSize>8</BitSize>
-				<BitOffs>56</BitOffs>
+				<BitOffs>64</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>GF5Activ</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
 				<Comment><![CDATA[ Rührprozess läuft]]></Comment>
 				<BitSize>8</BitSize>
-				<BitOffs>64</BitOffs>
+				<BitOffs>72</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>GF6Activ</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
 				<Comment><![CDATA[ Warteprozess läuft]]></Comment>
 				<BitSize>8</BitSize>
-				<BitOffs>72</BitOffs>
+				<BitOffs>80</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>GF7Activ</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
 				<Comment><![CDATA[ Auffüllprozess läuft]]></Comment>
 				<BitSize>8</BitSize>
-				<BitOffs>80</BitOffs>
+				<BitOffs>88</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>GF8Activ</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
 				<Comment><![CDATA[ Zirkulierprozess läuft]]></Comment>
 				<BitSize>8</BitSize>
-				<BitOffs>88</BitOffs>
+				<BitOffs>96</BitOffs>
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{C507750A-DB23-5AFA-E582-2D125122290E}" AutoDeleteType="true">RezeptControlWord</Name>
-			<BitSize>256</BitSize>
+			<Name GUID="{47E556A3-E601-23FE-BDFF-D38606CA50E5}" AutoDeleteType="true">SystemControlWord</Name>
+			<BitSize>288</BitSize>
+			<SubItem>
+				<Name>PowerOn</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ Einschalten von Reaktoreinheit]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
 			<SubItem>
 				<Name>SekReakt</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
 				<Comment><![CDATA[ Definierter sekundär-Reaktor]]></Comment>
 				<BitSize>16</BitSize>
-				<BitOffs>0</BitOffs>
+				<BitOffs>16</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>Leitung</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000006}">INT</Type>
 				<Comment><![CDATA[ Definiert welche Leitung verwendet wird]]></Comment>
 				<BitSize>16</BitSize>
-				<BitOffs>16</BitOffs>
+				<BitOffs>32</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>Temp</Name>
 				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
 				<Comment><![CDATA[ Definierte Temperatur für Heiz- / Kühlprozess]]></Comment>
 				<BitSize>32</BitSize>
-				<BitOffs>32</BitOffs>
+				<BitOffs>64</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>Enlteermenge</Name>
 				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
 				<Comment><![CDATA[ Zu entleerende Menge]]></Comment>
 				<BitSize>32</BitSize>
-				<BitOffs>64</BitOffs>
+				<BitOffs>96</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>Pumpmenge</Name>
 				<Type GUID="{18071995-0000-0000-0000-00000000000D}">REAL</Type>
 				<Comment><![CDATA[ Zu pumpende Menge]]></Comment>
 				<BitSize>32</BitSize>
-				<BitOffs>96</BitOffs>
+				<BitOffs>128</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>Haltedauer</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000048}">TIME</Type>
 				<Comment><![CDATA[ Wie lange soll TEmperatur gehalten werden]]></Comment>
 				<BitSize>32</BitSize>
-				<BitOffs>128</BitOffs>
+				<BitOffs>160</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>Ruehrdauer</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000048}">TIME</Type>
 				<Comment><![CDATA[ Wie lange soll gerührt werden ]]></Comment>
 				<BitSize>32</BitSize>
-				<BitOffs>160</BitOffs>
+				<BitOffs>192</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>Wartedauer</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000048}">TIME</Type>
 				<Comment><![CDATA[ Wie lange soll gerührt werden]]></Comment>
 				<BitSize>32</BitSize>
-				<BitOffs>192</BitOffs>
+				<BitOffs>224</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>Zirkulierdauer</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000048}">TIME</Type>
 				<Comment><![CDATA[ Wie lange soll zirkuliert werden]]></Comment>
 				<BitSize>32</BitSize>
-				<BitOffs>224</BitOffs>
+				<BitOffs>256</BitOffs>
 			</SubItem>
 		</DataType>
 		<DataType>
@@ -399,64 +413,106 @@ only active in subscription mode]]></Comment>
 			</Tasks>
 		</System>
 		<Plc>
-			<Project GUID="{39145378-BBC7-4534-88BA-6A645974B9B3}" Name="Gesamtsystemebene" PrjFilePath="Gesamtsystemebene\Gesamtsystemebene.plcproj" TmcFilePath="Gesamtsystemebene\Gesamtsystemebene.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Gesamtsystemebene\Gesamtsystemebene.tmc" TmcHash="{1096DC81-588E-7CBA-5B8F-3EBE48E59D08}">
+			<Project GUID="{39145378-BBC7-4534-88BA-6A645974B9B3}" Name="Gesamtsystemebene" PrjFilePath="Gesamtsystemebene\Gesamtsystemebene.plcproj" TmcFilePath="Gesamtsystemebene\Gesamtsystemebene.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" CopyTmcToTarget="true" CopyTpyToTarget="false" SymbolicMapping="true">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="Gesamtsystemebene\Gesamtsystemebene.tmc" TmcHash="{AF6D5D77-F545-8EC8-CDD1-BF36350C394E}">
 					<Name>Gesamtsystemebene Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
 						<Var>
-							<Name>GVL_OPC_UA.RZSW_R2</Name>
-							<Comment><![CDATA[ Schnittstelle von OPC UA Schnittstelle - Reaktor 2]]></Comment>
-							<Type GUID="{74A6D867-8BC8-2A1E-1763-0055AE6CCA37}">RezeptStatusWord</Type>
-						</Var>
-						<Var>
-							<Name>Ger_t_1_Client_1_1.bConnected</Name>
+							<Name>Ger_t_1_Reaktor_1.bConnected</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>Ger_t_1_Client_1_1.bReadBusy</Name>
+							<Name>Ger_t_1_Reaktor_1.bReadBusy</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>Ger_t_1_Client_1_1.bKeepAlives</Name>
+							<Name>Ger_t_1_Reaktor_1.bKeepAlives</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>Ger_t_1_Client_1_1.nStmState</Name>
+							<Name>Ger_t_1_Reaktor_1.nStmState</Name>
 							<Type>BYTE</Type>
 						</Var>
 						<Var>
-							<Name>GVL_OPC_UA.RZSW_R1</Name>
+							<Name>GVL_OPC_UA.SysSW_R1</Name>
 							<Comment><![CDATA[ Schnittstelle von OPC UA Schnittstelle - Reaktor 1]]></Comment>
-							<Type GUID="{74A6D867-8BC8-2A1E-1763-0055AE6CCA37}">RezeptStatusWord</Type>
+							<Type GUID="{8B816AF4-6F08-D359-D965-58E2CE108C88}">SystemStatusWord</Type>
+						</Var>
+						<Var>
+							<Name>GVL_OPC_UA.SysSW_R2</Name>
+							<Comment><![CDATA[ Schnittstelle von OPC UA Schnittstelle - Reaktor 2]]></Comment>
+							<Type GUID="{8B816AF4-6F08-D359-D965-58E2CE108C88}">SystemStatusWord</Type>
 						</Var>
 					</Vars>
 					<Vars VarGrpType="2" AreaNo="1">
 						<Name>PlcTask Outputs</Name>
 						<Var>
-							<Name>GVL_OPC_UA.RZCW_R2</Name>
-							<Comment><![CDATA[ Schnittstelle zur OPC UA Schnittstelle - Reaktor 2]]></Comment>
-							<Type GUID="{C507750A-DB23-5AFA-E582-2D125122290E}">RezeptControlWord</Type>
+							<Name>Ger_t_1_Reaktor_1.bResetStm</Name>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>GVL_OPC_UA.RZCW_R1</Name>
+							<Name>Ger_t_1_Reaktor_1.bExecute</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>Ger_t_1_Reaktor_1.bWrite_Enable</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_OPC_UA.SysCW_R1</Name>
 							<Comment><![CDATA[ Schnittstelle zur OPC UA Schnittstelle - Reaktor 1]]></Comment>
-							<Type GUID="{C507750A-DB23-5AFA-E582-2D125122290E}">RezeptControlWord</Type>
+							<Type GUID="{47E556A3-E601-23FE-BDFF-D38606CA50E5}">SystemControlWord</Type>
 						</Var>
 						<Var>
-							<Name>Ger_t_1_Client_1_1.bResetStm</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>Ger_t_1_Client_1_1.bExecute</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>Ger_t_1_Client_1_1.bWrite_Enable</Name>
-							<Type>BOOL</Type>
+							<Name>GVL_OPC_UA.SysCW_R2</Name>
+							<Comment><![CDATA[ Schnittstelle zur OPC UA Schnittstelle - Reaktor 2]]></Comment>
+							<Type GUID="{47E556A3-E601-23FE-BDFF-D38606CA50E5}">SystemControlWord</Type>
 						</Var>
 					</Vars>
+					<UnrestoredVarLinks ImportTime="2024-07-03T10:17:47">
+						<OwnerA Name="InputDst" Prefix="TIPC^Gesamtsystemebene^Gesamtsystemebene Instance" Type="1">
+							<OwnerB Name="TIID^Device 1 (OPC UA Virtual)^Reaktor_1">
+								<Link VarA="Ger_t_1_Client_1_1.bConnected" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Inputs^Status^Connected" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="Ger_t_1_Client_1_1.bReadBusy" TypeA="BOOL" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Inputs^Status^ReadBusy" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="Ger_t_1_Client_1_1.nStmState" TypeA="BYTE" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="Inputs^Status^StmState" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+						<OwnerA Name="OutputSrc" Prefix="TIPC^Gesamtsystemebene^Gesamtsystemebene Instance" Type="2">
+							<OwnerB Name="TIID^Device 1 (OPC UA Virtual)^Reaktor_1">
+								<Link VarA="Ger_t_1_Client_1_1.bExecute" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Outputs^Control^Execute" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="Ger_t_1_Client_1_1.bResetStm" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Outputs^Control^ResetStm" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="Ger_t_1_Client_1_1.bWrite_Enable" TypeA="BOOL" InOutA="1" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="Outputs^Control^Write Enable" Size="1" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+					</UnrestoredVarLinks>
+					<UnrestoredVarLinks ImportTime="2024-07-03T14:10:26">
+						<OwnerA Name="InputDst" Prefix="TIPC^Gesamtsystemebene^Gesamtsystemebene Instance" Type="1">
+							<OwnerB Name="TIID^Device 1 (OPC UA Virtual)^Reaktor_1^PLC1.GVL_OPC_UA.SW">
+								<Link VarA="GVL_OPC_UA.RZSW_R1" TypeA="SystemStatusWord" InOutA="0" GuidA="{4CDDD56F-01DB-0A53-5EF5-B2482AE823D1}" VarB="Inputs^Value" RestoreInfo="ANotFound"/>
+							</OwnerB>
+							<OwnerB Name="TIID^Device 1 (OPC UA Virtual)^Reaktor_2^PLC1.GVL_OPC_UA.SW">
+								<Link VarA="GVL_OPC_UA.RZSW_R2" TypeA="SystemStatusWord" InOutA="0" GuidA="{4CDDD56F-01DB-0A53-5EF5-B2482AE823D1}" VarB="Inputs^Value" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+						<OwnerA Name="OutputSrc" Prefix="TIPC^Gesamtsystemebene^Gesamtsystemebene Instance" Type="2">
+							<OwnerB Name="TIID^Device 1 (OPC UA Virtual)^Reaktor_1^PLC1.GVL_OPC_UA.CW">
+								<Link VarA="GVL_OPC_UA.RZCW_R1^Enlteermenge" TypeA="REAL" InOutA="1" ParentTypeA="SystemControlWord" GuidA="{18071995-0000-0000-0000-00000000000D}" VarB="Outputs^Value^Enlteermenge" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_OPC_UA.RZCW_R1^Haltedauer" TypeA="TIME" InOutA="1" ParentTypeA="SystemControlWord" GuidA="{18071995-0000-0000-0000-000000000048}" VarB="Outputs^Value^Haltedauer" Size="32" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_OPC_UA.RZCW_R1^Leitung" TypeA="INT" InOutA="1" ParentTypeA="SystemControlWord" GuidA="{18071995-0000-0000-0000-000000000006}" VarB="Outputs^Value^Leitung" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_OPC_UA.RZCW_R1^Pumpmenge" TypeA="REAL" InOutA="1" ParentTypeA="SystemControlWord" GuidA="{18071995-0000-0000-0000-00000000000D}" VarB="Outputs^Value^Pumpmenge" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_OPC_UA.RZCW_R1^Ruehrdauer" TypeA="TIME" InOutA="1" ParentTypeA="SystemControlWord" GuidA="{18071995-0000-0000-0000-000000000048}" VarB="Outputs^Value^Ruehrdauer" Size="32" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_OPC_UA.RZCW_R1^SekReakt" TypeA="INT" InOutA="1" ParentTypeA="SystemControlWord" GuidA="{18071995-0000-0000-0000-000000000006}" VarB="Outputs^Value^SekReakt" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_OPC_UA.RZCW_R1^Temp" TypeA="REAL" InOutA="1" ParentTypeA="SystemControlWord" GuidA="{18071995-0000-0000-0000-00000000000D}" VarB="Outputs^Value^Temp" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_OPC_UA.RZCW_R1^Wartedauer" TypeA="TIME" InOutA="1" ParentTypeA="SystemControlWord" GuidA="{18071995-0000-0000-0000-000000000048}" VarB="Outputs^Value^Wartedauer" Size="32" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_OPC_UA.RZCW_R1^Zirkulierdauer" TypeA="TIME" InOutA="1" ParentTypeA="SystemControlWord" GuidA="{18071995-0000-0000-0000-000000000048}" VarB="Outputs^Value^Zirkulierdauer" Size="32" RestoreInfo="ANotFound"/>
+							</OwnerB>
+							<OwnerB Name="TIID^Device 1 (OPC UA Virtual)^Reaktor_2^PLC1.GVL_OPC_UA.CW">
+								<Link VarA="GVL_OPC_UA.RZCW_R2" TypeA="SystemControlWord" InOutA="1" GuidA="{E1E7F7ED-C21E-32B2-3249-FF7F9081D022}" VarB="Outputs^Value" Size="256" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+					</UnrestoredVarLinks>
 					<Contexts>
 						<Context>
 							<Id>0</Id>
@@ -1900,36 +1956,13 @@ only active in subscription mode]]></Comment>
 	<Mappings>
 		<MappingInfo Identifier="{08502001-0010-0304-0020-500810000403}" Id="#x02030010" Watchdog="00000000000000000000000000000000"/>
 		<OwnerA Name="TIPC^Gesamtsystemebene^Gesamtsystemebene Instance">
-			<OwnerB Name="TIID^Device 1 (OPC UA Virtual)^Reaktor_1^PLC1.GVL_OPC_UA.CW">
-				<Link VarA="PlcTask Outputs^GVL_OPC_UA.RZCW_R1^Enlteermenge" VarB="Outputs^Value^Enlteermenge"/>
-				<Link VarA="PlcTask Outputs^GVL_OPC_UA.RZCW_R1^Haltedauer" VarB="Outputs^Value^Haltedauer"/>
-				<Link VarA="PlcTask Outputs^GVL_OPC_UA.RZCW_R1^Leitung" VarB="Outputs^Value^Leitung"/>
-				<Link VarA="PlcTask Outputs^GVL_OPC_UA.RZCW_R1^Pumpmenge" VarB="Outputs^Value^Pumpmenge"/>
-				<Link VarA="PlcTask Outputs^GVL_OPC_UA.RZCW_R1^Ruehrdauer" VarB="Outputs^Value^Ruehrdauer"/>
-				<Link VarA="PlcTask Outputs^GVL_OPC_UA.RZCW_R1^SekReakt" VarB="Outputs^Value^SekReakt"/>
-				<Link VarA="PlcTask Outputs^GVL_OPC_UA.RZCW_R1^Temp" VarB="Outputs^Value^Temp"/>
-				<Link VarA="PlcTask Outputs^GVL_OPC_UA.RZCW_R1^Wartedauer" VarB="Outputs^Value^Wartedauer"/>
-				<Link VarA="PlcTask Outputs^GVL_OPC_UA.RZCW_R1^Zirkulierdauer" VarB="Outputs^Value^Zirkulierdauer"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (OPC UA Virtual)^Reaktor_1^PLC1.GVL_OPC_UA.SW">
-				<Link VarA="PlcTask Inputs^GVL_OPC_UA.RZSW_R1^GF1Activ" VarB="Inputs^Value^GF1Activ"/>
-				<Link VarA="PlcTask Inputs^GVL_OPC_UA.RZSW_R1^GF2Activ" VarB="Inputs^Value^GF2Activ"/>
-				<Link VarA="PlcTask Inputs^GVL_OPC_UA.RZSW_R1^GF3Activ" VarB="Inputs^Value^GF3Activ"/>
-				<Link VarA="PlcTask Inputs^GVL_OPC_UA.RZSW_R1^GF4Activ" VarB="Inputs^Value^GF4Activ"/>
-				<Link VarA="PlcTask Inputs^GVL_OPC_UA.RZSW_R1^GF5Activ" VarB="Inputs^Value^GF5Activ"/>
-				<Link VarA="PlcTask Inputs^GVL_OPC_UA.RZSW_R1^GF6Activ" VarB="Inputs^Value^GF6Activ"/>
-				<Link VarA="PlcTask Inputs^GVL_OPC_UA.RZSW_R1^GF7Activ" VarB="Inputs^Value^GF7Activ"/>
-				<Link VarA="PlcTask Inputs^GVL_OPC_UA.RZSW_R1^GF8Activ" VarB="Inputs^Value^GF8Activ"/>
-				<Link VarA="PlcTask Inputs^GVL_OPC_UA.RZSW_R1^PrimActiv" VarB="Inputs^Value^PrimActiv"/>
-				<Link VarA="PlcTask Inputs^GVL_OPC_UA.RZSW_R1^PrimReady" VarB="Inputs^Value^PrimReady"/>
-				<Link VarA="PlcTask Inputs^GVL_OPC_UA.RZSW_R1^SekActiv" VarB="Inputs^Value^SekActiv"/>
-				<Link VarA="PlcTask Inputs^GVL_OPC_UA.RZSW_R1^SekReady" VarB="Inputs^Value^SekReady"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (OPC UA Virtual)^Reaktor_2^PLC1.GVL_OPC_UA.CW">
-				<Link VarA="PlcTask Outputs^GVL_OPC_UA.RZCW_R2" VarB="Outputs^Value"/>
-			</OwnerB>
-			<OwnerB Name="TIID^Device 1 (OPC UA Virtual)^Reaktor_2^PLC1.GVL_OPC_UA.SW">
-				<Link VarA="PlcTask Inputs^GVL_OPC_UA.RZSW_R2" VarB="Inputs^Value"/>
+			<OwnerB Name="TIID^Device 1 (OPC UA Virtual)^Reaktor_1">
+				<Link VarA="PlcTask Inputs^Ger_t_1_Reaktor_1.bConnected" VarB="Inputs^Status^Connected"/>
+				<Link VarA="PlcTask Inputs^Ger_t_1_Reaktor_1.bReadBusy" VarB="Inputs^Status^ReadBusy"/>
+				<Link VarA="PlcTask Inputs^Ger_t_1_Reaktor_1.nStmState" VarB="Inputs^Status^StmState"/>
+				<Link VarA="PlcTask Outputs^Ger_t_1_Reaktor_1.bExecute" VarB="Outputs^Control^Execute"/>
+				<Link VarA="PlcTask Outputs^Ger_t_1_Reaktor_1.bResetStm" VarB="Outputs^Control^ResetStm"/>
+				<Link VarA="PlcTask Outputs^Ger_t_1_Reaktor_1.bWrite_Enable" VarB="Outputs^Control^Write Enable"/>
 			</OwnerB>
 		</OwnerA>
 	</Mappings>

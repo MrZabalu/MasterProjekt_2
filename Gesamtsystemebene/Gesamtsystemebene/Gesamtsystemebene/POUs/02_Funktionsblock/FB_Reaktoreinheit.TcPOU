@@ -3,14 +3,12 @@
   <POU Name="FB_Reaktoreinheit" Id="{e70a7bfb-3a77-4ac5-848e-915860a164c8}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_Reaktoreinheit IMPLEMENTS I_Reaktor
 VAR_INPUT
-	I_IP			:STRING;					// IP für Verbindung mit Reaktoreinheit
-	
-	I_SW			:RezeptStatusWord;			// Reaktorrückmeldung von OPC UA Schnittstelle
-	I_Parameter		:RezeptControlWord; 		// Prozessparameter 
+	I_SW				:SystemStatusWord;			// Reaktorrückmeldung von OPC UA Schnittstelle
+	I_Parameter			:SystemControlWord; 		// Prozessparameter 
 END_VAR
 	
 VAR_OUTPUT
-	O_CW			:RezeptControlWord; 		// Prozessparameter für OPC UA Schnittstelle
+	O_CW			:SystemControlWord; 		// Prozessparameter für OPC UA Schnittstelle
 END_VAR
 
 VAR
@@ -23,6 +21,24 @@ V_Status := P_Status;
 
 ]]></ST>
     </Implementation>
+    <Method Name="M_A_OFF" Id="{b86c77af-8803-46fa-8eaa-5ebfd1812af6}">
+      <Declaration><![CDATA[METHOD M_A_OFF : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[O_CW.PowerOn := FALSE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_A_ON" Id="{ce3ee9e0-881b-473a-80ba-d0fc2959046e}">
+      <Declaration><![CDATA[METHOD M_A_ON : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[O_CW.PowerOn := TRUE;]]></ST>
+      </Implementation>
+    </Method>
     <Method Name="M_A_START" Id="{465c5990-02eb-4d01-a0be-c08f377138c6}">
       <Declaration><![CDATA[METHOD M_A_START : BOOL
 VAR_INPUT
@@ -48,6 +64,24 @@ O_CW.Ruehrdauer := T#0S;
 O_CW.Wartedauer := T#0S;
 O_CW.Zirkulierdauer := T#0S;
 ]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_M_OFF" Id="{15ab24aa-7a53-42fc-8b32-af1250aef26d}">
+      <Declaration><![CDATA[METHOD M_M_OFF : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[O_CW.PowerOn := FALSE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="M_M_ON" Id="{2cc463e2-7a73-4f79-8ecd-c91093a26e4b}">
+      <Declaration><![CDATA[METHOD M_M_ON : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[O_CW.PowerOn := TRUE;]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_M_START" Id="{712c9664-1124-4804-9d76-723ce000bf52}">
@@ -100,6 +134,12 @@ END_IF]]></ST>
       <LineId Id="28" Count="0" />
       <LineId Id="27" Count="0" />
     </LineIds>
+    <LineIds Name="FB_Reaktoreinheit.M_A_OFF">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Reaktoreinheit.M_A_ON">
+      <LineId Id="5" Count="0" />
+    </LineIds>
     <LineIds Name="FB_Reaktoreinheit.M_A_START">
       <LineId Id="5" Count="0" />
     </LineIds>
@@ -108,6 +148,12 @@ END_IF]]></ST>
       <LineId Id="9" Count="4" />
       <LineId Id="15" Count="2" />
       <LineId Id="14" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Reaktoreinheit.M_M_OFF">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Reaktoreinheit.M_M_ON">
+      <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_Reaktoreinheit.M_M_START">
       <LineId Id="5" Count="0" />

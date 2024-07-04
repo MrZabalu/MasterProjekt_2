@@ -5,7 +5,7 @@
 VAR_GLOBAL
 		
 	// Rezeptparameter
-	Param_CW		:RezeptControlWord;				// Lokale definierung der Parameter
+	Param_CW		:SystemControlWord;				// Lokale definierung der Parameter
 	
 	// Leitungs-Control-Word
 	
@@ -14,9 +14,6 @@ VAR_GLOBAL
 	
 	// Bedienparameter 
 	Start			:BOOL;
-	
-	// Debug-Variablen
-	Debug_SW		:RezeptStatusWord;
 	
 END_VAR]]></Declaration>
   </GVL>

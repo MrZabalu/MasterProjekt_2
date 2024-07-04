@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<TcLicenseInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2011/11/TcLicenseInfo">
+	<LicenseInfo>
+		<SystemId>{CC22F6E9-E823-63EB-3D0B-82B4224D8206}</SystemId>
+		<IssueTime>2024-07-04T14:06:00</IssueTime>
+		<ExpireTime>2024-07-12T00:00:00</ExpireTime>
+		<LicenseKey>9da650f485d5f5882a8849938760b4122376e08e11e6a336526f54d16842ddc8bbceecb5e5884aabedc8cfa16d7e1fcfe8de5cf83efd9ceedb29e7c56c43c8c8845ad0778510f17ba3d9bdb71427c55c013b397f559d65a46b21875de5e0f06fa90b12bb2cb2786dddda91966d6e36629c9297d2955f3158e37cae4e0f1af170d12383add50d37657a4ffdab70cc74e4dafc845c2ac84602acad60fc2b27691850b02e9bd6ff60d2aa3968e67b818f39a3a90941c2a12267dba99ff6777163d14e041f15bc95935be4356d1457683fd0f73e37e2b6bc60ec4ddf31c14cb55d0240f3f3ba43ab644beef6a1d049dc29f0228d23da54e3fd1bc61a0165ab4f6229</LicenseKey>
+		<License>
+			<LicenseId>{D4390DEA-A64D-494D-9E09-275326DBB0CB}</LicenseId>
+			<Name>TC3 PLC-HMI (RT)</Name>
+		</License>
+		<License>
+			<LicenseId>{FDE02854-39A7-440C-9EAE-C234A16A3CED}</LicenseId>
+			<Name>TC3 PLC-HMI</Name>
+			<OrderNo>TF1800</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{4C256767-E6E6-4AF5-BD68-9F7ABAD0C200}</LicenseId>
+			<Name>TC3 ADS</Name>
+			<OrderNo>TC1000</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{C2B7B285-EBD7-72CF-843F-15F95A86FEEE}</LicenseId>
+			<Name>TC3 OPC-UA Analytics Write</Name>
+		</License>
+		<License>
+			<LicenseId>{CC0BCBD5-3EA7-D7D4-4C71-A8B125F0DB72}</LicenseId>
+			<Name>TC3 OPC-UA Analytics Read</Name>
+		</License>
+		<License>
+			<LicenseId>{66689887-CCBD-452C-AC9A-039D997C6E66}</LicenseId>
+			<Name>TC3 PLC</Name>
+			<OrderNo>TC1200</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{BDCC0070-42D5-49AE-ABF1-1D4434813D60}</LicenseId>
+			<Name>TC3 OPC-UA</Name>
+			<OrderNo>TF6100</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{3FF18E97-7754-401B-93FB-70544DE28A13}</LicenseId>
+			<Name>TC3 IO</Name>
+			<OrderNo>TC1100</OrderNo>
+		</License>
+	</LicenseInfo>
+</TcLicenseInfo>

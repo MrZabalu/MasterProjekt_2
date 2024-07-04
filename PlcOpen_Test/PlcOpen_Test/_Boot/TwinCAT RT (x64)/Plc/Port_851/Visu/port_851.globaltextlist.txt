@@ -1,0 +1,14 @@
+Id;Default
+602;% %04x
+213;%04x
+132;Busy:
+727;Connect
+51;Disconnect
+925;Error
+519;Error:
+751;Errorhandling
+292;ErrorID:
+728;GetNameSpaceIndex
+678;GetNotes
+850;Kommunikation
+600;Read

@@ -19,9 +19,7 @@ END_VAR
 Reaktoranlage();
 
 // Starten des Rezeptes
-Rezept_1();
-
-GVL_OPC_UA.RZCW_R1.Leitung := 3;]]></ST>
+Rezept_1();]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="29" Count="0" />
@@ -29,8 +27,6 @@ GVL_OPC_UA.RZCW_R1.Leitung := 3;]]></ST>
       <LineId Id="30" Count="0" />
       <LineId Id="2" Count="0" />
       <LineId Id="26" Count="0" />
-      <LineId Id="44" Count="0" />
-      <LineId Id="27" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
