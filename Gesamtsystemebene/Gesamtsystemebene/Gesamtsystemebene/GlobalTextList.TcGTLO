@@ -11,6 +11,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"213"</v>
+              <v n="TextDefault">"%04x"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"656"</v>
               <v n="TextDefault">"%i"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -51,6 +56,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"177"</v>
+              <v n="TextDefault">"Busy:"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"154"</v>
               <v n="TextDefault">"Client resetten"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -58,6 +68,16 @@
             <o>
               <v n="TextID">"41"</v>
               <v n="TextDefault">"Client zurücksetzen"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"364"</v>
+              <v n="TextDefault">"Connect"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"431"</v>
+              <v n="TextDefault">"Connected:"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -103,6 +123,21 @@
             <o>
               <v n="TextID">"20"</v>
               <v n="TextDefault">"Entleerprozess läuft"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"519"</v>
+              <v n="TextDefault">"Error:"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"751"</v>
+              <v n="TextDefault">"Errorhandling"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"292"</v>
+              <v n="TextDefault">"ErrorID:"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -193,6 +228,16 @@
             <o>
               <v n="TextID">"242"</v>
               <v n="TextDefault">"Modus"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"924"</v>
+              <v n="TextDefault">"NameSpaceIndex:"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"907"</v>
+              <v n="TextDefault">"NodeID"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>

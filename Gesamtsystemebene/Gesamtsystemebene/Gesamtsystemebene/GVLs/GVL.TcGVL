@@ -11,9 +11,11 @@ VAR_GLOBAL
 	
 	// Funktionsvariablen
 	SysState		:INT;							// 0 = Prozess läuft nicht | 1 = Prozess läuft
+	ConnectionState	:INT;
 	
 	// Bedienparameter 
 	Start			:BOOL;
+	ConnectStart	:BOOL;							// Kommunikationsschnittstelle wird aufgebaut
 	
 END_VAR]]></Declaration>
   </GVL>

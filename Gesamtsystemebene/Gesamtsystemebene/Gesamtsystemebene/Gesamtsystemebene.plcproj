@@ -33,9 +33,6 @@
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GVLs\01_OPC_UA\Ger_t_1_Reaktor_1.TcGVL">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="GVLs\01_OPC_UA\GVL_OPC_UA.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
@@ -60,6 +57,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\04_Abläufe\Grundablauf.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\05_Kommunikation\01_Connection\FB_Connection.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\05_Kommunikation\ConnectSystem.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
@@ -88,6 +91,8 @@
     <Folder Include="POUs\03_System" />
     <Folder Include="POUs\04_Abläufe" />
     <Folder Include="POUs\04_Abläufe\01_Vererbung" />
+    <Folder Include="POUs\05_Kommunikation" />
+    <Folder Include="POUs\05_Kommunikation\01_Connection" />
     <Folder Include="VISUs" />
   </ItemGroup>
   <ItemGroup>
@@ -147,12 +152,18 @@
     </PlaceholderReference>
     <PlaceholderReference Include="Tc3_PLCopen_OpcUa">
       <DefaultResolution>Tc3_PLCopen_OpcUa, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc3_PLCopen_OpcUa</Namespace>
     </PlaceholderReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Gesamtsystemebene.tmc">
       <SubType>Content</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <LibraryReference Include="Tc2_OpcUa,3.3.2.0,Beckhoff Automation GmbH">
+      <Namespace>Tc2_OpcUa</Namespace>
+    </LibraryReference>
   </ItemGroup>
   <ProjectExtensions>
     <PlcProjectOptions>

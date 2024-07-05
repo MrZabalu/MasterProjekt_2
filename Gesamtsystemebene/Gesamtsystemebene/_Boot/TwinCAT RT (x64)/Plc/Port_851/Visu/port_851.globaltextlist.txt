@@ -1,5 +1,6 @@
 Id;Default
 594;$"KeepAlive$" der Kommunikation
+213;%04x
 656;%i
 82;%s
 105;Act
@@ -8,8 +9,11 @@ Id;Default
 842;Auschalten
 551;Ausführen von Kommunikation
 820;Ausführen von Kommunikationsbefehl
+177;Busy:
 154;Client resetten
 41;Client zurücksetzen
+364;Connect
+431;Connected:
 988;Controll-Word
 461;Debug-HMI
 776;Definiert welche Leitung verwendet wird
@@ -19,6 +23,9 @@ Id;Default
 856;Einschalten
 668;Enleermenge
 20;Entleerprozess läuft
+519;Error:
+751;Errorhandling
+292;ErrorID:
 426;Feldgerät-Steuerung
 496;Füllstandsensor
 372;GF1Activ
@@ -37,6 +44,8 @@ Id;Default
 942;Leitung
 1134;Messwert:
 242;Modus
+924;NameSpaceIndex:
+907;NodeID
 136;OPC UA
 932;POWER:
 450;PrimeActiv

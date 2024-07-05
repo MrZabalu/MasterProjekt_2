@@ -3,7 +3,6 @@
   <POU Name="FB_Reaktoreinheit" Id="{e70a7bfb-3a77-4ac5-848e-915860a164c8}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_Reaktoreinheit IMPLEMENTS I_Reaktor
 VAR_INPUT
-	I_SW				:SystemStatusWord;			// Reaktorrückmeldung von OPC UA Schnittstelle
 	I_Parameter			:SystemControlWord; 		// Prozessparameter 
 END_VAR
 	
