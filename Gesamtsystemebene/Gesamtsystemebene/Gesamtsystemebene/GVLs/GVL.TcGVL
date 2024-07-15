@@ -5,17 +5,20 @@
 VAR_GLOBAL
 		
 	// Rezeptparameter
-	Param_CW		:SystemControlWord;				// Lokale definierung der Parameter
+	Sys_CW			:SystemControlWord;				// Lokale definierung der Parameter
+	Sys_SW			:SystemStatusWord;				// Statusword für internen Handling
 	
 	// Leitungs-Control-Word
 	
 	// Funktionsvariablen
 	SysState		:INT;							// 0 = Prozess läuft nicht | 1 = Prozess läuft
-	ConnectionState	:INT;
 	
 	// Bedienparameter 
 	Start			:BOOL;
-	ConnectStart	:BOOL;							// Kommunikationsschnittstelle wird aufgebaut
+	
+	// Zustands-Variablen
+	Error			:BOOL;
+	ErrorID			:DWORD;
 	
 END_VAR]]></Declaration>
   </GVL>

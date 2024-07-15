@@ -42,6 +42,7 @@ Id;Default
 42;HK-System
 828;Input-Signal:
 942;Leitung
+581;Lesen
 1134;Messwert:
 242;Modus
 924;NameSpaceIndex:

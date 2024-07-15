@@ -3,126 +3,205 @@
   <POU Name="FB_Reaktoreinheit" Id="{e70a7bfb-3a77-4ac5-848e-915860a164c8}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_Reaktoreinheit IMPLEMENTS I_Reaktor
 VAR_INPUT
-	I_Parameter			:SystemControlWord; 		// Prozessparameter 
+	I_IP					:STRING(MAX_STRING_LENGTH);
+	I_NameSpace				:STRING(MAX_STRING_LENGTH);
+	
+	I_CW					:SystemControlWord;			// Variable für Kommunikations-Schnittstelle (Write)
 END_VAR
 	
 VAR_OUTPUT
-	O_CW			:SystemControlWord; 		// Prozessparameter für OPC UA Schnittstelle
+	O_Verbunden				:BOOL;
+	O_Error					:BOOL;
+	O_ErrorID				:DWORD;
+	O_SW					:SystemStatusWord; 			// Statusword für Kontrolle des Systems
 END_VAR
 
 VAR
-	V_Status		:INT;						// Variable für internes handling der Eigenschaft
+	V_Status				:INT;						// Interne Variable
+	Connect_Status			:INT;						// Variable für Verbindugsprozess
+	
+	// Instanziierung der Kommunikationsfunktionsblöcke
+	Connect					:UA_Connect;
+	NameSpaceInd			:UA_GetNamespaceIndex;
+	Node_SW					:UA_NodeGetHandle;
+	Node_CW					:UA_NodeGetHandle;
+	
+	// Instanziierung der Kommunikationsfunktionsblöcke
+	Read					:UA_Read;	
+	Write					:UA_Write;
+	
+	// Instanziierung der relevanten Input-Variablen
+	ConnectInfo				:ST_UASessionConnectInfo;			// Informationen für Verbindungsaufbau 
+	NodeID_SW				:ST_UANodeID;
+	NodeID_CW				:ST_UANodeID;
+	NodeIdentifier_SW		:STRING(MAX_STRING_LENGTH) := 'GVL_OPC_UA.SW';
+	NodeIdentifier_CW		:STRING(MAX_STRING_LENGTH) := 'GVL_OPC_UA.CW';
+	
+	// Instanziierung der relevanten Output-Variablen
+	ConnectionHdl			:DWORD;
+	NameSpaceIndex			:UINT;
+	NodeHdl_CW				:DWORD;						// Nodehandler für Controlword
+	NodeHdl_SW				:DWORD;						// Nodehandler für Statusword
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Setzen der internen Variablen
 V_Status := P_Status;
 
+// Verbindung aufbauen zu OPC UA-Server
+CASE Connect_Status OF
+	
+1:	// Connect
+	// Definition der Verbindungsinformationen
+	ConnectInfo.tSessionTimeout := T#1M;
+	ConnectInfo.tConnectTimeout := T#1M;
+	ConnectInfo.sApplicationName := '';
+	ConnectInfo.eSecurityMode := eUASecurityMsgMode_Sign_Encrypt;				// 3 = Sign_Encrypted
+	ConnectInfo.eSecurityPolicyUri := eUASecurityPolicy_Basic256Sha256;			// 4 = Basic256  
+	ConnectInfo.eTransportProfileUri := eUATransportProfileUri_UATcp;			// 1 = UATcp
+	ConnectInfo.stUserIdentTokenType.eUserIdentTokenType := eUAUITT_Username;	// 1 = Username
+	ConnectInfo.stUserIdentTokenType.sTokenParam1 := 'Administrator';			// Username
+	ConnectInfo.stUserIdentTokenType.sTokenParam2 := '1';						// PW
+
+	// Verbinden zu OPC-UA-Schnittstelle
+	Connect(Execute := TRUE, 
+			ServerUrl := I_IP, 
+			SessionConnectInfo := ConnectInfo, 
+			Timeout := T#5S, 
+			ConnectionHdl => ConnectionHdl, 
+			Error => O_Error, 
+			ErrorID => O_ErrorID);
+			
+	IF Connect.Done THEN
+		Connect_Status := 2;
+	END_IF
+			
+2:	// NameSpaceIndex
+	NameSpaceInd(Execute := TRUE,
+				ConnectionHdl := ConnectionHdl,
+				NameSpaceUri := I_NameSpace,
+				Timeout := T#5S,
+				NameSpaceIndex => NameSpaceIndex, 
+				Error => O_Error, 
+				ErrorID => O_ErrorID);
+				
+	IF NameSpaceInd.Done THEN
+		Connect_Status := 3;
+	END_IF
+				
+3: // Nodes
+	// Definieren von relevanten Parameter
+	// Statusword - SW
+	NodeID_SW.eIdentifierType := eUAIdentifierType_String;
+	NodeID_SW.nNamespaceIndex := NameSpaceIndex;
+	NodeID_SW.sIdentifier := NodeIdentifier_SW;
+	// Controlword - CW
+	NodeID_CW.eIdentifierType := eUAIdentifierType_String;
+	NodeID_CW.nNamespaceIndex := NameSpaceIndex;
+	NodeID_CW.sIdentifier := NodeIdentifier_CW;
+	
+	// Definiere Nodes
+	Node_SW(Execute := TRUE,
+			ConnectionHdl := ConnectionHdl,
+			NodeID := NodeID_SW,
+			Timeout := T#5S,
+			NodeHdl => NodeHdl_SW, 
+			Error => O_Error, 
+			ErrorID => O_ErrorID);
+	Node_CW(Execute := TRUE,
+			ConnectionHdl := ConnectionHdl,
+			NodeID := NodeID_CW,
+			Timeout := T#5S,
+			NodeHdl => NodeHdl_CW, 
+			Error => O_Error, 
+			ErrorID => O_ErrorID);
+
+	
+	IF Node_CW.Done THEN
+		O_Verbunden := Node_CW.Done;
+		Connect_Status := 0;
+	END_IF
+END_CASE
 ]]></ST>
     </Implementation>
-    <Method Name="M_A_OFF" Id="{b86c77af-8803-46fa-8eaa-5ebfd1812af6}">
-      <Declaration><![CDATA[METHOD M_A_OFF : BOOL
+    <Folder Name="01_Methoden" Id="{b290fcb8-a471-4092-aa41-a5b970377a3e}" />
+    <Folder Name="02_Eigenschaften" Id="{bdf2a79a-7339-4a46-8662-549e34790b74}" />
+    <Method Name="M_LESEN" Id="{7c08f511-2c8a-4867-a9a1-f0284defdd22}" FolderPath="01_Methoden\">
+      <Declaration><![CDATA[METHOD M_LESEN : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[O_CW.PowerOn := FALSE;]]></ST>
+        <ST><![CDATA[Read(Execute := TRUE,
+	ConnectionHdl := ConnectionHdl,
+	NodeHdl := NodeHdl_SW,
+	pVariable := ADR(O_SW),
+	cbData := SIZEOF(O_SW),
+	Timeout := T#5S,
+	Error => O_Error,
+	ErrorID => O_ErrorID);]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_A_ON" Id="{ce3ee9e0-881b-473a-80ba-d0fc2959046e}">
-      <Declaration><![CDATA[METHOD M_A_ON : BOOL
+    <Method Name="M_SCHREIBEN" Id="{265a61bd-d9ab-4632-94e0-62c449f6bf9f}" FolderPath="01_Methoden\">
+      <Declaration><![CDATA[METHOD M_SCHREIBEN : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[O_CW.PowerOn := TRUE;]]></ST>
+        <ST><![CDATA[Write(Execute := TRUE,
+	ConnectionHdl := ConnectionHdl,
+	NodeHdl := NodeHdl_CW,
+	pVariable := ADR(I_CW),
+	cbData := SIZEOF(I_CW),
+	Timeout := T#5S,
+	Error => O_Error,
+	ErrorID => O_ErrorID);
+	]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_A_START" Id="{465c5990-02eb-4d01-a0be-c08f377138c6}">
-      <Declaration><![CDATA[METHOD M_A_START : BOOL
+    <Method Name="M_VERBINDEN" Id="{4255dbee-856c-42b1-8361-de875cfcdcb2}" FolderPath="01_Methoden\">
+      <Declaration><![CDATA[METHOD M_VERBINDEN : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[O_CW := I_Parameter; ]]></ST>
+        <ST><![CDATA[Connect_Status := 1;]]></ST>
       </Implementation>
     </Method>
-    <Method Name="M_A_STOP" Id="{d8444895-e01a-478c-8eaf-23650e449549}">
-      <Declaration><![CDATA[METHOD M_A_STOP : BOOL
-VAR_INPUT
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[O_CW.SekReakt := 0;
-O_CW.Leitung := 0;
-O_CW.Temp := 0;
-O_CW.Enlteermenge := 0;
-O_CW.Pumpmenge := 0;
-O_CW.Haltedauer := T#0S;
-O_CW.Ruehrdauer := T#0S;
-O_CW.Wartedauer := T#0S;
-O_CW.Zirkulierdauer := T#0S;
-]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="M_M_OFF" Id="{15ab24aa-7a53-42fc-8b32-af1250aef26d}">
-      <Declaration><![CDATA[METHOD M_M_OFF : BOOL
-VAR_INPUT
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[O_CW.PowerOn := FALSE;]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="M_M_ON" Id="{2cc463e2-7a73-4f79-8ecd-c91093a26e4b}">
-      <Declaration><![CDATA[METHOD M_M_ON : BOOL
-VAR_INPUT
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[O_CW.PowerOn := TRUE;]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="M_M_START" Id="{712c9664-1124-4804-9d76-723ce000bf52}">
-      <Declaration><![CDATA[METHOD M_M_START : BOOL
-VAR_INPUT
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[O_CW := I_Parameter; ]]></ST>
-      </Implementation>
-    </Method>
-    <Method Name="M_M_STOP" Id="{45bf1e14-c8df-4553-b479-f9eed412350d}">
-      <Declaration><![CDATA[METHOD M_M_STOP : BOOL
-VAR_INPUT
-END_VAR
-]]></Declaration>
-      <Implementation>
-        <ST><![CDATA[O_CW.SekReakt := 0;
-O_CW.Leitung := 0;
-O_CW.Temp := 0;
-O_CW.Enlteermenge := 0;
-O_CW.Pumpmenge := 0;
-O_CW.Haltedauer := T#0S;
-O_CW.Ruehrdauer := T#0S;
-O_CW.Wartedauer := T#0S;
-O_CW.Zirkulierdauer := T#0S;
-]]></ST>
-      </Implementation>
-    </Method>
-    <Property Name="P_Status" Id="{23579e58-21f7-4d5c-8cdd-0dc574eac682}">
+    <Property Name="P_Status" Id="{23579e58-21f7-4d5c-8cdd-0dc574eac682}" FolderPath="02_Eigenschaften\">
       <Declaration><![CDATA[PROPERTY P_Status : INT]]></Declaration>
       <Get Name="Get" Id="{36f9b8e6-75d2-4ae3-a343-599d77dd5e02}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[IF I_SW.PrimReady THEN
+          <ST><![CDATA[// Status = 0: Reaktor nicht verbunden
+// Status = 1: Reaktor verbunden
+// Status = 2: Reaktor eingeschalten
+// Status = 3: Reaktor ready
+// Status = 4: Reaktor läuft
+// Status = 9: Error
+
+IF O_Verbunden THEN
 	P_Status := 1;
+	
+	IF O_SW.SysReady THEN
+		P_Status := 2;
+		
+		IF O_SW.PrimReady OR O_SW.SekReady THEN
+			P_Status := 3;
+			
+			IF O_SW.PrimActiv OR O_SW.SekActiv THEN
+				P_Status := 4;
+			END_IF
+		END_IF
+	END_IF
+ELSE
+	P_Status := 0;
 END_IF
 
-IF I_SW.PrimActiv THEN
-	P_Status := 2;
+IF O_Error THEN
+	P_Status := 9;
 END_IF]]></ST>
         </Implementation>
       </Get>
@@ -132,41 +211,75 @@ END_IF]]></ST>
       <LineId Id="26" Count="0" />
       <LineId Id="28" Count="0" />
       <LineId Id="27" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="74" Count="9" />
+      <LineId Id="109" Count="0" />
+      <LineId Id="87" Count="0" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="101" Count="2" />
+      <LineId Id="105" Count="0" />
+      <LineId Id="161" Count="1" />
+      <LineId Id="146" Count="3" />
+      <LineId Id="110" Count="0" />
+      <LineId Id="64" Count="0" />
+      <LineId Id="108" Count="0" />
+      <LineId Id="111" Count="2" />
+      <LineId Id="163" Count="1" />
+      <LineId Id="114" Count="0" />
+      <LineId Id="150" Count="0" />
+      <LineId Id="152" Count="1" />
+      <LineId Id="151" Count="0" />
+      <LineId Id="116" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="118" Count="0" />
+      <LineId Id="120" Count="3" />
+      <LineId Id="125" Count="2" />
+      <LineId Id="117" Count="0" />
+      <LineId Id="132" Count="5" />
+      <LineId Id="165" Count="1" />
+      <LineId Id="138" Count="0" />
+      <LineId Id="142" Count="3" />
+      <LineId Id="167" Count="1" />
+      <LineId Id="141" Count="0" />
+      <LineId Id="173" Count="1" />
+      <LineId Id="176" Count="1" />
+      <LineId Id="175" Count="0" />
+      <LineId Id="156" Count="0" />
+      <LineId Id="59" Count="0" />
+      <LineId Id="55" Count="0" />
     </LineIds>
-    <LineIds Name="FB_Reaktoreinheit.M_A_OFF">
-      <LineId Id="5" Count="0" />
+    <LineIds Name="FB_Reaktoreinheit.M_LESEN">
+      <LineId Id="7" Count="0" />
+      <LineId Id="9" Count="1" />
+      <LineId Id="12" Count="4" />
     </LineIds>
-    <LineIds Name="FB_Reaktoreinheit.M_A_ON">
-      <LineId Id="5" Count="0" />
+    <LineIds Name="FB_Reaktoreinheit.M_SCHREIBEN">
+      <LineId Id="5" Count="8" />
     </LineIds>
-    <LineIds Name="FB_Reaktoreinheit.M_A_START">
-      <LineId Id="5" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_Reaktoreinheit.M_A_STOP">
-      <LineId Id="5" Count="0" />
-      <LineId Id="9" Count="4" />
-      <LineId Id="15" Count="2" />
-      <LineId Id="14" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_Reaktoreinheit.M_M_OFF">
-      <LineId Id="5" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_Reaktoreinheit.M_M_ON">
-      <LineId Id="5" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_Reaktoreinheit.M_M_START">
-      <LineId Id="5" Count="0" />
-    </LineIds>
-    <LineIds Name="FB_Reaktoreinheit.M_M_STOP">
-      <LineId Id="9" Count="8" />
+    <LineIds Name="FB_Reaktoreinheit.M_VERBINDEN">
       <LineId Id="5" Count="0" />
     </LineIds>
     <LineIds Name="FB_Reaktoreinheit.P_Status.Get">
-      <LineId Id="2" Count="0" />
-      <LineId Id="5" Count="1" />
-      <LineId Id="8" Count="0" />
-      <LineId Id="7" Count="0" />
-      <LineId Id="9" Count="1" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="13" Count="4" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="24" Count="1" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="32" Count="2" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="41" Count="1" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="22" Count="1" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="45" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>

@@ -1,35 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <Itf Name="I_Reaktor" Id="{5049a58c-6904-4424-92d4-76423567d951}">
+  <Itf Name="I_Reaktor" Id="{5afb4d42-3731-4124-ae42-33c7d76a45b7}">
     <Declaration><![CDATA[INTERFACE I_Reaktor
 ]]></Declaration>
-    <Method Name="M_A_START" Id="{b92a3359-a2bf-49b6-b051-89c2380c3e14}">
-      <Declaration><![CDATA[METHOD M_A_START : BOOL
+    <Method Name="M_LESEN" Id="{24414d64-f1bf-4501-833b-5dfd920a3903}">
+      <Declaration><![CDATA[METHOD M_LESEN : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
     </Method>
-    <Method Name="M_A_STOP" Id="{ade5e6c4-391e-4805-bb12-5233b5bb225b}">
-      <Declaration><![CDATA[METHOD M_A_STOP : BOOL
+    <Method Name="M_SCHREIBEN" Id="{646b70e6-16f7-462b-b4de-4a3c4ec07824}">
+      <Declaration><![CDATA[METHOD M_SCHREIBEN : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
     </Method>
-    <Method Name="M_M_START" Id="{ec5c1263-e21d-4ec3-873c-653ff943e612}">
-      <Declaration><![CDATA[METHOD M_M_START : BOOL
+    <Method Name="M_VERBINDEN" Id="{36b76f31-0faf-49d5-906b-268707416915}">
+      <Declaration><![CDATA[METHOD M_VERBINDEN : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>
     </Method>
-    <Method Name="M_M_STOP" Id="{7ba803bf-e87c-425a-98a5-2b79c0c9b256}">
-      <Declaration><![CDATA[METHOD M_M_STOP : BOOL
-VAR_INPUT
-END_VAR
-]]></Declaration>
-    </Method>
-    <Property Name="P_Status" Id="{c28d1a19-8de6-4c19-a6ae-a3d92949f6a7}">
+    <Property Name="P_Status" Id="{850bfff5-6b69-4461-869f-3ec6b52002e4}">
       <Declaration><![CDATA[PROPERTY P_Status : INT]]></Declaration>
-      <Get Name="Get" Id="{8da618f5-1355-4d43-bd99-8a697cb97398}">
+      <Get Name="Get" Id="{617e746c-6430-4a29-a3b6-4eb78088d515}">
         <Declaration><![CDATA[]]></Declaration>
       </Get>
     </Property>

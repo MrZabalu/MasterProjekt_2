@@ -2,9 +2,9 @@
 <TcLicenseInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2011/11/TcLicenseInfo">
 	<LicenseInfo>
 		<SystemId>{CC22F6E9-E823-63EB-3D0B-82B4224D8206}</SystemId>
-		<IssueTime>2024-07-02T14:35:00</IssueTime>
-		<ExpireTime>2024-07-10T00:00:00</ExpireTime>
-		<LicenseKey>d178099c381b5203d75ecccb9e7933a8c65a8082e3394300e5f7d713962ed4dca98e5492da414f8c6426e4a36fb496a6410ab9b2a66eb691c84b1fdb25460a557ff00a68b9f501ab35dcaf76bcf60e8dece0c2b276fbddce3c0f92c470726f7e0070ee395ea841d47277b685a40a462794478e59b9b1beb54ee697764beca1ba03df67d46021eed5504c46613a278555da8432bf3a2dd40afda1b8393e8c9c34c6a656896e3c95a5915a5de70dc88b826b52ab06693c746bc90d3d9f48ebda251e9a3e226b553044abd299e1c21d222b6d2e3914bc9d887a63c0343d9bef984cc946f1fe855a7191a1e91e67324c1806b8b3393a76b8a6ec5c8c9dc04029dcd6</LicenseKey>
+		<IssueTime>2024-07-15T11:35:00</IssueTime>
+		<ExpireTime>2024-07-23T00:00:00</ExpireTime>
+		<LicenseKey>802be653f8e9b69c55ff711b93d7b03b30a95d7109e5f7a866e082a4c9681f2d38ee9ba8b63a97150c905e03e8aadd230269231198627fa3ecab47aa05e101f26359e0bb7ecbb70330bf795e8f7d8d45deeebde56660ceea6109acbafb994b07d25f5aa143ed62b1783b9b0e0e1647a8373651217f44202848b626fef0f57d7fab5c8be54449f131f86c34293f55e47175e3ae9eaf1047e380e7c1eac12e119ca85fc72a51c112245d9bdb993856c67eca7b174b679e8f52bc06ba8fff46134cdd446d10f1f9d646284d5a71c99f4a1f7b2d16e12a5f07400e885461b9ce6b0f42e5afb43d2daa043a0898ff205f688eab0d0c8efc01794278ba87fe376f77f2</LicenseKey>
 		<License>
 			<LicenseId>{4C256767-E6E6-4AF5-BD68-9F7ABAD0C200}</LicenseId>
 			<Name>TC3 ADS</Name>
@@ -21,6 +21,15 @@
 			<OrderNo>TC1200</OrderNo>
 		</License>
 		<License>
+			<LicenseId>{D4390DEA-A64D-494D-9E09-275326DBB0CB}</LicenseId>
+			<Name>TC3 PLC-HMI (RT)</Name>
+		</License>
+		<License>
+			<LicenseId>{FDE02854-39A7-440C-9EAE-C234A16A3CED}</LicenseId>
+			<Name>TC3 PLC-HMI</Name>
+			<OrderNo>TF1800</OrderNo>
+		</License>
+		<License>
 			<LicenseId>{CC0BCBD5-3EA7-D7D4-4C71-A8B125F0DB72}</LicenseId>
 			<Name>TC3 OPC-UA Analytics Read</Name>
 		</License>
@@ -32,15 +41,6 @@
 			<LicenseId>{BDCC0070-42D5-49AE-ABF1-1D4434813D60}</LicenseId>
 			<Name>TC3 OPC-UA</Name>
 			<OrderNo>TF6100</OrderNo>
-		</License>
-		<License>
-			<LicenseId>{D4390DEA-A64D-494D-9E09-275326DBB0CB}</LicenseId>
-			<Name>TC3 PLC-HMI (RT)</Name>
-		</License>
-		<License>
-			<LicenseId>{FDE02854-39A7-440C-9EAE-C234A16A3CED}</LicenseId>
-			<Name>TC3 PLC-HMI</Name>
-			<OrderNo>TF1800</OrderNo>
 		</License>
 	</LicenseInfo>
 </TcLicenseInfo>

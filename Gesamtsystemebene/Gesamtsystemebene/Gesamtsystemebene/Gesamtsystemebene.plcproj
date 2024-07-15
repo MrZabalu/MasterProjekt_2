@@ -59,12 +59,6 @@
     <Compile Include="POUs\04_Abläufe\Grundablauf.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\05_Kommunikation\01_Connection\FB_Connection.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\05_Kommunikation\ConnectSystem.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -91,8 +85,6 @@
     <Folder Include="POUs\03_System" />
     <Folder Include="POUs\04_Abläufe" />
     <Folder Include="POUs\04_Abläufe\01_Vererbung" />
-    <Folder Include="POUs\05_Kommunikation" />
-    <Folder Include="POUs\05_Kommunikation\01_Connection" />
     <Folder Include="VISUs" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +145,10 @@
     <PlaceholderReference Include="Tc3_PLCopen_OpcUa">
       <DefaultResolution>Tc3_PLCopen_OpcUa, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc3_PLCopen_OpcUa</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="VisuDialogs">
+      <DefaultResolution>VisuDialogs, * (System)</DefaultResolution>
+      <Namespace>VisuDialogs</Namespace>
     </PlaceholderReference>
   </ItemGroup>
   <ItemGroup>
