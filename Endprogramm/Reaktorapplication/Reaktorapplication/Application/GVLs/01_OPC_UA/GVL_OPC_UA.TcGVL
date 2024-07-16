@@ -6,13 +6,13 @@ VAR_GLOBAL
 	// Rezept-Controlword
 	{attribute 'OPC.UA.DA' := '1'}
 	{attribute 'OPC.UA.DA.StructuredType' := '1'}
-	CW		:RezeptControlWord;
+	CW		:SystemControlWord;
 	
 	// Rezept-Statusword
 	{attribute 'OPC.UA.DA' := '1'}
 	{attribute 'OPC.UA.DA.Access' := '1'}
 	{attribute 'OPC.UA.DA.StructuredType' := '1'}
-	SW		:RezeptStatusWord;
+	SW		:SystemStatusWord;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

@@ -33,10 +33,10 @@
     <Compile Include="DUTs\01_Schnittstellen\I_Sensor.TcIO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\02_Strukturen\RezeptControlWord.TcDUT">
+    <Compile Include="DUTs\02_Strukturen\SystemControlWord.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\02_Strukturen\RezeptStatusWord.TcDUT">
+    <Compile Include="DUTs\02_Strukturen\SystemStatusWord.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GlobalTextList.TcGTLO">

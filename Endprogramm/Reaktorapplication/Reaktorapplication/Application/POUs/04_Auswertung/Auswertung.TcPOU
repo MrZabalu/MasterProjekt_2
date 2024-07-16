@@ -1395,7 +1395,13 @@ END_VAR
     <Folder Name="01_Grundfunktionen" Id="{95503e6c-7e16-4647-ba4e-04aeeab2e4f2}" />
     <Action Name="ACT_Auswertung" Id="{7393ef30-088c-4df6-a2a0-55e46e22afa8}">
       <Implementation>
-        <ST><![CDATA[// Auswertung der Leitung
+        <ST><![CDATA[// Rpüfen ob System eingeschalten werden soll
+IF GVL_OPC_UA.CW.PowerOn THEN
+	GVL.Bedien_Power := TRUE;
+	GVL_OPC_UA.SW.SysReady := TRUE;
+END_IF
+
+// Auswertung der Leitung
 	MAIN.Leitung.P_Leitung := GVL_OPC_UA.CW.Leitung;
 
 // Auswertung ob Sekundär-Reaktor (Starten von GF_Befüllen)
@@ -1414,21 +1420,21 @@ IF GVL_OPC_UA.CW.Pumpmenge > 0 THEN
 	MAIN.Pumpen.M_START();
 END_IF
 // Prüfen ob GF_Halten
-IF GVL_OPC_UA.CW.Haltedauer > T#0S THEN
+IF (T#1S * GVL_OPC_UA.CW.Haltedauer) > T#0S THEN
 	platzhalter := TRUE;
 END_IF
 // Prüfen ob GF_Rühren
-IF GVL_OPC_UA.CW.Ruehrdauer > T#0S THEN
+IF (T#1S * GVL_OPC_UA.CW.Ruehrdauer) > T#0S THEN
 	ACT_GF_Ruehren();
 	MAIN.Ruehren.M_START();
 END_IF
 // Prüfen ob GF_Warten
-IF GVL_OPC_UA.CW.Wartedauer > T#0S THEN
+IF (T#1S * GVL_OPC_UA.CW.Wartedauer) > T#0S THEN
 	ACT_GF_Warten();
 	MAIN.Warten.M_START();
 END_IF
 // Prüfen ob GF_Zirkulieren
-IF GVL_OPC_UA.CW.Zirkulierdauer > T#0S THEN
+IF (T#1S * GVL_OPC_UA.CW.Zirkulierdauer) > T#0S THEN
 	ACT_GF_Zirkulieren();
 	MAIN.Zirkulieren.M_START();
 END_IF]]></ST>
@@ -3439,7 +3445,7 @@ END_IF]]></ST>
       </XmlArchive>
     </ObjectProperties>
     <LineIds Name="Auswertung.ACT_Auswertung">
-      <LineId Id="2" Count="35" />
+      <LineId Id="2" Count="41" />
       <LineId Id="1" Count="0" />
     </LineIds>
   </POU>

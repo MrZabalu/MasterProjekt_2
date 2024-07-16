@@ -9,10 +9,10 @@ STRUCT
 	Temp			:REAL;			// Definierte Temperatur für Heiz- / Kühlprozess
 	Enlteermenge	:REAL;			// Zu entleerende Menge
 	Pumpmenge		:REAL;			// Zu pumpende Menge
-	Haltedauer		:TIME;			// Wie lange soll TEmperatur gehalten werden
-	Ruehrdauer		:TIME;			// Wie lange soll gerührt werden 
-	Wartedauer		:TIME;			// Wie lange soll gerührt werden
-	Zirkulierdauer	:TIME;			// Wie lange soll zirkuliert werden
+	Haltedauer		:INT;			// Wie lange soll Temperatur gehalten werden (Faktor für Sekunden)
+	Ruehrdauer		:INT;			// Wie lange soll gerührt werden (Faktor für Sekunden)
+	Wartedauer		:INT;			// Wie lange soll gerührt werden (Faktor für Sekunden)
+	Zirkulierdauer	:INT;			// Wie lange soll zirkuliert werden (Faktor für Sekunden)
 END_STRUCT
 END_TYPE
 ]]></Declaration>

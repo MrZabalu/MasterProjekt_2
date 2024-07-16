@@ -6,14 +6,6 @@ VAR_GLOBAL
 	// Verbindungsinformationen
 	IP_R1			:STRING(MAX_STRING_LENGTH) := 'opc.tcp://169.254.240.2:4840';
 	NameSpace		:STRING(MAX_STRING_LENGTH) := 'urn:BeckhoffAutomation:Ua:PLC1';
-		
-	// System-Control-Words
-	SysCW_R1				AT%Q*	:SystemControlWord;				// Schnittstelle zur OPC UA Schnittstelle - Reaktor 1
-	SysCW_R2				AT%Q*	:SystemControlWord;				// Schnittstelle zur OPC UA Schnittstelle - Reaktor 2
-	
-	// System-Status-Words
-	SysSW_R1				AT%I*	:SystemStatusWord;				// Schnittstelle von OPC UA Schnittstelle - Reaktor 1
-	SysSW_R2				AT%I*	:SystemStatusWord;				// Schnittstelle von OPC UA Schnittstelle - Reaktor 2
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

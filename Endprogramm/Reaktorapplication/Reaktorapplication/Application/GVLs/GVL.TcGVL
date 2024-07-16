@@ -13,7 +13,7 @@ VAR_GLOBAL
 	
 	// Debug-Variablen: 
 	Debug_Verbunden		:BOOL;
-	Debug_Start			:BOOL;
+	Debug_Start			:BOOL := TRUE;
 	Debug_SekStart		:BOOL;
 
 END_VAR]]></Declaration>

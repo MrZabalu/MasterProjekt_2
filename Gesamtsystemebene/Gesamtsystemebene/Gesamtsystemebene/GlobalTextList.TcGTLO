@@ -81,6 +81,21 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"123"</v>
+              <v n="TextDefault">"ConnectionState"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"369"</v>
+              <v n="TextDefault">"ConnentionStatus"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"716"</v>
+              <v n="TextDefault">"ConnentionStatus:"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"988"</v>
               <v n="TextDefault">"Controll-Word"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -103,6 +118,11 @@
             <o>
               <v n="TextID">"47"</v>
               <v n="TextDefault">"Definierter sekundär-Reaktor"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"35"</v>
+              <v n="TextDefault">"Disconnect"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
@@ -386,6 +406,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"701"</v>
+              <v n="TextDefault">"ServerState:"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"860"</v>
               <v n="TextDefault">"Start"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -451,6 +476,11 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"972"</v>
+              <v n="TextDefault">"Verbunden: "</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"889"</v>
               <v n="TextDefault">"Wartedauer"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -498,6 +528,11 @@
             <o>
               <v n="TextID">"164"</v>
               <v n="TextDefault">"Zu pumpende Menge"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"448"</v>
+              <v n="TextDefault">"Zustand"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
           </l>

@@ -14,11 +14,15 @@ Id;Default
 41;Client zurücksetzen
 364;Connect
 431;Connected:
+123;ConnectionState
+369;ConnentionStatus
+716;ConnentionStatus:
 988;Controll-Word
 461;Debug-HMI
 776;Definiert welche Leitung verwendet wird
 578;Definierte Temperatur für Heiz- / Kühlprozess
 47;Definierter sekundär-Reaktor
+35;Disconnect
 587;Eigenschaften & Inputs
 856;Einschalten
 668;Enleermenge
@@ -75,6 +79,7 @@ Id;Default
 373;SekReakt
 560;Sekundärreaktor führt Prozess aus
 923;Sekundärreaktor ist bereit für den Prozess
+701;ServerState:
 860;Start
 857;Start sekundär Reaktor
 291;Start: Rezept
@@ -88,6 +93,7 @@ Id;Default
 320;Verbinden mit Client
 643;Verbindung zum Server wurde erstellt
 834;VERBUNDEN:
+972;Verbunden: 
 889;Wartedauer
 362;Warteprozess läuft
 438;Wie lange soll gerührt werden
@@ -98,3 +104,4 @@ Id;Default
 926;Zirkulierprozess läuft
 26;Zu entleerende Menge
 164;Zu pumpende Menge
+448;Zustand
