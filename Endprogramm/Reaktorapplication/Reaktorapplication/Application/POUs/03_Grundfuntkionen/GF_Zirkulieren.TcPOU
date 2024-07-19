@@ -6,14 +6,16 @@ VAR_INPUT
 	// Instanzieren von Sensoren mit Interfaces
 	
 	// Instanzieren von Aktoren mit Interfaces
-	Ventil_IN			:I_Magnetventil;
-	Ventil_OUT			:I_Magnetventil;
+	I_Ventil_IN			:I_Magnetventil;
+	I_Ventil_OUT			:I_Magnetventil;
 	
-	Pumpe				:I_Motor2R;
-	
+	I_Pumpe				:I_Motor2R;
+	// Rezeptparameter durch Controlword
+	I_CW		:RezeptControlWord;	
 END_VAR
+
 VAR_OUTPUT
-	
+	O_SW		:RezeptStatusWord;
 END_VAR
 VAR
 	
@@ -151,7 +153,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"V_Start"</v>
+                            <v n="Value">"P_Status = 1"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">23L</v>
@@ -277,7 +279,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"Pumpe.M_A_FWD"</v>
+                                  <v n="Value">"I_Pumpe.M_A_FWD"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">156L</v>
@@ -330,7 +332,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"Ventil_IN.M_A_OEFFNEN"</v>
+                                  <v n="Value">"I_Ventil_IN.M_A_OEFFNEN"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">162L</v>
@@ -383,7 +385,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"Ventil_OUT.M_A_OEFFNEN"</v>
+                                  <v n="Value">"I_Ventil_OUT.M_A_OEFFNEN"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">168L</v>
@@ -600,7 +602,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"Ventil_IN.P_Status = 1 AND Ventil_OUT.P_Status = 1"</v>
+                            <v n="Value">"I_Ventil_IN.P_Status = 1 AND I_Ventil_OUT.P_Status = 1"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">52L</v>
@@ -726,7 +728,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"Pumpe.M_A_START"</v>
+                                  <v n="Value">"I_Pumpe.M_A_START"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">211L</v>
@@ -890,7 +892,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"Pumpe.P_Status = 2 AND Pumpen.t &gt;  (T#1s * GVL_OPC_UA.CW.Zirkulierdauer)"</v>
+                            <v n="Value">"I_Pumpe.P_Status = 2 AND Pumpen.t &gt;  (T#1s * I_CW.Zirkulierdauer)"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">71L</v>
@@ -963,7 +965,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"Pumpe.M_A_STOP"</v>
+                                  <v n="Value">"I_Pumpe.M_A_STOP"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">217L</v>
@@ -1127,7 +1129,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"Pumpe.P_Status = 1"</v>
+                            <v n="Value">"I_Pumpe.P_Status = 1"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">145L</v>
@@ -1200,7 +1202,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"Ventil_IN.M_A_SCHLIESSEN"</v>
+                                  <v n="Value">"I_Ventil_IN.M_A_SCHLIESSEN"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">223L</v>
@@ -1253,7 +1255,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"Ventil_OUT.M_A_SCHLIESSEN"</v>
+                                  <v n="Value">"I_Ventil_OUT.M_A_SCHLIESSEN"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">235L</v>
@@ -1470,7 +1472,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"Ventil_IN.P_Status = 0 AND Ventil_OUT.P_Status = 0 "</v>
+                            <v n="Value">"I_Ventil_IN.P_Status = 0 AND I_Ventil_OUT.P_Status = 0 "</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">90L</v>
@@ -1596,7 +1598,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"V_Stop"</v>
+                                  <v n="Value">"M_Stop"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">253L</v>
@@ -1813,7 +1815,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"V_Stop"</v>
+                            <v n="Value">"P_Status = 0"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">109L</v>
@@ -2229,13 +2231,13 @@ END_VAR
     <Folder Name="01_Aktionen" Id="{b286a800-5ca6-40dc-994e-348370a92f4c}" />
     <Action Name="ResetActiv" Id="{b6be454c-8fc4-4f05-89e0-add6a3aa6f6a}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[GVL_OPC_UA.SW.PrimActiv := FALSE;
-GVL_OPC_UA.SW.GF8Activ := FALSE;]]></ST>
+        <ST><![CDATA[O_SW.ReactActiv := FALSE;
+O_SW.GF8Activ := FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ResetReady" Id="{88d86819-d352-4c00-8bf7-b519139799f4}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[GVL_OPC_UA.SW.PrimReady := FALSE;]]></ST>
+        <ST><![CDATA[O_SW.ReactReady:= FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ResetSysActiv" Id="{c7159bb1-29cf-47d5-9477-7e420fcccb6f}" FolderPath="01_Aktionen\">
@@ -2245,13 +2247,13 @@ GVL_OPC_UA.SW.GF8Activ := FALSE;]]></ST>
     </Action>
     <Action Name="SetActiv" Id="{5f4ab24d-23e3-476d-9ced-7224ca24c7fc}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[GVL_OPC_UA.SW.PrimActiv := TRUE;
-GVL_OPC_UA.SW.GF8Activ := TRUE;]]></ST>
+        <ST><![CDATA[O_SW.ReactActiv := TRUE;
+O_SW.GF8Activ := TRUE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SetReady" Id="{9b1208bb-c542-492d-887a-784a4b6b989d}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[GVL_OPC_UA.SW.PrimReady := TRUE;]]></ST>
+        <ST><![CDATA[O_SW.ReactReady := TRUE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SetSysActiv" Id="{5f869143-b821-4b2b-90b9-b009b249152b}" FolderPath="01_Aktionen\">

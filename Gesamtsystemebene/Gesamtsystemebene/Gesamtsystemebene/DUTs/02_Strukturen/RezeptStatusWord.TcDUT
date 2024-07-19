@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="RezeptStatusWord" Id="{12b9cc79-7119-40fb-8a3d-043692b3e362}">
+    <Declaration><![CDATA[TYPE RezeptStatusWord :
+STRUCT
+	SysReady		:BOOL;		// System ist bereit für Kommunikation
+	SysActiv		:BOOL;		// System ist eingeschalten
+	ReactReady		:BOOL;		// Primärreaktor ist bereit für den Prozess
+	ReactActiv		:BOOL;		// Primärreaktor führt Prozess aus
+	GF1Activ		:BOOL;		// Heiz- / Kühlprozess läuft
+	GF2Activ		:BOOL;		// Entleerprozess läuft
+	GF3Activ		:BOOL;		// Pumpprozess läuft
+	GF4Activ		:BOOL;		// Halteprozess läuft
+	GF5Activ		:BOOL;		// Rührprozess läuft
+	GF6Activ		:BOOL;		// Warteprozess läuft
+	GF7Activ		:BOOL;		// Auffüllprozess läuft
+	GF8Activ		:BOOL;		// Zirkulierprozess läuft
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

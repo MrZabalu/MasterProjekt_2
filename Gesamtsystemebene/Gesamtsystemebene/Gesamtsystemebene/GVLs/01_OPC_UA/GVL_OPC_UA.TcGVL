@@ -4,8 +4,16 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 	// Verbindungsinformationen
-	IP_R1			:STRING(MAX_STRING_LENGTH) := 'opc.tcp://169.254.240.2:4840';
+	IP 				:ARRAY [0..6] OF STRING := [
+		        'opc.tcp://169.254.240.1:4840', 
+        		'opc.tcp://169.254.240.2:4840',
+				'opc.tcp://169.254.240.3:4840', 
+				'opc.tcp://169.254.240.4:4840', 
+				'opc.tcp://169.254.240.5:4840', 
+ 				'opc.tcp://169.254.240.6:4840', 
+        		'opc.tcp://169.254.240.7:4840'];	
 	NameSpace		:STRING(MAX_STRING_LENGTH) := 'urn:BeckhoffAutomation:Ua:PLC1';
+	ConnectionHdl	:ARRAY [0..6] OF DWORD := [];
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

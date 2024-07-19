@@ -6,13 +6,23 @@ VAR_GLOBAL
 	// Rezept-Controlword
 	{attribute 'OPC.UA.DA' := '1'}
 	{attribute 'OPC.UA.DA.StructuredType' := '1'}
-	CW		:SystemControlWord;
+	CW			:RezeptControlWord;
 	
 	// Rezept-Statusword
 	{attribute 'OPC.UA.DA' := '1'}
 	{attribute 'OPC.UA.DA.Access' := '1'}
 	{attribute 'OPC.UA.DA.StructuredType' := '1'}
-	SW		:SystemStatusWord;
+	SW			:RezeptStatusWord;
+	
+	// System-Statusword
+	{attribute 'OPC.UA.DA' := '1'}
+	{attribute 'OPC.UA.DA.StructuredType' := '1'}
+	SysSW		:SystemStatusWord;
+	
+	// Sekundärreaktor-Controlword
+	{attribute 'OPC.UA.DA' := '1'}
+	{attribute 'OPC.UA.DA.StructuredType' := '1'}
+	SekCW		:SekControlWord;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

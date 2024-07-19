@@ -4,13 +4,7 @@
     <Declaration><![CDATA[PROGRAM Rezept_1
 VAR
 	// Abläufe
-	Reaktor_1		:Grundablauf;
-	Reaktor_2		:Grundablauf;
-	Reaktor_3		:Grundablauf;
-	Reaktor_4		:Grundablauf;
-	Reaktor_5		:Grundablauf;
-	Reaktor_6		:Grundablauf;
-	Reaktor_7		:Grundablauf;
+	GA_Reaktor_1		:Grundablauf;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -980,16 +974,17 @@ END_VAR
     </Implementation>
     <Action Name="ACT_Reaktor_1" Id="{79ef2885-0180-43e6-a0a5-050a4762533a}">
       <Implementation>
-        <ST><![CDATA[Reaktor_1(Reaktor := Reaktoranlage.R1,
-			SekReaktor := 0,
+        <ST><![CDATA[GA_Reaktor_1(Reaktor := Reaktoranlage.R1,
+			SekReakt := 0,
 			Temp := 0,
 			Entleermenge := 0,
 			Pumpmenge := 0,
-			Haltedauer := T#0S,
-			Ruehrdauer := T#0S,
-			Wartedauer := T#0S,
-			Zirkulierdauer := T#0S);
-Reaktor_1.M_START();]]></ST>
+			Haltedauer := 0,
+			Ruehrdauer := 0,
+			Wartedauer := 10000,
+			Zirkulierdauer := 0, 
+			CW => GVL.R1_CW);
+GA_Reaktor_1.M_START();]]></ST>
       </Implementation>
     </Action>
     <ObjectProperties>
@@ -1088,9 +1083,7 @@ Reaktor_1.M_START();]]></ST>
       </XmlArchive>
     </ObjectProperties>
     <LineIds Name="Rezept_1.ACT_Reaktor_1">
-      <LineId Id="2" Count="0" />
-      <LineId Id="4" Count="5" />
-      <LineId Id="11" Count="1" />
+      <LineId Id="2" Count="9" />
       <LineId Id="1" Count="0" />
     </LineIds>
   </POU>

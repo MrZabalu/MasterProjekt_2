@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="Kommunikation" Id="{1a1a3b77-1732-478b-bd09-af6aceb081ed}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Kommunikation
+VAR
+	Auswertung_R1		:FB_Auswertung;
+	
+	State				:INT := 1;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Instanziieren der Reaktorauswertung
+Auswertung_R1(I_RNr := 1,
+			   	I_ConnectionHdl := GVL_OPC_UA.ConnectionHdl[0],
+				I_NameSpace := GVL_OPC_UA.NameSpace,
+				I_CW := GVL.R1_CW,
+				I_SW := GVL.R1_SW,
+				I_SysSW := GVL.SysStatusWord,
+				I_SekCW := GVL.SekControlWord,
+				O_SysSW => GVL.SysStatusWord,
+				O_SekCW => GVL.SekControlWord,
+				O_Error => GVL.Error,
+				O_ErrorID => GVL.ErrorID);
+
+CASE State OF 
+	0: //IDLE
+	
+	1: // Verbinden mit OPC-UA-Schnittstelle
+		IF Reaktoranlage.R1.O_Verbunden THEN
+			Auswertung_R1.M_VERBINDEN();
+			State := 2;
+		END_IF
+
+	2: 	IF Auswertung_R1.O_Verbunden THEN
+			State := 3;
+		END_IF
+	3: 	Auswertung_R1.M_STATUS_SYSTEM();
+		Auswertung_R1.M_STATUS_SEK();
+		
+		IF Auswertung_R1.O_Error THEN
+			State := 0;
+		END_IF		
+END_CASE
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="Kommunikation">
+      <LineId Id="49" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="8" Count="9" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="59" Count="3" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="67" Count="2" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="54" Count="2" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="19" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

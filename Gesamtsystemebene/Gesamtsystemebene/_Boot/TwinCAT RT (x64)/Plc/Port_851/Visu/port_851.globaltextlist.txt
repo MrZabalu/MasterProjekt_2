@@ -9,6 +9,7 @@ Id;Default
 842;Auschalten
 551;Ausführen von Kommunikation
 820;Ausführen von Kommunikationsbefehl
+888;Ausschalten
 177;Busy:
 154;Client resetten
 41;Client zurücksetzen
@@ -18,6 +19,7 @@ Id;Default
 369;ConnentionStatus
 716;ConnentionStatus:
 988;Controll-Word
+676;Controll-Word-Reaktor 1
 461;Debug-HMI
 776;Definiert welche Leitung verwendet wird
 578;Definierte Temperatur für Heiz- / Kühlprozess
@@ -62,6 +64,8 @@ Id;Default
 152;Pumpprozess läuft
 1029;P_DefTemp:
 323;P_MaxDrz:
+1036;ReactActiv
+835;ReactReady
 297;Reaktor 1
 76;Reaktor 2
 509;Reaktor 3
@@ -85,6 +89,7 @@ Id;Default
 291;Start: Rezept
 979;Status-Word
 421;Status-Word-R1
+447;SysActiv
 535;SysReady
 973;Temp
 27;Temperatursensor

@@ -54,7 +54,7 @@
               <v>FB_Reinit</v>
               <v>36f0f3dd-ba31-4320-92e9-4796652516bc</v>
             </d>
-            <v n="FbName">"NotImportant"</v>
+            <v n="FbName">"__VisuInitInstantiation_Fb"</v>
             <v n="FbGuid">{0a1879f2-9e63-4d24-bb44-27360b11787e}</v>
           </o>
           <o n="TargetProperties" t="VisualizationTargetProperties">
@@ -572,42 +572,5 @@
         <Type n="VisualManagerViewSettings">{ec9b2ec6-92a2-4856-be72-7866fb274c64}</Type>
       </TypeList>
     </XmlArchive>
-    <TargetVisu Name="TargetVisualization" Id="{f3844b7a-ef29-47d3-a19b-cb5498f51f26}">
-      <XmlArchive>
-        <Data>
-          <o xml:space="preserve" t="TargetVisualizationObject">
-            <o n="ViewSettings" t="TargetVisualizationViewSettings">
-              <v n="StartVisu">"Debug_Visu"</v>
-              <n n="HtmFileName" />
-              <v n="UpdateRate">200</v>
-              <v n="CommBufferSize">50000</v>
-              <v n="BestFit">true</v>
-              <v n="ClientSizeMode" t="VisualClientSizeMode">AutoDetect</v>
-              <v n="ClientSizeX">2000</v>
-              <v n="ClientSizeY">2000</v>
-              <v n="Antialiasing">true</v>
-              <v n="ClientOperationType" t="eDefaultInputSetting">Touchscreen</v>
-              <v n="ScaleTypeIsotropic">true</v>
-              <v n="UseScalingOptionsForDialogs">true</v>
-              <v n="HideCursor">false</v>
-              <v n="UseTitlebar">false</v>
-              <v n="StartTargetvisu">true</v>
-              <v n="WindowWidth">-1</v>
-              <v n="WindowHeight">-1</v>
-              <v n="ClientName">""</v>
-            </o>
-          </o>
-        </Data>
-        <TypeList>
-          <Type n="Boolean">System.Boolean</Type>
-          <Type n="eDefaultInputSetting">{bd122c9a-5824-461f-8b56-d89816d314bf}</Type>
-          <Type n="Int32">System.Int32</Type>
-          <Type n="String">System.String</Type>
-          <Type n="TargetVisualizationObject">{bc63f5fa-d286-4786-994e-7b27e4f97bd5}</Type>
-          <Type n="TargetVisualizationViewSettings">{cb5403ec-4e3b-4965-9be8-913e6068f7cb}</Type>
-          <Type n="VisualClientSizeMode">{c37fe731-4f69-4d98-82fe-4f9aefbe200d}</Type>
-        </TypeList>
-      </XmlArchive>
-    </TargetVisu>
   </VisuManager>
 </TcPlcObject>

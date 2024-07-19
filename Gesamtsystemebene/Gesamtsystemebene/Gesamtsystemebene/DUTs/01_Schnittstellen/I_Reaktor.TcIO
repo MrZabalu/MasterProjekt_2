@@ -15,8 +15,20 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
     </Method>
+    <Method Name="M_TRENNEN" Id="{e2ee9120-8a5e-4704-8ad3-e059490a88ce}">
+      <Declaration><![CDATA[METHOD M_TRENNEN : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
     <Method Name="M_VERBINDEN" Id="{36b76f31-0faf-49d5-906b-268707416915}">
       <Declaration><![CDATA[METHOD M_VERBINDEN : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_ZUSTAND" Id="{76b5a317-6981-420c-ab7d-8ecd446f5b1c}">
+      <Declaration><![CDATA[METHOD M_ZUSTAND : BOOL
 VAR_INPUT
 END_VAR
 ]]></Declaration>

@@ -4,13 +4,14 @@
     <Declaration><![CDATA[FUNCTION_BLOCK GF_Befuellen	EXTENDS FB_Basis
 VAR_INPUT
 	// Instanzieren von Sensoren mit Interfaces
-	Level		:I_Sensor;
+	I_Level		:I_Sensor;
 	// Instanzieren von Aktoren mit Interfaces
-	Ventil		:I_Magnetventil;
-	// Rezeptparameter
+	I_Ventil	:I_Magnetventil;
+	// Rezeptparameter durch Controlword
+	I_CW		:RezeptControlWord;	
 END_VAR
 VAR_OUTPUT
-	
+	O_SW		:RezeptStatusWord;
 END_VAR
 VAR
 	
@@ -148,7 +149,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"V_Start"</v>
+                            <v n="Value">"P_Status = 1"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">23L</v>
@@ -274,7 +275,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"Ventil.M_A_OEFFNEN"</v>
+                                  <v n="Value">"I_Ventil.M_A_OEFFNEN"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">131L</v>
@@ -491,7 +492,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"Ventil.P_Status = 1 AND GVL_OPC_UA.SW.PrimReady"</v>
+                            <v n="Value">"I_Ventil.P_Status = 1 AND O_SW.ReactReady"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">61L</v>
@@ -965,7 +966,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"NOT GVL_OPC_UA.SW.PrimActiv"</v>
+                            <v n="Value">"NOT O_SW.ReactActiv"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">80L</v>
@@ -1038,7 +1039,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"Ventil.M_A_SCHLIESSEN"</v>
+                                  <v n="Value">"I_Ventil.M_A_SCHLIESSEN"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">137L</v>
@@ -1202,7 +1203,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"Ventil.P_Status = 0"</v>
+                            <v n="Value">"I_Ventil.P_Status = 0"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">99L</v>
@@ -1328,7 +1329,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"V_Stop"</v>
+                                  <v n="Value">"M_Stop"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">210L</v>
@@ -1545,7 +1546,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"V_Stop"</v>
+                            <v n="Value">"P_Status = 0"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">118L</v>
@@ -1963,9 +1964,9 @@ END_VAR
     <Transition Name="Fuellstandcheck" Id="{34ac417c-4efe-466c-a9ee-bde5e34579b7}" FolderPath="02_Transitions\">
       <Implementation>
         <ST><![CDATA[// Prüfen welche Grundfunktion verwendet wird
-IF GVL_OPC_UA.CW.Enlteermenge > 0 THEN
+IF I_CW.Enlteermenge > 0 THEN
 	// Bedingung
-	IF  GVL_OPC_UA.CW.Enlteermenge < Level.P_Messwert THEN
+	IF  I_CW.Enlteermenge < I_Level.P_Messwert THEN
 		Fuellstandcheck := TRUE;
 		
 	ELSE 
@@ -1974,11 +1975,10 @@ IF GVL_OPC_UA.CW.Enlteermenge > 0 THEN
 END_IF
 
 // Prüfen welche Grundfunktion verwendet wird
-IF GVL_OPC_UA.CW.Pumpmenge > 0 THEN
+IF I_CW.Pumpmenge > 0 THEN
 	// Bedingung
-	IF  GVL_OPC_UA.CW.Pumpmenge < Level.P_Messwert THEN
+	IF  I_CW.Pumpmenge < I_Level.P_Messwert THEN
 		Fuellstandcheck := TRUE;
-		
 	ELSE 
 		Fuellstandcheck := FALSE;
 	END_IF
@@ -1987,13 +1987,13 @@ END_IF]]></ST>
     </Transition>
     <Action Name="ResetActiv" Id="{26b6df95-fd29-4c3a-9a68-95c3f69bf336}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[GVL_OPC_UA.SW.SekActiv := FALSE;
-GVL_OPC_UA.SW.GF7Activ := FALSE;]]></ST>
+        <ST><![CDATA[O_SW.ReactActiv := FALSE;
+O_SW.GF7Activ := FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ResetReady" Id="{23662753-2ca6-4c22-a1c0-77f706883224}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[GVL_OPC_UA.SW.SekReady := FALSE;]]></ST>
+        <ST><![CDATA[O_SW.ReactReady := FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ResetSysActiv" Id="{67fdda91-07d5-47da-a0da-171955fb3e5f}" FolderPath="01_Aktionen\">
@@ -2005,13 +2005,13 @@ GVL.Debug_SekStart := 0;]]></ST>
     </Action>
     <Action Name="SetActiv" Id="{07070a43-bcc7-45f3-9381-b8da515e0b5c}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[GVL_OPC_UA.SW.SekActiv := TRUE;
-GVL_OPC_UA.SW.GF7Activ := TRUE;]]></ST>
+        <ST><![CDATA[O_SW.ReactActiv := TRUE;
+O_SW.GF7Activ := TRUE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SetReady" Id="{89c38aa9-37eb-4727-b8e7-0908130829dd}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[GVL_OPC_UA.SW.SekReady := TRUE;]]></ST>
+        <ST><![CDATA[O_SW.ReactReady := TRUE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SetSysActiv" Id="{13869d2e-1a10-48e8-8d39-cb3815ca389a}" FolderPath="01_Aktionen\">
@@ -2115,7 +2115,7 @@ GVL_OPC_UA.SW.GF7Activ := TRUE;]]></ST>
       </XmlArchive>
     </ObjectProperties>
     <LineIds Name="GF_Befuellen.Fuellstandcheck">
-      <LineId Id="2" Count="19" />
+      <LineId Id="2" Count="18" />
       <LineId Id="1" Count="0" />
     </LineIds>
     <LineIds Name="GF_Befuellen.ResetActiv">

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="SekControlWord" Id="{52cbb51c-4ae8-48ec-8fc3-a72fc26e34c1}">
+    <Declaration><![CDATA[TYPE SekControlWord :
+STRUCT
+	// Das SekControlWord startet den Befüllprozess beim Sekundärreaktor (Empfänger)	
+	R1				:BOOL;
+	R2				:BOOL;
+	R3				:BOOL;
+	R4				:BOOL;
+	R5				:BOOL;
+	R6				:BOOL;
+	R7				:BOOL;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

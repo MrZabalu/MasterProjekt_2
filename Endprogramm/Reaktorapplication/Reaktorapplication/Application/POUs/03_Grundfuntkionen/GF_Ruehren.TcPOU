@@ -6,11 +6,12 @@ VAR_INPUT
 	// Instanzieren von Sensoren mit Interfaces
 	
 	// Instanzieren von Aktoren mit Interfaces
-	Ruehrer		:I_Motor1R;
-	// Rezeptparamter
+	I_Ruehrer		:I_Motor1R;
+	// Rezeptparameter durch Controlword
+	I_CW		:RezeptControlWord;	
 END_VAR
 VAR_OUTPUT
-	
+	O_SW		:RezeptStatusWord;
 END_VAR
 VAR
 	
@@ -148,7 +149,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"V_Start"</v>
+                            <v n="Value">"P_Status = 1"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">23L</v>
@@ -274,7 +275,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"Ruehrer.M_A_AN"</v>
+                                  <v n="Value">"I_Ruehrer.M_A_AN"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">147L</v>
@@ -491,7 +492,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"Ruehrer.P_Status = 1"</v>
+                            <v n="Value">"I_Ruehrer.P_Status = 1"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">52L</v>
@@ -617,7 +618,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"Ruehrer.M_A_START"</v>
+                                  <v n="Value">"I_Ruehrer.M_A_START"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">153L</v>
@@ -781,7 +782,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"Ruehren.t &gt; (T#1s * GVL_OPC_UA.CW.Ruehrdauer)"</v>
+                            <v n="Value">"Ruehren.t &gt; (T#1s * I_CW.Ruehrdauer)"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">97L</v>
@@ -854,7 +855,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"Ruehrer.M_A_STOP"</v>
+                                  <v n="Value">"I_Ruehrer.M_A_STOP"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">159L</v>
@@ -1071,7 +1072,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"Ruehrer.P_Status = 1"</v>
+                            <v n="Value">"I_Ruehrer.P_Status = 1"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">116L</v>
@@ -1144,7 +1145,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"Ruehrer.M_A_AUS"</v>
+                                  <v n="Value">"I_Ruehrer.M_A_AUS"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">165L</v>
@@ -1308,7 +1309,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"Ruehrer.P_Status = 0"</v>
+                            <v n="Value">"I_Ruehrer.P_Status = 0"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">135L</v>
@@ -1434,7 +1435,7 @@ END_VAR
                               <o>
                                 <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                                 <o n="Value" t="StringValue">
-                                  <v n="Value">"V_Stop"</v>
+                                  <v n="Value">"M_Stop"</v>
                                   <v n="DefaultValue">""</v>
                                 </o>
                                 <v n="Id">214L</v>
@@ -1651,7 +1652,7 @@ END_VAR
                         <o>
                           <v n="AttributeId">{38391c6d-6d4a-42f8-8ee7-9f45e5adafa8}</v>
                           <o n="Value" t="StringValue">
-                            <v n="Value">"V_Stop"</v>
+                            <v n="Value">"P_Status = 0"</v>
                             <v n="DefaultValue">""</v>
                           </o>
                           <v n="Id">71L</v>
@@ -2067,13 +2068,13 @@ END_VAR
     <Folder Name="01_Aktionen" Id="{cba953e3-74a7-41c0-b82f-a4f3046cdcef}" />
     <Action Name="ResetActiv" Id="{d9f6660c-dbad-471b-b9ba-0052e6575729}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[GVL_OPC_UA.SW.PrimActiv := FALSE;
-GVL_OPC_UA.SW.GF5Activ := FALSE;]]></ST>
+        <ST><![CDATA[O_SW.ReactActiv := FALSE;
+O_SW.GF5Activ := FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ResetReady" Id="{131cdfe6-4df2-4bf1-9c25-d5cfb052103d}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[GVL_OPC_UA.SW.PrimReady := FALSE;]]></ST>
+        <ST><![CDATA[O_SW.ReactReady := FALSE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="ResetSysActiv" Id="{b24d2044-49b6-40dd-b3d9-a5655f516cc2}" FolderPath="01_Aktionen\">
@@ -2083,13 +2084,13 @@ GVL_OPC_UA.SW.GF5Activ := FALSE;]]></ST>
     </Action>
     <Action Name="SetActiv" Id="{f891e4ac-89de-4f99-acc4-b9b8774b7345}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[GVL_OPC_UA.SW.PrimActiv := TRUE;
-GVL_OPC_UA.SW.GF5Activ := TRUE;]]></ST>
+        <ST><![CDATA[O_SW.ReactActiv := TRUE;
+O_SW.GF5Activ := TRUE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SetReady" Id="{eb593942-8af3-4940-8f8a-46094f827e62}" FolderPath="01_Aktionen\">
       <Implementation>
-        <ST><![CDATA[GVL_OPC_UA.SW.PrimReady := TRUE;]]></ST>
+        <ST><![CDATA[O_SW.ReactReady := TRUE;]]></ST>
       </Implementation>
     </Action>
     <Action Name="SetSysActiv" Id="{c96d44b9-9a8d-4b53-8d2a-65042664aad6}" FolderPath="01_Aktionen\">

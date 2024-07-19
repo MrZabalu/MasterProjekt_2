@@ -7,8 +7,7 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-	V_Start			:BOOL;		// Variable für internes handling der Eigenschaft 
-	V_Stop			:BOOL;		// Variable für internes handling der Eigenschaft 
+	V_Start			:BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -20,8 +19,7 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[V_Start := 1;
-V_Stop := 0;]]></ST>
+        <ST><![CDATA[V_Start := TRUE;]]></ST>
       </Implementation>
     </Method>
     <Method Name="M_STOP" Id="{645c63c8-13f0-478f-ae7b-32e8477e4722}">
@@ -30,18 +28,25 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[V_Start := 0;
-V_Stop := 1;]]></ST>
+        <ST><![CDATA[V_Start := FALSE;]]></ST>
       </Implementation>
     </Method>
-    <Property Name="P_Ready" Id="{ffbbd73b-900a-4aee-bc8d-5f319a8cfba9}">
-      <Declaration><![CDATA[PROPERTY P_Ready : BOOL]]></Declaration>
+    <Property Name="P_Status" Id="{ffbbd73b-900a-4aee-bc8d-5f319a8cfba9}">
+      <Declaration><![CDATA[PROPERTY P_Status : INT]]></Declaration>
       <Get Name="Get" Id="{7a5f06a2-1350-4bac-a53f-e294f574a899}">
         <Declaration><![CDATA[VAR
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[P_Ready := V_Stop;]]></ST>
+          <ST><![CDATA[// 0 = Prozess läuft nicht
+// 1 = Prozess läuft
+
+IF V_Start THEN
+	P_Status := 1;
+ELSE
+	P_Status := 0;
+END_IF
+]]></ST>
         </Implementation>
       </Get>
     </Property>
@@ -49,15 +54,19 @@ END_VAR
       <LineId Id="9" Count="0" />
     </LineIds>
     <LineIds Name="FB_Basis.M_START">
-      <LineId Id="5" Count="0" />
       <LineId Id="9" Count="0" />
     </LineIds>
     <LineIds Name="FB_Basis.M_STOP">
-      <LineId Id="9" Count="0" />
       <LineId Id="5" Count="0" />
     </LineIds>
-    <LineIds Name="FB_Basis.P_Ready.Get">
+    <LineIds Name="FB_Basis.P_Status.Get">
       <LineId Id="2" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="12" Count="1" />
+      <LineId Id="9" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>

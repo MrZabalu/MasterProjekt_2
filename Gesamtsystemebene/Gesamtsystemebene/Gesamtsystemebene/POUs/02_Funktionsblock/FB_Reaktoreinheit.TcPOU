@@ -3,35 +3,32 @@
   <POU Name="FB_Reaktoreinheit" Id="{e70a7bfb-3a77-4ac5-848e-915860a164c8}" SpecialFunc="None">
     <Declaration><![CDATA[FUNCTION_BLOCK FB_Reaktoreinheit IMPLEMENTS I_Reaktor
 VAR_INPUT
-	I_IP					:STRING(MAX_STRING_LENGTH);
+	I_RNr					:INT;						// Nummer für korrekte Zuweisung von SystemStatusWord
+	I_IP					:ARRAY [0..6] OF STRING;
 	I_NameSpace				:STRING(MAX_STRING_LENGTH);
-	
-	I_CW					:SystemControlWord;			// Variable für Kommunikations-Schnittstelle (Write)
+	I_CW					:RezeptControlWord;			// Variable für Kommunikations-Schnittstelle (Write)					
 END_VAR
 	
 VAR_OUTPUT
 	O_Verbunden				:BOOL;
+	O_ConnectionHdl			:DWORD;
 	O_Error					:BOOL;
 	O_ErrorID				:DWORD;
-	O_SW					:SystemStatusWord; 			// Statusword für Kontrolle des Systems
+	O_SW					:RezeptStatusWord; 			// Statusword für Kontrolle des Rezeptes 
 END_VAR
 
 VAR
 	V_Status				:INT;						// Interne Variable
 	OPC_Status				:INT;						// Variable für Verbindugsprozess
+	Counter					:INT := 0;
 	
 	// Instanziierung der Kommunikationsfunktionsblöcke
 	Connect					:UA_Connect;
 	NameSpaceInd			:UA_GetNamespaceIndex;
-	Node_SW					:UA_NodeGetHandle;
-	Node_CW					:UA_NodeGetHandle;
-	NodeRelease_SW			:UA_NodeReleaseHandle;
-	NodeRelease_CW			:UA_NodeReleaseHandle;
+	Node					:UA_NodeGetHandle;
+	NodeRelease				:UA_NodeReleaseHandle;
 	Disconnect				:UA_Disconnect;
 	Status					:UA_ConnectGetStatus;
-	
-	
-	// Instanziierung der Kommunikationsfunktionsblöcke
 	Read					:UA_Read;	
 	Write					:UA_Write;
 	
@@ -40,14 +37,22 @@ VAR
 	NodeID_SW				:ST_UANodeID;
 	NodeID_CW				:ST_UANodeID;
 	NodeIdentifier_SW		:STRING(MAX_STRING_LENGTH) := 'GVL_OPC_UA.SW';
-	NodeIdentifier_CW		:STRING(MAX_STRING_LENGTH) := 'GVL_OPC_UA.CW';
-	
+	NodeIdentifier_CW 		:ARRAY [0..9] OF STRING := [
+        'GVL_OPC_UA.CW.PowerOn', 
+        'GVL_OPC_UA.CW.SekReakt', 
+        'GVL_OPC_UA.CW.Leitung', 
+        'GVL_OPC_UA.CW.Temp', 
+        'GVL_OPC_UA.CW.Enlteermenge', 
+        'GVL_OPC_UA.CW.Pumpmenge', 
+        'GVL_OPC_UA.CW.Haltedauer', 
+        'GVL_OPC_UA.CW.Ruehrdauer', 
+        'GVL_OPC_UA.CW.Wartedauer', 
+        'GVL_OPC_UA.CW.Zirkulierdauer'];
 	
 	// Instanziierung der relevanten Output-Variablen
-	ConnectionHdl			:DWORD;
 	NameSpaceIndex			:UINT;
-	NodeHdl_CW				:DWORD;						// Nodehandler für Controlword
 	NodeHdl_SW				:DWORD;						// Nodehandler für Statusword
+	NodeHdl_CW 				:ARRAY [0..9] OF DWORD := [];
 	ConnectionStatus		:E_UAConnectionStatus;
 	ServerState				:E_UAServerState;
 	
@@ -59,7 +64,8 @@ V_Status := P_Status;
 
 // OPC-UA-Schnittstelle:
 CASE OPC_Status OF
-	
+0: // Idle
+
 1:	// Connect
 	// Definition der Verbindungsinformationen
 	ConnectInfo.tSessionTimeout := T#1M;
@@ -74,10 +80,10 @@ CASE OPC_Status OF
 
 	// Verbinden zu OPC-UA-Schnittstelle
 	Connect(Execute := TRUE, 
-			ServerUrl := I_IP, 
+			ServerUrl := I_IP[I_RNr - 1], 
 			SessionConnectInfo := ConnectInfo, 
 			Timeout := T#5S, 
-			ConnectionHdl => ConnectionHdl, 
+			ConnectionHdl => O_ConnectionHdl, 
 			Error => O_Error, 
 			ErrorID => O_ErrorID);
 			
@@ -94,9 +100,10 @@ CASE OPC_Status OF
 		OPC_Status := 2;
 	END_IF
 			
+//==================================================================================================
 2:	// NameSpaceIndex
 	NameSpaceInd(Execute := TRUE,
-				ConnectionHdl := ConnectionHdl,
+				ConnectionHdl := O_ConnectionHdl,
 				NameSpaceUri := I_NameSpace,
 				Timeout := T#5S,
 				NameSpaceIndex => NameSpaceIndex, 
@@ -115,61 +122,76 @@ CASE OPC_Status OF
 	IF NameSpaceInd.Done THEN
 		OPC_Status := 3;
 	END_IF
-				
+
+//==================================================================================================				
 3: // Nodes
 	// Definieren von relevanten Parameter
-	// Statusword - SW
+	// RezeptStatusword - SW
 	NodeID_SW.eIdentifierType := eUAIdentifierType_String;
 	NodeID_SW.nNamespaceIndex := NameSpaceIndex;
 	NodeID_SW.sIdentifier := NodeIdentifier_SW;
 	
 	// Definieren von SW Node
-	Node_SW(Execute := TRUE,
-			ConnectionHdl := ConnectionHdl,
+	Node(Execute := TRUE,
+			ConnectionHdl := O_ConnectionHdl,
 			NodeID := NodeID_SW,
 			Timeout := T#5S,
 			NodeHdl => NodeHdl_SW, 
 			Error => O_Error, 
 			ErrorID => O_ErrorID);
 
-	IF NOT Node_SW.Busy THEN
-		Node_SW(Execute := FALSE);
+	IF NOT Node.Busy THEN
+		Node(Execute := FALSE);
 	END_IF 		
 	
-	IF Node_SW.Error THEN
+	IF Node.Error THEN
 		OPC_Status := 0;
 	END_IF
 	
-	// Controlword
+	IF Node.Done THEN
+		OPC_Status := 4;
+	END_IF
+
+//==================================================================================================		
+4:	// RezeptControlword
+	// Die Node-Identifier jeder Variable werden einzeln in ein Array geschrieben. 
+	// Innerhalb des Cases gibt es  einen Counter der die Arrayposition managed
+	// Dafür braucht es keine For-Schleife, da der instanziierte FB zyklisch ausgeführt wird
+	
 	NodeID_CW.eIdentifierType := eUAIdentifierType_String;
 	NodeID_CW.nNamespaceIndex := NameSpaceIndex;
-	NodeID_CW.sIdentifier := NodeIdentifier_CW;
+	NodeID_CW.sIdentifier := NodeIdentifier_CW[Counter];
 	
-	Node_CW(Execute := TRUE,
-			ConnectionHdl := ConnectionHdl,
+	Node(Execute := TRUE,
+			ConnectionHdl := O_ConnectionHdl,
 			NodeID := NodeID_CW,
 			Timeout := T#5S,
-			NodeHdl => NodeHdl_CW, 
+			NodeHdl => NodeHdl_CW[Counter], 
 			Error => O_Error, 
 			ErrorID => O_ErrorID);
 			
-	IF NOT Node_CW.Busy THEN
-		Node_CW(Execute := FALSE);
+	IF NOT Node.Busy THEN
+		Node(Execute := FALSE);
 	END_IF		
 	
-	IF Node_CW.Error THEN
+	IF Node.Error THEN
 		OPC_Status := 0;
 	END_IF
 	
-	IF Node_CW.Done AND Node_SW.Done THEN
-		O_Verbunden := TRUE;
-		OPC_Status := 0;
-		
-	END_IF	
+	IF Node.Done AND Counter < 9 THEN
+		Counter := Counter + 1;
+	END_IF
 	
-4: // Lesen von Variablen
+	IF Node.Done AND Counter > 8 THEN // Muss angepasst werden wegen case 5
+		OPC_Status := 0; 
+		Counter := 0;	
+		O_Verbunden := TRUE;
+	END_IF	
+
+//==================================================================================================	
+5: // Lesen von Variablen
 	Read(Execute := TRUE,
-		ConnectionHdl := ConnectionHdl,
+		ConnectionHdl := O_ConnectionHdl,
 		NodeHdl := NodeHdl_SW,
 		pVariable := ADR(O_SW),
 		cbData := SIZEOF(O_SW),
@@ -189,13 +211,37 @@ CASE OPC_Status OF
 		OPC_Status := 0;
 	END_IF
 	
-5: // Schreiben von Variablen		
-			
+//==================================================================================================	
+6: // Schreiben von Variablen		
+	// Jede Variable in der Struktur muss separat berschrieben werden. 
+	// Ansonsten werden die Daten nicht korrekt übertragen.
+	
+	CASE Counter OF 
+		0: 		Write.pVariable := ADR(I_CW.PowerOn);
+				Write.cbData  := SIZEOF(I_CW.PowerOn);
+		1: 		Write.pVariable := ADR(I_CW.SekReakt);
+				Write.cbData  := SIZEOF(I_CW.SekReakt);
+		2: 		Write.pVariable := ADR(I_CW.Leitung);
+				Write.cbData  := SIZEOF(I_CW.Leitung);
+		3: 		Write.pVariable := ADR(I_CW.Temp);
+				Write.cbData  := SIZEOF(I_CW.Temp);
+		4: 		Write.pVariable := ADR(I_CW.Enlteermenge);
+				Write.cbData  := SIZEOF(I_CW.Enlteermenge);
+		5: 		Write.pVariable := ADR(I_CW.Pumpmenge);
+				Write.cbData  := SIZEOF(I_CW.Pumpmenge);
+		6: 		Write.pVariable := ADR(I_CW.Haltedauer);
+				Write.cbData  := SIZEOF(I_CW.Haltedauer);
+		7: 		Write.pVariable := ADR(I_CW.Ruehrdauer);
+				Write.cbData  := SIZEOF(I_CW.Ruehrdauer);
+		8: 		Write.pVariable := ADR(I_CW.Wartedauer);
+				Write.cbData  := SIZEOF(I_CW.Wartedauer);
+		9: 		Write.pVariable := ADR(I_CW.Zirkulierdauer);
+				Write.cbData  := SIZEOF(I_CW.Zirkulierdauer);
+	END_CASE
+	
 	Write(Execute := TRUE,
-		ConnectionHdl := ConnectionHdl,
-		NodeHdl := NodeHdl_CW,
-		pVariable := ADR(I_CW),
-		cbData := SIZEOF(I_CW),
+		ConnectionHdl := O_ConnectionHdl,
+		NodeHdl := NodeHdl_CW[Counter],
 		Timeout := T#5S,
 		Error => O_Error,
 		ErrorID => O_ErrorID);
@@ -208,72 +254,102 @@ CASE OPC_Status OF
 		OPC_Status := 0;
 	END_IF
 	
-	IF Write.Done THEN
-		OPC_Status := 0;
+	IF Write.Done AND Counter < 9 THEN
+		Counter := Counter + 1;
 	END_IF
 	
-6: // Release Node - Statusword
-	NodeRelease_SW(Execute := TRUE,
-				ConnectionHdl := ConnectionHdl,
+	IF Write.Done AND Counter > 8 THEN
+		Counter := 0;
+		OPC_Status := 0;
+	END_IF
+
+//==================================================================================================	
+7: // Release Node - RezeptStatusword
+	NodeRelease(Execute := TRUE,
+				ConnectionHdl := O_ConnectionHdl,
 				NodeHdl := NodeHdl_SW,
 				Timeout := T#5S,
 				Error => O_Error,
 				ErrorID => O_ErrorID);
 	
-	IF NOT NodeRelease_SW.Busy THEN
-		NodeRelease_SW(Execute := FALSE);
+	IF NOT NodeRelease.Busy THEN
+		NodeRelease(Execute := FALSE);
+	END_IF
+	
+	IF NodeRelease.Error THEN
+		OPC_Status := 0;
 	END_IF
 
-	IF NodeRelease_SW.Done THEN
-		OPC_Status := 7;
+	IF NodeRelease.Done THEN
+		OPC_Status := 8;
 	END_IF			
 
-7:	// Release Node - Controlword
-	NodeRelease_CW(Execute := TRUE,
-				ConnectionHdl := ConnectionHdl,
-				NodeHdl := NodeHdl_CW,
+//==================================================================================================
+8:	// Release Node - RezeptControlword
+	NodeRelease(Execute := TRUE,
+				ConnectionHdl := O_ConnectionHdl,
+				NodeHdl := NodeHdl_CW[Counter],
 				Timeout := T#5S,
 				Error => O_Error,
 				ErrorID => O_ErrorID);
 	
-	IF NOT NodeRelease_CW.Busy THEN
-		NodeRelease_CW(Execute := FALSE);
-	END_IF					
-				
-	IF NodeRelease_CW.Done THEN
-		OPC_Status := 8;
+	IF NOT NodeRelease.Busy THEN
+		NodeRelease(Execute := FALSE);
+	END_IF	
+	
+	IF NodeRelease.Error THEN
+		OPC_Status := 0;
 	END_IF
 
-8: // Disconnect
+	IF NodeRelease.Done AND Counter < 9 THEN
+		Counter := Counter + 1;
+	END_IF				
+				
+	IF NodeRelease.Done AND Counter > 8 THEN
+		OPC_Status := 9;
+	END_IF
+	
+//==================================================================================================
+9: // Disconnect
 	Disconnect(Execute := TRUE,
-				ConnectionHdl := ConnectionHdl,
+				ConnectionHdl := O_ConnectionHdl,
 				Timeout := T#5S,
 				Error => O_Error,
 				ErrorID => O_ErrorID);
 	
 	IF NOT Disconnect.Busy THEN
 		Disconnect(Execute := FALSE);
-	END_IF			
+	END_IF	
+
+	IF Disconnect.Error THEN
+		OPC_Status := 0;
+	END_IF		
 				
 	IF Disconnect.Done THEN
 		O_Verbunden := FALSE;
 		OPC_Status := 0;
 	END_IF	
 
-9: // Verbingungsstatus
+//==================================================================================================
+10: // Verbingungsstatus
 	Status(Execute := TRUE,
-			ConnectionHdl := ConnectionHdl,
+			ConnectionHdl := O_ConnectionHdl,
 			GetServiceLevel := FALSE,
 			Timeout := T#5S,
 			Error => O_Error,
 			ErrorID => O_ErrorID,
 			ConnectionStatus => ConnectionStatus,
 			ServerState => ServerState);
-			
+	
+	IF Status.Error THEN
+		OPC_Status := 0;
+	END_IF		
+		
 	IF Status.Done THEN
 		Status(Execute := FALSE);
 		OPC_Status := 0;
 	END_IF
+	
 END_CASE
 
 
@@ -287,7 +363,7 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[OPC_Status := 4;
+        <ST><![CDATA[OPC_Status := 5;
 
 IF Read.Done THEN
 	M_LESEN := TRUE;
@@ -300,7 +376,7 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[OPC_Status := 5;
+        <ST><![CDATA[OPC_Status := 6;
 
 IF Write.Done THEN
 	M_SCHREIBEN := TRUE;
@@ -313,7 +389,7 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[OPC_Status := 6;
+        <ST><![CDATA[OPC_Status := 7;
 
 IF Disconnect.Done THEN
 	M_TRENNEN := TRUE;
@@ -328,7 +404,7 @@ END_VAR
       <Implementation>
         <ST><![CDATA[OPC_Status := 1;
 
-IF Node_CW.Done THEN	
+IF Node.Done THEN	
 	M_VERBINDEN := TRUE;
 END_IF]]></ST>
       </Implementation>
@@ -339,7 +415,7 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[OPC_Status := 9;
+        <ST><![CDATA[OPC_Status := 10;
 
 IF Status.Done THEN
 	M_ZUSTAND := TRUE;
@@ -366,10 +442,10 @@ IF O_Verbunden THEN
 	IF O_SW.SysReady THEN
 		P_Status := 2;
 		
-		IF O_SW.PrimReady OR O_SW.SekReady THEN
+		IF O_SW.ReactReady THEN
 			P_Status := 3;
 			
-			IF O_SW.PrimActiv OR O_SW.SekActiv THEN
+			IF O_SW.ReactActiv THEN
 				P_Status := 4;
 			END_IF
 		END_IF
@@ -387,10 +463,11 @@ END_IF]]></ST>
     <LineIds Name="FB_Reaktoreinheit">
       <LineId Id="9" Count="0" />
       <LineId Id="26" Count="0" />
-      <LineId Id="28" Count="0" />
+      <LineId Id="1976" Count="0" />
       <LineId Id="27" Count="0" />
       <LineId Id="56" Count="0" />
-      <LineId Id="58" Count="0" />
+      <LineId Id="1979" Count="0" />
+      <LineId Id="2181" Count="0" />
       <LineId Id="63" Count="0" />
       <LineId Id="74" Count="9" />
       <LineId Id="109" Count="0" />
@@ -406,6 +483,7 @@ END_IF]]></ST>
       <LineId Id="269" Count="0" />
       <LineId Id="146" Count="3" />
       <LineId Id="110" Count="0" />
+      <LineId Id="1716" Count="0" />
       <LineId Id="64" Count="0" />
       <LineId Id="108" Count="0" />
       <LineId Id="111" Count="2" />
@@ -422,6 +500,7 @@ END_IF]]></ST>
       <LineId Id="276" Count="0" />
       <LineId Id="152" Count="1" />
       <LineId Id="151" Count="0" />
+      <LineId Id="1717" Count="0" />
       <LineId Id="116" Count="0" />
       <LineId Id="66" Count="0" />
       <LineId Id="118" Count="0" />
@@ -437,10 +516,14 @@ END_IF]]></ST>
       <LineId Id="1526" Count="0" />
       <LineId Id="279" Count="1" />
       <LineId Id="173" Count="0" />
+      <LineId Id="1821" Count="3" />
+      <LineId Id="1833" Count="0" />
       <LineId Id="1060" Count="0" />
       <LineId Id="1236" Count="0" />
+      <LineId Id="1660" Count="3" />
       <LineId Id="1418" Count="1" />
-      <LineId Id="1416" Count="1" />
+      <LineId Id="1416" Count="0" />
+      <LineId Id="1806" Count="0" />
       <LineId Id="1420" Count="6" />
       <LineId Id="1433" Count="0" />
       <LineId Id="1531" Count="0" />
@@ -448,11 +531,17 @@ END_IF]]></ST>
       <LineId Id="1532" Count="0" />
       <LineId Id="1427" Count="0" />
       <LineId Id="1437" Count="0" />
-      <LineId Id="1429" Count="2" />
+      <LineId Id="1429" Count="0" />
+      <LineId Id="1807" Count="0" />
+      <LineId Id="1809" Count="1" />
+      <LineId Id="1808" Count="0" />
+      <LineId Id="1788" Count="0" />
+      <LineId Id="1431" Count="0" />
+      <LineId Id="1799" Count="0" />
       <LineId Id="1434" Count="0" />
-      <LineId Id="1436" Count="0" />
-      <LineId Id="1435" Count="0" />
+      <LineId Id="2183" Count="0" />
       <LineId Id="1240" Count="0" />
+      <LineId Id="2121" Count="0" />
       <LineId Id="1465" Count="0" />
       <LineId Id="1191" Count="0" />
       <LineId Id="247" Count="6" />
@@ -465,36 +554,62 @@ END_IF]]></ST>
       <LineId Id="293" Count="0" />
       <LineId Id="288" Count="1" />
       <LineId Id="255" Count="2" />
+      <LineId Id="1719" Count="0" />
       <LineId Id="220" Count="1" />
-      <LineId Id="1050" Count="0" />
+      <LineId Id="1635" Count="0" />
+      <LineId Id="1637" Count="0" />
+      <LineId Id="1670" Count="1" />
+      <LineId Id="1675" Count="0" />
+      <LineId Id="1694" Count="7" />
+      <LineId Id="1703" Count="10" />
+      <LineId Id="1676" Count="0" />
+      <LineId Id="1669" Count="0" />
       <LineId Id="1440" Count="0" />
       <LineId Id="1458" Count="0" />
-      <LineId Id="1442" Count="6" />
+      <LineId Id="1442" Count="0" />
+      <LineId Id="1445" Count="3" />
       <LineId Id="1539" Count="0" />
       <LineId Id="1541" Count="1" />
       <LineId Id="1540" Count="0" />
       <LineId Id="1449" Count="0" />
-      <LineId Id="1451" Count="3" />
-      <LineId Id="1456" Count="0" />
+      <LineId Id="1451" Count="1" />
+      <LineId Id="1795" Count="3" />
+      <LineId Id="1453" Count="1" />
+      <LineId Id="2070" Count="1" />
       <LineId Id="1439" Count="0" />
+      <LineId Id="2053" Count="0" />
       <LineId Id="1472" Count="1" />
       <LineId Id="1479" Count="2" />
       <LineId Id="1507" Count="0" />
       <LineId Id="1482" Count="2" />
       <LineId Id="1543" Count="0" />
       <LineId Id="1545" Count="1" />
+      <LineId Id="1837" Count="0" />
+      <LineId Id="1839" Count="1" />
+      <LineId Id="1838" Count="0" />
       <LineId Id="1554" Count="0" />
       <LineId Id="1553" Count="0" />
-      <LineId Id="1555" Count="2" />
+      <LineId Id="1555" Count="1" />
+      <LineId Id="1721" Count="0" />
+      <LineId Id="1557" Count="0" />
       <LineId Id="1500" Count="0" />
       <LineId Id="1490" Count="2" />
       <LineId Id="1506" Count="0" />
       <LineId Id="1493" Count="2" />
       <LineId Id="1549" Count="1" />
-      <LineId Id="1547" Count="1" />
+      <LineId Id="1547" Count="0" />
+      <LineId Id="1841" Count="0" />
+      <LineId Id="1843" Count="1" />
+      <LineId Id="1842" Count="0" />
+      <LineId Id="1816" Count="0" />
+      <LineId Id="1815" Count="0" />
+      <LineId Id="1818" Count="0" />
+      <LineId Id="1817" Count="0" />
+      <LineId Id="1548" Count="0" />
       <LineId Id="1496" Count="0" />
       <LineId Id="1498" Count="0" />
       <LineId Id="1489" Count="0" />
+      <LineId Id="1954" Count="0" />
       <LineId Id="1475" Count="0" />
       <LineId Id="1474" Count="0" />
       <LineId Id="1502" Count="0" />
@@ -502,20 +617,27 @@ END_IF]]></ST>
       <LineId Id="1508" Count="3" />
       <LineId Id="1558" Count="0" />
       <LineId Id="1560" Count="1" />
+      <LineId Id="1846" Count="2" />
+      <LineId Id="1845" Count="0" />
       <LineId Id="1559" Count="0" />
       <LineId Id="1512" Count="0" />
       <LineId Id="1515" Count="0" />
       <LineId Id="1583" Count="0" />
       <LineId Id="1514" Count="0" />
+      <LineId Id="1722" Count="0" />
       <LineId Id="1564" Count="0" />
       <LineId Id="1438" Count="0" />
       <LineId Id="1566" Count="0" />
       <LineId Id="1568" Count="2" />
       <LineId Id="1573" Count="3" />
       <LineId Id="1571" Count="0" />
+      <LineId Id="1853" Count="1" />
+      <LineId Id="1852" Count="0" />
+      <LineId Id="1851" Count="0" />
       <LineId Id="1579" Count="1" />
       <LineId Id="1582" Count="0" />
       <LineId Id="1581" Count="0" />
+      <LineId Id="2037" Count="0" />
       <LineId Id="1032" Count="0" />
       <LineId Id="265" Count="0" />
       <LineId Id="264" Count="0" />

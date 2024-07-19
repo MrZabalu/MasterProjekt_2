@@ -33,7 +33,13 @@
     <Compile Include="DUTs\01_Schnittstellen\I_Sensor.TcIO">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\02_Strukturen\SystemControlWord.TcDUT">
+    <Compile Include="DUTs\02_Strukturen\RezeptControlWord.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\02_Strukturen\RezeptStatusWord.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\02_Strukturen\SekControlWord.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\02_Strukturen\SystemStatusWord.TcDUT">
@@ -95,23 +101,19 @@
     <Compile Include="POUs\03_Grundfuntkionen\GF_Warten.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\04_Auswertung\01_Hilfsfunktionsblock\FB_Leitungswahl.TcPOU">
+    <Compile Include="POUs\04_Kommunikation\01_Hilfsfunktionsblock\FB_Leitungswahl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\04_Auswertung\Auswertung.TcPOU">
+    <Compile Include="POUs\04_Kommunikation\FB_Auswertung.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\04_Kommunikation\Kommunikation.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Visualisierungsmanager.TcVMO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="VISUs\01_Debug_Visu\Debug_Visu.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualisierungsmanager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="VISU_TASK.TcTTO">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -126,8 +128,8 @@
     <Folder Include="POUs\02_Anlage\01_Hilfsbausteine" />
     <Folder Include="POUs\03_Grundfuntkionen" />
     <Folder Include="POUs\03_Grundfuntkionen\01_Vererbung" />
-    <Folder Include="POUs\04_Auswertung" />
-    <Folder Include="POUs\04_Auswertung\01_Hilfsfunktionsblock" />
+    <Folder Include="POUs\04_Kommunikation" />
+    <Folder Include="POUs\04_Kommunikation\01_Hilfsfunktionsblock" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
     <Folder Include="VISUs\01_Debug_Visu" />

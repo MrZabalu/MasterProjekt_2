@@ -1,22 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
-  <DUT Name="SystemStatusWord" Id="{12b9cc79-7119-40fb-8a3d-043692b3e362}">
+  <DUT Name="SystemStatusWord" Id="{eb27a699-e9d0-43a3-b599-3c1a56901629}">
     <Declaration><![CDATA[TYPE SystemStatusWord :
 STRUCT
-	SysReady		:BOOL;		// System ist eingeschalten und bereit
-	PrimReady		:BOOL;		// Primärreaktor ist bereit für den Prozess
-	PrimActiv		:BOOL;		// Primärreaktor führt Prozess aus
-	SekReady		:BOOL;		// Sekundärreaktor ist bereit für den Prozess
-	SekActiv		:BOOL;		// Sekundärreaktor führt Prozess aus
-	GF1Activ		:BOOL;		// Heiz- / Kühlprozess läuft
-	GF2Activ		:BOOL;		// Entleerprozess läuft
-	GF3Activ		:BOOL;		// Pumpprozess läuft
-	GF4Activ		:BOOL;		// Halteprozess läuft
-	GF5Activ		:BOOL;		// Rührprozess läuft
-	GF6Activ		:BOOL;		// Warteprozess läuft
-	GF7Activ		:BOOL;		// Auffüllprozess läuft
-	GF8Activ		:BOOL;		// Zirkulierprozess läuft
-END_STRUCT
+	// Das SystemStatusWord ist für die Interaktion zwischen den Reaktoren 	
+
+	// Reaktor 1
+	R1_Ready		:BOOL;
+	R1_Activ		:BOOL;
+	// Reaktor 2
+	R2_Ready		:BOOL;
+	R2_Activ		:BOOL;
+	// Reaktor 3
+	R3_Ready		:BOOL;
+	R3_Activ		:BOOL;
+	// Reaktor 4
+	R4_Ready		:BOOL;
+	R4_Activ		:BOOL;
+	// Reaktor 5
+	R5_Ready		:BOOL;
+	R5_Activ		:BOOL;
+	// Reaktor 6
+	R6_Ready		:BOOL;
+	R6_Activ		:BOOL;
+	// Reaktor 7
+	R7_Ready		:BOOL;
+	R7_Activ		:BOOL;
+END_STRUCT	
 END_TYPE
 ]]></Declaration>
   </DUT>

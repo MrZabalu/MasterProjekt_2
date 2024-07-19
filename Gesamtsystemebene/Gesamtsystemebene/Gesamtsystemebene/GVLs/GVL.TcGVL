@@ -5,10 +5,21 @@
 VAR_GLOBAL
 		
 	// Rezeptparameter
-	Sys_CW			:SystemControlWord;				// Lokale definierung der Parameter
-	Sys_SW			:SystemStatusWord;				// Statusword für internen Handling
+	R1_CW			:RezeptControlWord;				// Lokale definierung der Parameter
+	R1_SW			:RezeptStatusWord;				// Statusword für internen Handling
+	
+	R2_CW			:RezeptControlWord;				// Lokale definierung der Parameter
+	R2_SW			:RezeptStatusWord;				// Statusword für internen Handling
 	
 	// Leitungs-Control-Word
+	
+	// SekundärControlWord
+	SekControlWord	:SekControlWord;
+	SekUpdate		:BOOL;
+	
+	// SystemStatusWord
+	SysStatusWord	:SystemStatusWord;
+	SysUpdate		:BOOL;
 	
 	// Funktionsvariablen
 	SysState		:INT;							// 0 = Prozess läuft nicht | 1 = Prozess läuft

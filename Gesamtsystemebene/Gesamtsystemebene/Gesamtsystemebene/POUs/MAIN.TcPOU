@@ -12,6 +12,9 @@ END_VAR
       <ST><![CDATA[// Starten der Anlage
 Reaktoranlage();
 
+// Starten des Kommunikationsauswertung
+Kommunikation();
+
 // Starten des Rezeptes
 Rezept_1();
 ]]></ST>
@@ -19,6 +22,9 @@ Rezept_1();
     <LineIds Name="MAIN">
       <LineId Id="29" Count="0" />
       <LineId Id="31" Count="0" />
+      <LineId Id="50" Count="0" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="51" Count="0" />
       <LineId Id="30" Count="0" />
       <LineId Id="2" Count="0" />
       <LineId Id="26" Count="0" />

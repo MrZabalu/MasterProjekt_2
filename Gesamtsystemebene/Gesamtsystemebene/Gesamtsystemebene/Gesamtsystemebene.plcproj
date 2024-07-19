@@ -24,7 +24,13 @@
     <Compile Include="DUTs\02_Strukturen\LeitungControlWord.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUTs\02_Strukturen\SystemControlWord.TcDUT">
+    <Compile Include="DUTs\02_Strukturen\RezeptControlWord.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\02_Strukturen\RezeptStatusWord.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\02_Strukturen\SekControlWord.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DUTs\02_Strukturen\SystemStatusWord.TcDUT">
@@ -59,6 +65,12 @@
     <Compile Include="POUs\04_Abläufe\Grundablauf.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\05_Auswertung\FB_Auswertung.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\05_Auswertung\Kommunikation.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -85,6 +97,7 @@
     <Folder Include="POUs\03_System" />
     <Folder Include="POUs\04_Abläufe" />
     <Folder Include="POUs\04_Abläufe\01_Vererbung" />
+    <Folder Include="POUs\05_Auswertung" />
     <Folder Include="VISUs" />
   </ItemGroup>
   <ItemGroup>
