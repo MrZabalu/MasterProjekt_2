@@ -15,7 +15,7 @@ VAR_OUTPUT
 END_VAR
 VAR
 	V_Status			:INT;						// Variable für Case-Switch
-	V_Aktiv				:BOOL;						// Variable für Case-Management
+	V_Aktiv				:BOOL;						// System ist aktiv
 	V_GF_Switch			:INT;						// Definiert welche GF durchgegührt werden soll	
 	V_SekRe				:BOOL;						// Wird aktiviert falls Reaktor als Sekundärreaktor eingesetzt wird
 	V_SekReady			:BOOL;
@@ -28,6 +28,7 @@ IF I_Manuel THEN
 	V_Status := 0;
 END_IF  
 
+// System befindet sich im Automatik-Modus, aber ist noch nicht aktiv
 IF NOT I_Manuel AND NOT V_Aktiv THEN
 	V_Status := 1;
 END_IF
@@ -58,9 +59,14 @@ END_CASE
 
 CASE V_Status OF
 	0: // System im Manuel-Modus
+		O_StatusWord.SysReady := FALSE;
 		
 	//==================================================================================================
 	1: // Auswerten von Controlwords bezüglich Systemstart
+		// System ist Ready für Communikation
+		O_StatusWord.SysReady := TRUE;
+		
+		// Falls Power eingeschalten wird und das System noch nicht Ein ist, wird System Aktiviert
 		IF I_ControlWord.PowerOn AND NOT O_SystemON THEN
 			V_Aktiv := TRUE;
 			V_Status := 2;
@@ -85,7 +91,7 @@ CASE V_Status OF
 	//==================================================================================================
 	2: // System wird eingeschaltet
 			O_SystemON := TRUE;
-			O_StatusWord.SysReady := TRUE;
+			O_StatusWord.SysActiv := TRUE;
 			
 			IF GVL.Bedien_Power THEN
 				V_Status := 3;
@@ -120,9 +126,25 @@ CASE V_Status OF
 		END_IF
 		
 		IF I_ControlWord.Wartedauer > 0 THEN
-			V_GF_Switch := 5;
-			Kommunikation.Warten.M_START();
-			V_Status := 5;
+			// Parameter, dass System zurückgesetzt wird (Start-Situation)
+			// Damit können funktionen besser getestet werden
+			IF I_ControlWord.Wartedauer = 99 THEN
+				O_StatusWord.ReactReady := 0;
+				O_StatusWord.ReactActiv := 0;
+				O_StatusWord.GF1Activ := 0;
+				O_StatusWord.GF2Activ := 0;
+				O_StatusWord.GF3Activ := 0;
+				O_StatusWord.GF4Activ := 0;
+				O_StatusWord.GF5Activ := 0;
+				O_StatusWord.GF6Activ := 0;
+				O_StatusWord.GF7Activ := 0;
+				O_StatusWord.GF8Activ := 0;
+				V_Status := 6;
+			ELSE 
+				V_GF_Switch := 5;
+				Kommunikation.Warten.M_START();
+				V_Status := 5;
+			END_IF
 		END_IF
 		
 		IF I_ControlWord.Zirkulierdauer > 0 THEN
@@ -176,7 +198,7 @@ CASE V_Status OF
 	6: // System wird ausgeschalten
 		IF NOT I_ControlWord.PowerOn THEN
 			O_SystemON := FALSE;
-			O_StatusWord.SysReady := FALSE;
+			O_StatusWord.SysActiv := FALSE;
 			V_Aktiv := FALSE; 
 			V_Status := 1;
 		END_IF
@@ -3217,6 +3239,7 @@ END_CASE
       <LineId Id="90" Count="0" />
       <LineId Id="94" Count="0" />
       <LineId Id="93" Count="0" />
+      <LineId Id="702" Count="0" />
       <LineId Id="157" Count="0" />
       <LineId Id="156" Count="0" />
       <LineId Id="158" Count="1" />
@@ -3246,8 +3269,13 @@ END_CASE
       <LineId Id="71" Count="0" />
       <LineId Id="75" Count="0" />
       <LineId Id="81" Count="0" />
+      <LineId Id="709" Count="0" />
       <LineId Id="306" Count="0" />
-      <LineId Id="302" Count="1" />
+      <LineId Id="302" Count="0" />
+      <LineId Id="704" Count="0" />
+      <LineId Id="706" Count="1" />
+      <LineId Id="705" Count="0" />
+      <LineId Id="303" Count="0" />
       <LineId Id="305" Count="0" />
       <LineId Id="304" Count="0" />
       <LineId Id="80" Count="0" />
@@ -3284,9 +3312,14 @@ END_CASE
       <LineId Id="395" Count="0" />
       <LineId Id="399" Count="0" />
       <LineId Id="403" Count="2" />
-      <LineId Id="539" Count="0" />
-      <LineId Id="456" Count="0" />
-      <LineId Id="459" Count="0" />
+      <LineId Id="674" Count="1" />
+      <LineId Id="673" Count="0" />
+      <LineId Id="687" Count="9" />
+      <LineId Id="677" Count="0" />
+      <LineId Id="679" Count="0" />
+      <LineId Id="681" Count="1" />
+      <LineId Id="680" Count="0" />
+      <LineId Id="678" Count="0" />
       <LineId Id="415" Count="2" />
       <LineId Id="540" Count="0" />
       <LineId Id="418" Count="1" />

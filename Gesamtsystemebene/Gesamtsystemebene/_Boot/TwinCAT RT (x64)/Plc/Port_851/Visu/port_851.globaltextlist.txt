@@ -89,6 +89,7 @@ Id;Default
 291;Start: Rezept
 979;Status-Word
 421;Status-Word-R1
+183;Status-Word-R2
 447;SysActiv
 535;SysReady
 973;Temp

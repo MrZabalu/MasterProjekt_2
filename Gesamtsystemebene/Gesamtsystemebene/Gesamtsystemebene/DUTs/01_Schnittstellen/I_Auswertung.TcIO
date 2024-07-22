@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Itf Name="I_Auswertung" Id="{2dfa0041-c0fa-4acc-a981-bc30533ff48c}">
+    <Declaration><![CDATA[INTERFACE I_Auswertung
+]]></Declaration>
+    <Method Name="M_STATUS_SEK" Id="{bd253fbf-a45b-47a6-a845-bff6ff888cd3}">
+      <Declaration><![CDATA[METHOD M_STATUS_SEK : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_STATUS_SYSTEM" Id="{6c5ff082-c551-45ef-a1e3-ee837c624926}">
+      <Declaration><![CDATA[METHOD M_STATUS_SYSTEM : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_TRENNEN" Id="{1b6ce41a-d52d-4c99-b972-9f9ed1089c8f}">
+      <Declaration><![CDATA[METHOD M_TRENNEN : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="M_VERBINDEN" Id="{f6acb21e-042a-4c19-813c-c75886e68597}">
+      <Declaration><![CDATA[METHOD M_VERBINDEN : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Property Name="P_Status" Id="{caea8d75-04a0-424c-ba10-11ee47ed94d1}">
+      <Declaration><![CDATA[PROPERTY P_Status : INT]]></Declaration>
+      <Get Name="Get" Id="{5389b96f-cb08-4bab-8e71-ee6e356bae4f}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+  </Itf>
+</TcPlcObject>

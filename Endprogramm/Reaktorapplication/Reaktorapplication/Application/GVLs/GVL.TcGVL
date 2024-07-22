@@ -6,8 +6,6 @@ VAR_GLOBAL
 	
 	// Systemzustand
 	SysState			:INT;		// 0 = Grundfunktion nicht aktive | 1 = Grundfunktion aktive
-	SekReady			:BOOL;		// Gibt an ob Sekundärreaktor bereit ist
-	SekActiv			:BOOL;		// Gibt an ob Sekundärreaktor aktiv ist
 
 	// Bedienparameter
 	Bedien_Power		:BOOL;
@@ -17,6 +15,10 @@ VAR_GLOBAL
 	Debug_Verbunden		:BOOL := TRUE;
 	Debug_Start			:BOOL := TRUE;
 	Debug_SekStart		:BOOL;
+	
+	// Simulationsvariablen 
+	Sim_StandSignal		:INT;
+	Sim_Fuellen			:BOOL;
 
 END_VAR]]></Declaration>
   </GVL>

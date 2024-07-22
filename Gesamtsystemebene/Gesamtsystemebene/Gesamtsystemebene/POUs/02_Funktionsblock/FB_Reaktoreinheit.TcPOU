@@ -11,6 +11,8 @@ END_VAR
 	
 VAR_OUTPUT
 	O_Verbunden				:BOOL;
+	O_SekUpdate				:BOOL;
+	O_SysUpdate				:BOOL;
 	O_ConnectionHdl			:DWORD;
 	O_Error					:BOOL;
 	O_ErrorID				:DWORD;
@@ -56,6 +58,7 @@ VAR
 	ConnectionStatus		:E_UAConnectionStatus;
 	ServerState				:E_UAServerState;
 	
+	O_Sek: INT;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -65,7 +68,8 @@ V_Status := P_Status;
 // OPC-UA-Schnittstelle:
 CASE OPC_Status OF
 0: // Idle
-
+	O_SekUpdate := FALSE;
+	O_SysUpdate := FALSE;
 1:	// Connect
 	// Definition der Verbindungsinformationen
 	ConnectInfo.tSessionTimeout := T#1M;
@@ -209,6 +213,9 @@ CASE OPC_Status OF
 	
 	IF Read.Done THEN
 		OPC_Status := 0;
+		IF O_SW.ReactReady OR O_SW.ReactActiv THEN
+			O_SysUpdate := TRUE;
+		END_IF
 	END_IF
 	
 //==================================================================================================	
@@ -261,6 +268,9 @@ CASE OPC_Status OF
 	IF Write.Done AND Counter > 8 THEN
 		Counter := 0;
 		OPC_Status := 0;
+		IF I_CW.SekReakt > 0 THEN
+			O_SekUpdate := TRUE;
+		END_IF
 	END_IF
 
 //==================================================================================================	
@@ -429,26 +439,35 @@ END_IF]]></ST>
 END_VAR
 ]]></Declaration>
         <Implementation>
-          <ST><![CDATA[// Status = 0: Reaktor nicht verbunden
-// Status = 1: Reaktor verbunden
-// Status = 2: Reaktor eingeschalten
-// Status = 3: Reaktor ready
-// Status = 4: Reaktor läuft
+          <ST><![CDATA[// Status = 0: System nicht verbunden
+// Status = 1: System verbunden
+// Status = 2: System bereit für Kommunikation
+// Status = 3: System eingeschalten
+// Status = 4: Reaktor ready
+// Status = 5: Reaktor läuft
+// Status = 6: Statusword wurde gelesen
 // Status = 9: Error
 
-IF O_Verbunden THEN
+IF O_Verbunden THEN				
 	P_Status := 1;
 	
 	IF O_SW.SysReady THEN
 		P_Status := 2;
 		
-		IF O_SW.ReactReady THEN
+		IF O_SW.SysActiv THEN
 			P_Status := 3;
 			
-			IF O_SW.ReactActiv THEN
+			IF O_SW.ReactReady THEN
 				P_Status := 4;
+				
+				IF O_SW.ReactActiv THEN
+					P_Status := 5;
+				END_IF
 			END_IF
 		END_IF
+	END_IF
+	IF Read.Done THEN
+		P_Status := 6;
 	END_IF
 ELSE
 	P_Status := 0;
@@ -467,7 +486,8 @@ END_IF]]></ST>
       <LineId Id="27" Count="0" />
       <LineId Id="56" Count="0" />
       <LineId Id="1979" Count="0" />
-      <LineId Id="2181" Count="0" />
+      <LineId Id="2246" Count="0" />
+      <LineId Id="2253" Count="0" />
       <LineId Id="63" Count="0" />
       <LineId Id="74" Count="9" />
       <LineId Id="109" Count="0" />
@@ -553,7 +573,9 @@ END_IF]]></ST>
       <LineId Id="290" Count="0" />
       <LineId Id="293" Count="0" />
       <LineId Id="288" Count="1" />
-      <LineId Id="255" Count="2" />
+      <LineId Id="255" Count="1" />
+      <LineId Id="2248" Count="2" />
+      <LineId Id="257" Count="0" />
       <LineId Id="1719" Count="0" />
       <LineId Id="220" Count="1" />
       <LineId Id="1635" Count="0" />
@@ -576,6 +598,7 @@ END_IF]]></ST>
       <LineId Id="1795" Count="3" />
       <LineId Id="1453" Count="1" />
       <LineId Id="2070" Count="1" />
+      <LineId Id="2242" Count="2" />
       <LineId Id="1439" Count="0" />
       <LineId Id="2053" Count="0" />
       <LineId Id="1472" Count="1" />
@@ -675,18 +698,29 @@ END_IF]]></ST>
     </LineIds>
     <LineIds Name="FB_Reaktoreinheit.P_Status.Get">
       <LineId Id="10" Count="0" />
-      <LineId Id="13" Count="4" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="14" Count="2" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="17" Count="0" />
       <LineId Id="19" Count="0" />
       <LineId Id="18" Count="0" />
       <LineId Id="20" Count="0" />
       <LineId Id="24" Count="1" />
       <LineId Id="27" Count="0" />
-      <LineId Id="32" Count="2" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="33" Count="1" />
       <LineId Id="36" Count="0" />
       <LineId Id="39" Count="0" />
       <LineId Id="41" Count="1" />
       <LineId Id="35" Count="0" />
+      <LineId Id="50" Count="0" />
       <LineId Id="28" Count="0" />
+      <LineId Id="56" Count="1" />
+      <LineId Id="55" Count="0" />
       <LineId Id="22" Count="1" />
       <LineId Id="21" Count="0" />
       <LineId Id="44" Count="0" />

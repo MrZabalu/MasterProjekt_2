@@ -256,12 +256,12 @@ END_VAR
                     <o n="Text" t="CFCText">
                       <v n="Bounds">"0, 0, 0, 0"</v>
                       <n n="ElementGroupId" />
-                      <v n="Text">"1"</v>
+                      <v n="Text">"GVL_OPC_UA.CW.SekReakt"</v>
                       <v n="Modifiable">true</v>
                       <v n="Id">126L</v>
                     </o>
                     <v n="PageArea">3</v>
-                    <v n="Bounds">"11, 7, 0, 0"</v>
+                    <v n="Bounds">"2, 7, 0, 0"</v>
                     <n n="ElementGroupId" />
                     <v n="OwningPageId">-1L</v>
                     <v n="Id">124L</v>
@@ -407,6 +407,28 @@ END_VAR
                     </l2>
                   </o>
                   <o>
+                    <v n="ConnectionId">73L</v>
+                    <o n="StartPoint" t="CFCPoint">
+                      <v n="X">30</v>
+                      <v n="Y">7</v>
+                      <v n="IsJoint">false</v>
+                      <v n="Flags">0</v>
+                    </o>
+                    <v n="Unroutable">true</v>
+                    <n n="CorrespondingPageId" />
+                    <v n="Locked">false</v>
+                  </o>
+                  <o>
+                    <l2 n="InnerList" cet="CFCPoint">
+                      <o>
+                        <v n="X">30</v>
+                        <v n="Y">7</v>
+                        <v n="IsJoint">false</v>
+                        <v n="Flags">0</v>
+                      </o>
+                    </l2>
+                  </o>
+                  <o>
                     <v n="ConnectionId">127L</v>
                     <o n="StartPoint" t="CFCPoint">
                       <v n="X">14</v>
@@ -489,28 +511,6 @@ END_VAR
                       <o>
                         <v n="X">30</v>
                         <v n="Y">6</v>
-                        <v n="IsJoint">false</v>
-                        <v n="Flags">0</v>
-                      </o>
-                    </l2>
-                  </o>
-                  <o>
-                    <v n="ConnectionId">73L</v>
-                    <o n="StartPoint" t="CFCPoint">
-                      <v n="X">30</v>
-                      <v n="Y">7</v>
-                      <v n="IsJoint">false</v>
-                      <v n="Flags">0</v>
-                    </o>
-                    <v n="Unroutable">true</v>
-                    <n n="CorrespondingPageId" />
-                    <v n="Locked">false</v>
-                  </o>
-                  <o>
-                    <l2 n="InnerList" cet="CFCPoint">
-                      <o>
-                        <v n="X">30</v>
-                        <v n="Y">7</v>
                         <v n="IsJoint">false</v>
                         <v n="Flags">0</v>
                       </o>

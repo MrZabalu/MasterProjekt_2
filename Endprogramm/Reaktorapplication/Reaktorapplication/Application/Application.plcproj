@@ -110,6 +110,9 @@
     <Compile Include="POUs\04_Kommunikation\Kommunikation.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\05_Simulation\FB_SIM_Fuellstand.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -130,6 +133,7 @@
     <Folder Include="POUs\03_Grundfuntkionen\01_Vererbung" />
     <Folder Include="POUs\04_Kommunikation" />
     <Folder Include="POUs\04_Kommunikation\01_Hilfsfunktionsblock" />
+    <Folder Include="POUs\05_Simulation" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
     <Folder Include="VISUs\01_Debug_Visu" />

@@ -18,6 +18,9 @@
     <LibraryReferences>{6ec95af4-182c-49f6-aeb0-c00acca3892e}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DUTs\01_Schnittstellen\I_Auswertung.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DUTs\01_Schnittstellen\I_Reaktor.TcIO">
       <SubType>Code</SubType>
     </Compile>
@@ -53,22 +56,55 @@
     <Compile Include="POUs\01_Rezept\Rezept_1.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\02_Funktionsblock\FB_Auswertung.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\02_Funktionsblock\FB_Reaktoreinheit.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\02_Funktionsblock\FB_UpdateHandler.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\03_System\Reaktoranlage.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\03_System\Systemauswertung.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\04_Abläufe\01_Vererbung\FB_Basis.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\04_Abläufe\Grundablauf.TcPOU">
+    <Compile Include="POUs\04_Abläufe\FB_Lesen.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\05_Auswertung\FB_Auswertung.TcPOU">
+    <Compile Include="POUs\04_Abläufe\FB_Trennen.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\05_Auswertung\Kommunikation.TcPOU">
+    <Compile Include="POUs\04_Abläufe\FB_UpdateSek.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\04_Abläufe\FB_UpdateSys.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\04_Abläufe\FB_Verbinden.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\04_Abläufe\FB_Grundablauf.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\05_Kommunikation\Connect.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\05_Kommunikation\Disconnect.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\05_Kommunikation\Read.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\05_Kommunikation\UpdateSek.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\05_Kommunikation\UpdateSys.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\MAIN.TcPOU">
@@ -97,7 +133,7 @@
     <Folder Include="POUs\03_System" />
     <Folder Include="POUs\04_Abläufe" />
     <Folder Include="POUs\04_Abläufe\01_Vererbung" />
-    <Folder Include="POUs\05_Auswertung" />
+    <Folder Include="POUs\05_Kommunikation" />
     <Folder Include="VISUs" />
   </ItemGroup>
   <ItemGroup>

@@ -11,21 +11,60 @@ VAR_GLOBAL
 	R2_CW			:RezeptControlWord;				// Lokale definierung der Parameter
 	R2_SW			:RezeptStatusWord;				// Statusword für internen Handling
 	
+	R3_CW			:RezeptControlWord;				// Lokale definierung der Parameter
+	R3_SW			:RezeptStatusWord;				// Statusword für internen Handling
+	
+	R4_CW			:RezeptControlWord;				// Lokale definierung der Parameter
+	R4_SW			:RezeptStatusWord;				// Statusword für internen Handling
+	
+	R5_CW			:RezeptControlWord;				// Lokale definierung der Parameter
+	R5_SW			:RezeptStatusWord;				// Statusword für internen Handling
+	
+	R6_CW			:RezeptControlWord;				// Lokale definierung der Parameter
+	R6_SW			:RezeptStatusWord;				// Statusword für internen Handling
+	
+	R7_CW			:RezeptControlWord;				// Lokale definierung der Parameter
+	R7_SW			:RezeptStatusWord;				// Statusword für internen Handling
+	
+	
 	// Leitungs-Control-Word
 	
 	// SekundärControlWord
 	SekControlWord	:SekControlWord;
-	SekUpdate		:BOOL;
-	
+
 	// SystemStatusWord
 	SysStatusWord	:SystemStatusWord;
-	SysUpdate		:BOOL;
 	
 	// Funktionsvariablen
-	SysState		:INT;							// 0 = Prozess läuft nicht | 1 = Prozess läuft
+	// 0 = System nicht verbunden
+	// 1 = System teilweisen Verbunden (Nicht Aktiv)
+	// 2 = System Aktiv (Prozess läuft)
+	// 9 = Error
+	SysState		:INT;						
 	
 	// Bedienparameter 
 	Start			:BOOL;
+	Connect			:BOOL;
+	Disconnect		:BOOL;
+	Read			:BOOL;
+	
+	SekUpdate_1		:BOOL;
+	SekUpdate_2		:BOOL;
+	SekUpdate_3		:BOOL;
+	SekUpdate_4		:BOOL;
+	SekUpdate_5		:BOOL;
+	SekUpdate_6		:BOOL;
+	SekUpdate_7		:BOOL;
+	SysUpdate_1		:BOOL;
+	SysUpdate_2		:BOOL;
+	SysUpdate_3		:BOOL;
+	SysUpdate_4		:BOOL;
+	SysUpdate_5		:BOOL;
+	SysUpdate_6		:BOOL;
+	SysUpdate_7		:BOOL;
+	SekUpdateReset	:BOOL;
+	SysUpdateReset	:BOOL;
+	
 	
 	// Zustands-Variablen
 	Error			:BOOL;

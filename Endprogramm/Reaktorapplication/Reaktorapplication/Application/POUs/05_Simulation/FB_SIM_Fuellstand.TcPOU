@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_SIM_Fuellstand" Id="{73040a9e-8d81-4131-9405-ae552231ddca}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_SIM_Fuellstand
+VAR_INPUT
+	I_Fuellen			:BOOL;
+END_VAR
+
+VAR_OUTPUT
+	O_SensorSignal		:INT;
+END_VAR
+	
+VAR
+	V_Delay				:TON;
+	V_TimeStatus		:BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Timer instanziieren
+V_Delay(IN := V_TimeStatus, PT := T#1S);	
+
+IF I_Fuellen THEN
+	// Grundwert definieren
+	O_SensorSignal := 0;
+	
+	// Timer starten
+	V_TimeStatus := TRUE;
+	
+	// Reaktor füllen
+	IF V_Delay.Q THEN
+		V_TimeStatus := FALSE;
+		O_SensorSignal := O_SensorSignal + (27648/100);
+	END_IF
+END_IF
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_SIM_Fuellstand">
+      <LineId Id="48" Count="0" />
+      <LineId Id="46" Count="1" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="50" Count="1" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="52" Count="1" />
+      <LineId Id="55" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="31" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
